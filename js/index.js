@@ -1,5 +1,5 @@
 
-const URL = "http://localhost/rspp_certificati/";
+const URL = "http://localhost/rspp_certificati";
 
 let btn = document.getElementById("login")
 
@@ -8,7 +8,7 @@ btn.onclick = async function (e) {
 }
 
 async function login(email, password){
-    let response = await fetch(`${URL}/login.php`, {
+    let response = await fetch(`${URL}/auth/login.php`, {
         method: "POST",
         body: JSON.stringify({email: email, password: password})
     })

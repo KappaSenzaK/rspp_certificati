@@ -2,7 +2,7 @@
 
 $DEBUG = true;
 
-include './database/database.php';
+include '../database/database.php';
 
 $request = json_decode(file_get_contents('php://input', true));
 
