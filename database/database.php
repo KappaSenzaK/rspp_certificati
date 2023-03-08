@@ -26,5 +26,5 @@ function obtain_password($mail): string {
     $results = $statement->get_result();
     $row = $results->fetch_assoc();
 
-    return hash('sha256', $row['pw']);
+    return $row['pw'];
 }
