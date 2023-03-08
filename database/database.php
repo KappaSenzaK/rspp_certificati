@@ -17,45 +17,14 @@ function connect_database($server_name = "localhost",
     return $conn;
 }
 
-function make_query($query){
+function obtain_password($mail): string {
     $conn = connect_database();
+    $statement = $conn->prepare('SELECT pw FROM personale WHERE mail = ?');
+    $statement->bind_param('s', $mail);
+    $statement->execute();
 
-    if ($result = $conn->query($query)) {
-        $conn->close();
-        return $result;
-    }
-    $conn->close();
-    return null;
+    $results = $statement->get_result();
+    $row = $results->fetch_assoc();
+
+    return hash('sha256', $row['pw']);
 }
-
-function obtain_password($mail) {
-    $results = make_query("SELECT mail, pw FROM personale");
-
-    foreach($results as $row) {
-        if($row['mail'] == $mail)
-            return $row['pw'];
-    }
-    return null;
-}
-?>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-Massimo Cuccurullo Official Fan Page
-
-membri:<br>
-<?php
-$results = make_query("SELECT * FROM personale");
-
-foreach($results as $row) {
-    echo $row['nome'] . " " . $row['cognome'] . "<br>";
-}
-?>
-</body>
-</html>

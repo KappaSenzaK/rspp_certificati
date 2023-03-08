@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,12 +13,10 @@
 </head>
 <body>
 
+<button id="login">Login</button>
+
 <p>Bevenuto!</p>
 
+<script src="js/index.js" ></script>
 </body>
 </html>
-
-
-<?php
-
-include 'backend/database.php';
