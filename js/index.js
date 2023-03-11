@@ -1,10 +1,14 @@
 
-const URL = "http://localhost/rspp_certificati";
+const URL = "http://localhost/rssp_certificati";
 
-let btn = document.getElementById("login")
+let btn = document.getElementById("login");
+let password = document.getElementById("password");
+let email = document.getElementById("email");
 
 btn.onclick = async function (e) {
-    await login('ettore.franchi', '1234')
+    e.preventDefault();
+    console.log(password.value, email.value);
+    await login(email.value, password.value);
 }
 
 async function login(email, password){

@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header-css{
+    background-color: #007d60;
+    height: 80px;
+    width: 100%;
+
+}
+
+header {
+    display: block;
+  }
+  
+
+.icon {
+    vertical-align: middle;
+}
