@@ -6,19 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inserimento account per indentificazione</title>
 </head>
-<body>
-    <form>
-        <label for="email">Email: </label>
-        <input type="text" id="email" name="email" required>
-        <label for="password">Password: </label>
-        <input type="password" id="password" name="password" required>
-        <input type="submit" value="Invio" name="login" id="login">
-    </form>
+<body class="font">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <style> th, td { padding: 4pt; } </style>
 
-    <script src="./js/index.js">
-        
-    </script>
+    <br><div align="center">
+        <h1>Pagina di accesso</h1>
+        <h2>Inserisci indirizzo email istituzionale e password</h2><br>
+    
+        <form action="placeholder.php" method="post">
+
+            <table class="button" >
+                <tr align="left">
+                    <th >
+                        <label for="email">Email: </label>
+                    </th>
+                    <th>
+                        <input type="text" id="email" name="email" required>@tulliobuzzi.edu.it 
+                    </th>
+                </tr>
+                <tr></tr>
+                <tr align="left" >
+                    <th>
+                        <label for="password">Password: </label>
+                    </th>
+                    <th>
+                        <input type="password" id="password" name="password" required><br>
+                    </th>
+                </tr>
+            </table>
+            
+            <br><br>
+            <input class="button" type="submit" value="Invia il modulo" name="login" id="login">
+        </form>
+    </div>
+
     
 
+    <script src="./js/index.js"></script>
 </body>
 </html>
