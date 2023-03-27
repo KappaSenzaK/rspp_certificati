@@ -14,7 +14,7 @@
 <body class="font">
 <div>
 <?php
-    include "./header.html";
+    include "./html/header.html";
     include "./database/database.php";
     ?>
     <link rel="stylesheet" href="./css/button.css">

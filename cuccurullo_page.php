@@ -12,12 +12,12 @@
 
 <div>
 <?php
-    include "./header.html"
+    include "./html/header.html"
     ?>
 </div>
 <div>
     <?php
-    include "./cuccurullo_page.html"
+    include "./html/cuccurullo_page.html"
     ?>
 </div>
 

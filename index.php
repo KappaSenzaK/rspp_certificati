@@ -15,21 +15,15 @@
 
 <div>
 <?php
-    include "./header.html"
+    include "./html/header.html"
     ?>
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/font.css">
 </div>
 <div>
     <?php
-    if(!isset($_SESSION['mail']))
-    {
-        include "./loginPage.html";
-    }
-    else
-    if($_SESSION['mail'] == null)
-    {
-        include "./loginPage.html";
+    if(!isset($_SESSION['mail'])) {
+        include "./html/loginPage.html";
     }
     else
     {

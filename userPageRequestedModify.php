@@ -23,8 +23,8 @@
 
     <div>
     <?php
-        include "./header.html";
-        include "./user_page.html";
+        include "./html/header.html";
+        include "./html/user_page.html";
         ?>
     </div>
 

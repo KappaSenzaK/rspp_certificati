@@ -23,7 +23,7 @@
 
     <div>
     <?php
-        include "./header.html";
+        include "./html/header.html";
         ?>
     </div>
 
@@ -48,7 +48,7 @@
             else
             {
                 echo '<div align="left">';
-                include "./user_page.html";
+                include "./html/user_page.html";
                 echo '</div>';
                 ?>
                     <br><div align="center">

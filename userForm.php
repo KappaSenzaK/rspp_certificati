@@ -32,7 +32,7 @@
         <form action="userFormCompiled.php" method="post">
             <h3>Inserisci i certificati di cui già sei in possesso</h3><br>
 
-            <table style="padding: 2;">
+            <table style="padding: 2px;">
                 <tr>
                     <th><h2>Certificato generico</h2></th>
                     <th><h2>Certificato specifico</h2></th>
