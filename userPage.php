@@ -83,7 +83,6 @@
                     <?php
                 }
                 if($row[1] != null){
-                    $conn = connect_database();
                     $statement = $conn->prepare("SELECT mail
                                                 FROM  personale_generale_attestato_specifico_in_scadenza
                                                 WHERE mail = '" . $mail . "'");
@@ -92,6 +91,16 @@
 
                     if(mysqli_num_rows($in_scad_results) != "0")
                         echo "<div style='color:#700016;'>Attenzione: il certificato specifico è in scadenza !</div>";
+                    else {
+                        $statement = $conn->prepare("SELECT mail
+                                                     FROM  personale_generale_attestato_specifico_scaduto
+                                                     WHERE mail = '" . $mail . "'");
+                        $statement->execute();
+                        $scad_results = $statement->get_result();
+
+                        if(mysqli_num_rows($scad_results) != "0")
+                        echo "<div style='color:#700016;'>Attenzione: il certificato specifico è scaduto !</div>";
+                    }
                 }
             ?>
             <br><br><br>

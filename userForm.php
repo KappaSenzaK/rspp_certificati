@@ -29,7 +29,7 @@
         ?></h1>
     </div><br>
     <div align="center">
-        <form action="placeholder.php" method="post">
+        <form action="userFormCompiled.php" method="post">
             <h3>Inserisci i certificati di cui già sei in possesso</h3><br>
 
             <table style="padding: 2;">
