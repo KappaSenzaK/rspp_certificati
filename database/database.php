@@ -17,14 +17,16 @@ function connect_database($server_name = "localhost",
     return $conn;
 }
 
-function obtain_password($mail): string {
+function obtain_password($mail) {
     $conn = connect_database();
-    $statement = $conn->prepare('SELECT pw FROM personale WHERE mail = ?');
-    $statement->bind_param('s', $mail);
+    $statement = $conn->prepare('SELECT pw FROM personale WHERE mail = "'. $mail . '"');
     $statement->execute();
 
     $results = $statement->get_result();
     $row = $results->fetch_assoc();
 
-    return $row['pw'];
+    if($row == null)
+        return null;
+    else
+        return $row['pw'];
 }

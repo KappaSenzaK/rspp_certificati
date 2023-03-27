@@ -1,3 +1,6 @@
+<?php
+    $mail = $_SESSION['mail'];
+?>
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -10,20 +13,21 @@
 </head>
 <body class="font">
 
-    <div>
-    <?php
-        include "./header.html"
-        ?>
-    </div>
-
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/font.css">
     <style> th, td { padding: 10pt; } </style>
-
     <br><div align="center">
-        <h1>Pagina di <?php echo 'placeholder nome cognome'?></h1>
+        <h1>Pagina di <?php 
+            $conn = connect_database();
+            $statement = $conn->prepare("SELECT DISTINCT nome, cognome
+                                         FROM personale_generale
+                                         WHERE mail = '" . $mail . "'");
+            $statement->execute();
+            $results = $statement->get_result();
+            $row = mysqli_fetch_row($results);
+            echo $row[0] . " " . $row[1];
+        ?></h1>
     </div><br>
-    
     <div align="center">
         <form action="placeholder.php" method="post">
             <h3>Inserisci i certificati di cui già sei in possesso</h3><br>
@@ -57,6 +61,5 @@
         <div id="help"></div>
     </div>
     <script src="./js/user_form.js"></script>
-
 </body>
 </html>
