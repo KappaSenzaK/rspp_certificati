@@ -13,20 +13,20 @@
 <div align="center">
     <h1>Signin page</h1>
     <form action="loginAction.php" method="post">
-
-        <label for="email">Inserisci l'indirizzo e-mail del nuovo utente</label>
+        Inserisci i dati del nuovo utente<br>
+        <label for="email">Indirizzo e-mail</label>
         <input type="text" name="email" id="email" required>@tulliobuzzi.edu.it
 
-        <label for="tipo">Ata o docente</label>
+        <label for="tipo">Tipologia</label>
         <select name="tipo" id="tipo">
             <option value="ata">Ata</option>
             <option value="docente">Docente</option>
         </select>
 
-        <label for="nomeUtente">Nome utente</label>
+        <label for="nomeUtente">Nome</label>
         <input type="text" name="nomeUtente" id="nomeUtente">
 
-        <label for="cognomeUtente">Cognome utente</label>
+        <label for="cognomeUtente">Cognome</label>
         <input type="text" name="cognomeUtente" id="cognomeUtente">
 
         <label for="codiceFiscale">Codice fiscale</label>
