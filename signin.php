@@ -14,7 +14,7 @@
     <h1>Signin page</h1>
     <form action="loginAction.php" method="post">
 
-        <label for="email">Inserisci la tua email</label>
+        <label for="email">Inserisci l'indirizzo e-mail del nuovo utente:</label>
         <input type="text" name="email" id="email" required>@tulliobuzzi.edu.it
 
         <label for="tipo">Ata o docente</label>
