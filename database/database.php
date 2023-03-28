@@ -30,3 +30,31 @@ function obtain_password($mail) {
     else
         return $row['pw'];
 }
+
+function existAccountByEmail($mail) {
+    $conn = connect_database();
+    $statement = $conn->prepare('SELECT COUNT(mail) as emails FROM personale WHERE mail = "'. $mail . '"');
+    $statement->execute();
+
+    $results = $statement->get_result();
+    $row = $results->fetch_assoc();
+
+    if($row == null || $row['emails'] == 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+//Senza "stato" (default = "Da compilare")
+function createNewDefaultAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $pw) {
+    $conn = connect_database();
+    $statement = $conn->prepare("INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, pw) VALUES ($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $pw)");
+    $statement->execute();
+}
+
+function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw) {
+    $conn = connect_database();
+    $statement = $conn->prepare("INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) VALUES ($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw)");
+    $statement->execute();
+}

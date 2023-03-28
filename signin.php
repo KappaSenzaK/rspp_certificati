@@ -1,47 +1,40 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creazione dell'account</title>
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/font.css">
-</head>
-<body class="font">
-<br>
-<div align="center">
-    <h1>Signin page</h1>
-    <form action="loginAction.php" method="post">
+<?php
+session_start();
 
-        <label for="email">Inserisci l'indirizzo e-mail del nuovo utente:</label>
-        <input type="text" name="email" id="email" required>@tulliobuzzi.edu.it
+include 'database/database.php';
+include 'utils/emails.php';
 
-        <label for="tipo">Ata o docente</label>
-        <select name="tipo" id="tipo">
-            <option value="ata">Ata</option>
-            <option value="docente">Docente</option>
-        </select>
+$email = $_POST['email'];
+$tipo = $_POST['tipo'];
+$nomeUtente = $_POST['nomeUtente'];
+$cognomeUtente = $_POST['cognomeUtente'];
+$codiceFiscale = $_POST['codiceFiscale'];
+$dataNascita = $_POST['dataNascita'];
+$note = $_POST['note'];
 
-        <label for="nomeUtente">Nome utente</label>
-        <input type="text" name="nomeUtente" id="nomeUtente">
+if(!isset($email)
+    || !isset($tipo)
+    || !isset($nomeUtente)
+    || !isset($cognomeUtente)
+    || !isset($codiceFiscale)
+    || !isset($dataNascita))
+{
+    die("<h1>Campi non validi</h1>");
+}
 
-        <label for="cognomeUtente">Cognome utente</label>
-        <input type="text" name="cognomeUtente" id="cognomeUtente">
+if(!isset($note)) {
+    $note = "Nessuna nota";
+}
 
-        <label for="codiceFiscale">Codice fiscale</label>
-        <input type="text" name="codiceFiscale" id="codiceFiscale">
+if(existAccountByEmail($email)) {
+    die("<h1>L'account esiste di gia!");
+}
 
-        <label for="dataNascita">Data di nascita</label>
-        <input type="date" name="dataNascita" id="dataNascita">
+$digestPassword = hash('md5', $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$note);
+echo "<h2>" . sendEmail($email, "Credenziali RSPP Certificati", "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>") . "</h2>";
 
-        <label for="note">Note</label>
-        <input type="text" name="note" id="note">
+createNewDefaultAccount($email, $tipo, $nomeUtente, $cognomeUtente, $codiceFiscale, $dataNascita, $note, $digestPassword);
+?>
 
-        <input class="button" type="submit" value="Invia il modulo" name="loginAction" id="loginAction">
-    </form>
-</div>
-
-<script src="js/actions.js"></script>
-</body>
-</html>
+<h1>Account creata!</h1>;
+<button onclick='window.location.replace("http://localhost:80/rspp_certificati/html/signin.html")'>Ritorna indietro</button>;
