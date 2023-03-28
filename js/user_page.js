@@ -1,4 +1,4 @@
-var helpStatus = false
+let helpStatus = false;
 
 function help() {
     if(helpStatus) {

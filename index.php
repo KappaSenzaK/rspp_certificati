@@ -30,7 +30,7 @@
         ?>
         <div align="center">
             Hai già effettuato l'accesso !<br><br>
-            <button id="helpButton" class="button" onclick="window.open('./userPage.php'); window.close()"> Vai ai tuoi dati </button>
+            <button id="helpButton" class="button" onclick="window.location.replace('./userPage.php');"> Vai ai tuoi dati </button>
         </div>
         <?php
     }

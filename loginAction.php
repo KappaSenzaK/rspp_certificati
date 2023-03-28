@@ -41,7 +41,7 @@
                 else {
                     echo "Errore nell'accesso !<br>";
                      ?>
-                        <button id="helpButton" class="button" onclick="window.open('./index.php'); window.close()"> Torna al login </button>
+                        <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/')"> Torna al login </button>
                     <?php
                 }
         } catch(Exception $e) {

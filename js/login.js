@@ -1,5 +1,5 @@
 
-const URL = "http://localhost/rssp_certificati";
+const URL = "http://localhost/rssp_certificati/";
 
 let btn = document.getElementById("login");
 let password = document.getElementById("password");
