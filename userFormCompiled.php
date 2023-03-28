@@ -33,15 +33,15 @@
             echo $row[0] . " " . $row[1];
 
             // [elimina vecchi dati]
-            $statement = $conn->prepare("DELETE attestato_generico
+            $statement = $conn->prepare("DELETE FROM attestato_generico
                             WHERE mail = '" . $mail . "'");
             $statement->execute();
 
-            $statement = $conn->prepare("DELETE attestato_generico
+            $statement = $conn->prepare("DELETE FROM attestato_generico
                             WHERE mail = '" . $mail . "'");
             $statement->execute();
 
-            $statement = $conn->prepare("DELETE attestato_specifico
+            $statement = $conn->prepare("DELETE FROM attestato_specifico
                             WHERE mail = '" . $mail . "'");
             $statement->execute();
             

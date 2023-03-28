@@ -28,14 +28,14 @@
             if(obtain_password($email) == $_POST['password']) {
                 echo "Accesso effettuato !<br>";
                 $_SESSION['mail'] = $email; ?>
-                    <button id="helpButton" class="button" onclick="window.open('./userPage.php'); window.close()"> Vai ai tuoi dati </button>
+                    <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/userPage.php')"> Vai ai tuoi dati </button>
                 <?php
             }
             else
                 if($email == 'rspp' && $_POST['password'] == '12345') {
                     echo "Accesso effettuato !<br>";
                     $_SESSION['mail'] = $email; ?>
-                        <button id="helpButton" class="button" onclick="window.open('./cuccurullo_page.php'); window.close()"> Vai ai tuoi dati </button>
+                        <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/cuccurullo_page.php')"> Vai ai tuoi dati </button>
                     <?php
                 }
                 else {
@@ -47,7 +47,7 @@
         } catch(Exception $e) {
             echo "Errore nell'accesso !<br>";
             ?>
-               <button id="helpButton" class="button" onclick="window.open('./index.php'); window.close()"> Torna al login </button>
+               <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/index.php')"> Torna al login </button>
            <?php
         }
     ?>
