@@ -31,7 +31,7 @@ if(existAccountByEmail($email)) {
 }
 
 $digestPassword = hash('md5', $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$note);
-echo "<h2>" . sendEmail($email, "Credenziali RSPP Certificati", "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>") . "</h2>";
+echo "<h2>" . sendEmail($email."@tulliobuzzi.edu.it", "Credenziali RSPP Certificati", "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>") . "</h2>";
 
 createNewDefaultAccount($email, $tipo, $nomeUtente, $cognomeUtente, $codiceFiscale, $dataNascita, $note, $digestPassword);
 ?>
