@@ -1,4 +1,4 @@
--- personale(tipo,mail,nome,cognome,cod_fiscale,data_nascita,note,stato)
+-- personale(tipo,mail,nome,cognome,cod_fiscale,data_nascita,note,stato,password)
 -- attestato_gen(mail)
 -- attestato_spec(mail,data_scadenza)
 
