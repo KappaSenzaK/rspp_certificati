@@ -1,5 +1,8 @@
 <?php
+session_start();
     $mail = $_SESSION['mail'];
+
+    include 'database/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="it">

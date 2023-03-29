@@ -44,21 +44,35 @@
             $statement = $conn->prepare("DELETE FROM attestato_specifico
                             WHERE mail = '" . $mail . "'");
             $statement->execute();
-            
+
+            if($_SERVER["REQUEST_METHOD"] != "POST"){
+                die("<h1>E' richiesta il metodo POST. </h1>");
+            }
+
+            function saveFileToWebServer($mail, $file) {
+                // DA IMPLEMENTARE TODO
+            }
+
             //[salvataggio file]
-            if(isset($_FILES['att_g']))
-                if($_FILES['att_g'] != null) {
+            if(isset($_FILES['att_g'])) {
+                if ($_FILES['att_g'] != null) {
                     //
                     $conn->prepare("INSERT INTO attestato_generico(mail)
                                     VALUES ('" . $mail . "');")->execute();
                 }
 
-            if(isset($_FILES['att_s']))
-                if($_FILES['att_s'] != null) {
+                saveFileToWebServer($mail, $_FILES['att_g']);
+            }
+
+            if(isset($_FILES['att_s'])) {
+                if ($_FILES['att_s'] != null) {
                     //
                     $conn->prepare("INSERT INTO attestato_specifico(mail,data_scadenza)
-                                    VALUES ('" . $mail . "', " .date( 'Y-m-d', $_POST['att_s_date'] ) . ");")->execute();
+                                    VALUES ('" . $mail . "', " . date('Y-m-d', $_POST['att_s_date']) . ");")->execute();
                 }
+
+                saveFileToWebServer($mail, $_FILES['att_s']);
+            }
             
             $statement = $conn->prepare("UPDATE personale
                                          SET stato = 'Da revisionare'

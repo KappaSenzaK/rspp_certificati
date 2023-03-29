@@ -26,6 +26,19 @@ if(!isset($note)) {
     $note = "Nessuna nota";
 }
 
+function firstLetterToUpperCase($string) {
+    if (ctype_upper($string[0])) {
+        return strtoupper(substr($string, 0, 1)) . substr($string, 1,  strlen($string)-1);
+    }
+    return $string;
+}
+
+$nomeUtente = firstLetterToUpperCase($nomeUtente);
+$cognomeUtente = firstLetterToUpperCase($cognomeUtente);
+$note = firstLetterToUpperCase($note);
+
+$codiceFiscale = strtoupper($codiceFiscale);
+
 if(existAccountByEmail($email)) {
     die("<h1>L'account esiste di gia!");
 }
