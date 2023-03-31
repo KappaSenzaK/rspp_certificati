@@ -58,13 +58,17 @@ function existAccountByEmail($mail): bool
 //Senza "stato" (default = "Da compilare")
 function createNewDefaultAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $pw) {
     $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', '$data_nascita', '$note', 'Da compilare', '$pw')");
+    $statement = $conn->prepare(
+        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) 
+               VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', '$data_nascita', '$note', 'Da compilare', '$pw')");
     $statement->execute();
 }
 
 function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw) {
     $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) VALUES ($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw)");
+    $statement = $conn->prepare(
+        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) 
+                VALUES ($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw)");
     $statement->execute();
 }
 
@@ -83,20 +87,22 @@ function retrieveNameAndSurname($mail): array
 
 function insertNewAttestatoGenerico($mail){
     $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO attestato_generico(mail) VALUES ('$mail')");
+    $statement = $conn->prepare("INSERT INTO attestato_generico(mail)    
+                                        VALUES ('$mail')");
     $statement->execute();
 }
 
 function insertNewAttestatoSpecifico($mail, $data_scadenza) {
     $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO attestato_specifico(mail, data_scadenza) VALUES ('$mail', '$data_scadenza')");
+    $statement = $conn->prepare("INSERT INTO attestato_specifico(mail, data_scadenza) 
+                                        VALUES ('$mail', '$data_scadenza')");
     $statement->execute();
 }
 
 function cancellaCertificatiGenericiVecchi($mail) {
     $conn = connect_database();
     $statement = $conn->prepare("DELETE FROM attestato_generico
-                            WHERE mail = '" . $mail . "'");
+                                        WHERE mail = '" . $mail . "'");
     $statement->execute();
 }
 
