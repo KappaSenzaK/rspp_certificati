@@ -50,7 +50,7 @@ include "./utils/files_utility.php";
                 }
             }
 
-            aggiornareCertificati_a_revisionare($mail);
+            aggiornareCertificati($mail, StatoCertificati::DA_REVISIONARE);
         ?></h1><br>
         <h2>I dati sono stati inseriti !</h2><br>
         <button id="helpButton" class="button" onclick="window.open('./userPage.php'); window.close()"> Vai ai tuoi dati </button>

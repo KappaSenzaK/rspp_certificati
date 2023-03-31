@@ -20,7 +20,7 @@ CREATE TABLE personale (
 	cod_fiscale  VARCHAR(32)             NOT NULL,
 	data_nascita DATE                    NOT NULL,
 	note         VARCHAR(128)            NOT NULL,
-	stato 	     ENUM('Da compilare', 'Da revisionare', 'Revisionato', 'Richiesta modifica') DEFAULT 'Da compilare',
+        stato 	     ENUM('Da compilare', 'Da revisionare', 'Revisionato', 'Richiesta modifica') DEFAULT 'Da compilare',
 	pw           VARCHAR(32)             NOT NULL DEFAULT '1234'
 );
 

@@ -37,10 +37,7 @@
             $nameAndSurname = retrieveNameAndSurname($mail);
             echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
 
-            $statement = $conn->prepare("UPDATE personale
-                                         SET stato = 'Richiesta modifica'
-                                         WHERE mail = '" . $mail . "'");
-            $statement->execute();
+            aggiornareCertificati($mail, StatoCertificati::RICHIESTA_MODIFICA);
             ?>
         </h1><br><br>
         <h2>La modifica è stata richiesta !</h2>

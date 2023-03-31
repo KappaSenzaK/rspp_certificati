@@ -1,4 +1,12 @@
 <?php
+
+class StatoCertificati{
+    const DA_COMPILARE = "Da compilare";
+    const DA_REVISIONARE = "Da revisionare";
+    const REVISIONATO = "Revisionato";
+    const RICHIESTA_MODIFICA = "Richiesta modifica";
+}
+
 function connect_database($server_name = "localhost",
                           $username = "root",
                           $password = "",
@@ -92,10 +100,11 @@ function cancellaCertificatiGenericiVecchi($mail) {
     $statement->execute();
 }
 
-function aggiornareCertificati_a_revisionare($mail){
+// la variabile $stato e' del tipo "StatoCertificati" la quale e' un'enum
+function aggiornareCertificati($mail, $stato){
     $conn = connect_database();
     $statement = $conn->prepare("UPDATE personale
-                                         SET stato = 'Da revisionare'
+                                         SET stato = '$stato'
                                          WHERE mail = '" . $mail . "'");
     $statement->execute();
 }
