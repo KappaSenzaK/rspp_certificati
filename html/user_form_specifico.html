@@ -1,0 +1,39 @@
+<div align="center">
+    <form action="http://localhost:80/rspp_certificati/userFormCompiled.php" method="post" enctype="multipart/form-data">
+        <h3>Inserisci i certificati di cui già sei in possesso</h3><br>
+
+        <table style="padding: 2px;">
+            <tr>
+                <th><h2>Certificato specifico</h2></th>
+            </tr>
+            <tr>
+                <th>
+                    <input class="button" type="file" name="att_s" id="file"/>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    Data di scadenza &emsp; <input type="date" name="att_s_date" id="data-scadenza"/>
+                </th>
+            </tr>
+        </table>
+        <input class="button" type="submit" value="Invia il modulo" id="submit"/>
+    </form>
+    <br><br><br>
+</div>
+
+<script>
+    document.getElementById('submit').onclick = function (e) {
+      let file = document.getElementById('file')
+      let dataScadenza = document.getElementById('data-scadenza')
+
+      if(file.files.length === 0){
+        e.preventDefault();
+        alert('Non hai selezionato nessun file!')
+      }
+      else if (!dataScadenza.value){
+        e.preventDefault();
+        alert("Non hai selezionto la data")
+      }
+    }
+</script>

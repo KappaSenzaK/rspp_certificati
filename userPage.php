@@ -53,13 +53,8 @@
                 ?>
                     <br><div align="center">
                         <h1>Pagina di <?php 
-                            $statement = $conn->prepare("SELECT DISTINCT nome, cognome
-                                                        FROM personale_generale
-                                                        WHERE mail = '" . $mail . "'");
-                            $statement->execute();
-                            $results = $statement->get_result();
-                            $row = mysqli_fetch_row($results);
-                            echo $row[0] . " " . $row[1];
+                            $nameAndSurname = retrieveNameAndSurname($mail);
+                            echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
                         ?></h1>
                     </div><br>
                     <h2>Certificati di cui sei in possesso</h2>

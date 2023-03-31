@@ -2,6 +2,13 @@
 session_start();
     $mail = $_SESSION['mail'];
 
+    if(isset($_GET['cambiato'])){
+        $generico = $_GET['cambiato'] == 'true';
+    } else {
+        //indica se l'utente e' nella pagina per il certificato generico o no
+        $generico = true;
+    }
+
     include 'database/database.php';
 ?>
 <!DOCTYPE html>
@@ -20,49 +27,36 @@ session_start();
     <link rel="stylesheet" href="./css/font.css">
     <style> th, td { padding: 10pt; } </style>
     <br><div align="center">
-        <h1>Pagina di <?php 
-            $conn = connect_database();
-            $statement = $conn->prepare("SELECT DISTINCT nome, cognome
-                                         FROM personale_generale
-                                         WHERE mail = '" . $mail . "'");
-            $statement->execute();
-            $results = $statement->get_result();
-            $row = mysqli_fetch_row($results);
-            echo $row[0] . " " . $row[1];
+        <h1>Pagina di <?php
+            $nameAndSurname = retrieveNameAndSurname($mail);
+            echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
         ?></h1>
     </div><br>
-    <div align="center">
-        <form action="userFormCompiled.php" method="post" enctype="multipart/form-data">
-            <h3>Inserisci i certificati di cui già sei in possesso</h3><br>
 
-            <table style="padding: 2px;">
-                <tr>
-                    <th><h2>Certificato generico</h2></th>
-                    <th><h2>Certificato specifico</h2></th>
-                </tr>
-                <tr>
-                    <th>
-                        <input class="button" type="file" name="att_g"></input>
-                    </th>
-                    <th>
-                        <input class="button" type="file" name="att_s"></input>
-                    </th>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th>
-                        Data di scadenza &emsp; <input type="date" name="att_s_date"></input>
-                    </th>
-                </tr>
-                <input type="hidden" id="mail" name="mail" value="<?php echo 'placeholder' ?>">
-            </table>
-            <input class="button" type="submit" value="Invia il modulo"></input>
-        </form>
-        <br><br><br>
-        <button id="helpButton" class="button" onclick="help()"> Hai bisogno di aiuto? </button>
+    <?php
+    if($generico) {
+        include 'html/user_form_generico.html';
+    }
+    else {
+        include 'html/user_form_specifico.html';
+    }
+    ?>
+    <div style="text-align: center; margin-top: 50px">
+        <input class="button" value="Hai un certificato <?php if($generico) echo 'generico'; else echo 'specifico'; ?>?" type="button" id="cambiaTipoCertificatoBtn"/>
+        <br>
+        <button id="helpButton" class="button" onclick="help()" style="margin-top: 50px"> Hai bisogno di aiuto? </button>
         <br><br>
         <div id="help"></div>
     </div>
+
+    <script>
+        let cambiaTipoCertificatoBtn = document.getElementById('cambiaTipoCertificatoBtn');
+        cambiaTipoCertificatoBtn.onclick = function(e) {
+          let generico = cambiaTipoCertificatoBtn.value.includes('generico')
+          window.location = `http://localhost:80/rspp_certificati/userForm.php?cambiato=${!generico}`
+        }
+
+    </script>
     <script src="./js/user_form.js"></script>
 </body>
 </html>
