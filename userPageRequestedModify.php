@@ -34,14 +34,8 @@
 
     <br><div align="center">
         <h1>Pagina di <?php 
-            $conn = connect_database();
-            $statement = $conn->prepare("SELECT DISTINCT nome, cognome
-                                         FROM personale_generale
-                                         WHERE mail = '" . $mail . "'");
-            $statement->execute();
-            $results = $statement->get_result();
-            $row = mysqli_fetch_row($results);
-            echo $row[0] . " " . $row[1];
+            $nameAndSurname = retrieveNameAndSurname($mail);
+            echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
 
             $statement = $conn->prepare("UPDATE personale
                                          SET stato = 'Richiesta modifica'
