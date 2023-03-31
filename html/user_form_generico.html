@@ -16,3 +16,14 @@
     </form>
     <br><br><br>
 </div>
+
+<script>
+  document.getElementById('submit').onclick = function (e) {
+    let file = document.getElementById('file')
+
+    if(file.files.length === 0){
+      e.preventDefault();
+      alert('Non hai selezionato nessun file!')
+    }
+  }
+</script>
