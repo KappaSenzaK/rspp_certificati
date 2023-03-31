@@ -25,7 +25,7 @@
     <?php
         $email = $_POST['email'];
         try {
-            if(obtain_password($email) == $_POST['password']) {
+            if(obtain_password($email) == hash('sha256', $_POST['password'])) {
                 echo "Accesso effettuato !<br>";
                 $_SESSION['mail'] = $email; ?>
                     <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/userPage.php')"> Vai ai tuoi dati </button>
@@ -33,7 +33,7 @@
             }
             else
                 if($email == 'rspp' && $_POST['password'] == '12345') {
-                    echo "Accesso effettuato !<br>";
+                    echo "Accesso effettuato come RSPP!<br>";
                     $_SESSION['mail'] = $email; ?>
                         <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/cuccurullo_page.php')"> Vai ai tuoi dati </button>
                     <?php
