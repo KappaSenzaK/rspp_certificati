@@ -1,5 +1,14 @@
 <?php
-session_start();
+    $header = false;
+    foreach(get_included_files() as $file)
+        if(false !== strpos($file, 'header.html'))
+            $header = true;
+    
+    if(!$header)
+        include 'html/header.html';
+
+    if(!isset($_SESSION))
+        session_start();
     $mail = $_SESSION['mail'];
 
     if(isset($_GET['cambiato'])){
@@ -8,8 +17,8 @@ session_start();
         //indica se l'utente e' nella pagina per il certificato generico o no
         $generico = true;
     }
-
-    include 'database/database.php';
+    if(!isset($database_set))
+        include 'database/database.php';
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -42,7 +51,7 @@ session_start();
     }
     ?>
     <div style="text-align: center; margin-top: 50px">
-        <input class="button" value="Hai un certificato <?php if($generico) echo 'generico'; else echo 'specifico'; ?>?" type="button" id="cambiaTipoCertificatoBtn"/>
+        <input class="button" value="Hai un certificato <?php if(!$generico) echo 'generico'; else echo 'specifico'; ?>?" type="button" id="cambiaTipoCertificatoBtn"/>
         <br>
         <button id="helpButton" class="button" onclick="help()" style="margin-top: 50px"> Hai bisogno di aiuto? </button>
         <br><br>
@@ -52,8 +61,8 @@ session_start();
     <script>
         let cambiaTipoCertificatoBtn = document.getElementById('cambiaTipoCertificatoBtn');
         cambiaTipoCertificatoBtn.onclick = function(e) {
-          let generico = cambiaTipoCertificatoBtn.value.includes('generico')
-          window.location = `http://localhost:80/rspp_certificati/userForm.php?cambiato=${!generico}`
+          let generico = !cambiaTipoCertificatoBtn.value.includes('generico')
+          window.location = `userForm.php?cambiato=${!generico}`
         }
 
     </script>
