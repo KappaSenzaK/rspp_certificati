@@ -12,7 +12,7 @@ function saveFileToWebServer($mail, $file, $type) {
     $target_file = $filepath_directory.'/'.$filename;
 
     if(file_exists($target_file)) {
-        die("<h1>Il esiste di gia</h1>");
+        die("<h1>Il file esiste di gia</h1>");
     }
 
     $ext = strtoupper(pathinfo($target_file, PATHINFO_EXTENSION));
