@@ -1,5 +1,6 @@
 <?php
-    include 'database\database.php';
+    if(!isset($database_set))
+        include 'database\database.php';
     session_start();
     $mail = $_SESSION['mail'];
 ?>

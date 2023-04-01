@@ -25,7 +25,7 @@
     <?php
         $email = $_POST['email'];
         try {
-            if(obtain_password($email) == hash('sha256', $_POST['password'])) {
+            if(obtain_password($email) == $_POST['password']) {
                 echo "Accesso effettuato !<br>";
                 $_SESSION['mail'] = $email; ?>
                     <button id="helpButton" class="button" onclick="window.location.replace('http://localhost:80/rspp_certificati/userPage.php')"> Vai ai tuoi dati </button>
