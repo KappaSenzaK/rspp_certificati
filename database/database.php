@@ -1,4 +1,5 @@
 <?php
+    $database_set = 0;
 
 class StatoCertificati{
     const DA_COMPILARE = "Da compilare";
