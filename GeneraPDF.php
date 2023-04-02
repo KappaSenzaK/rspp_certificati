@@ -26,7 +26,7 @@ $data = "09/02/2022";
 $luogo = "Prato";
 $ore = "34";
 
-$html = file_get_contents("template.html"); //SERVE PER OTTENERE IL HTML DA UN FILE INVECE DI SCRIVERE TUTTO HTML IN STRINGA
+$html = file_get_contents("./html/template.html"); //SERVE PER OTTENERE IL HTML DA UN FILE INVECE DI SCRIVERE TUTTO HTML IN STRINGA
 $html = str_replace("{{ nome }}", $nome, $html);
 $html = str_replace("{{ cognome }}", $cognome, $html);
 $html = str_replace("{{ data }}", $data, $html);
