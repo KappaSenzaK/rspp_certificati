@@ -43,8 +43,19 @@ if(existAccountByEmail($email)) {
     die("<h1>L'account esiste di gia!");
 }
 
-$digestPassword = substr(hash('md5', $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$note), 0, 5);
-echo "<h2>" . sendEmail($email."@tulliobuzzi.edu.it", "Credenziali RSPP Certificati", "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>") . "</h2>";
+$digestPassword = substr(hash(
+        'md5',
+        $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$note),
+    0, 5
+);
+
+$sendmail_message = sendEmail(
+        $email."@tulliobuzzi.edu.it",
+        "Credenziali RSPP Certificati",
+        "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>"
+);
+
+echo "<h2>" . $sendmail_message . "</h2>";
 
 createNewDefaultAccount($email, $tipo, $nomeUtente, $cognomeUtente, $codiceFiscale, $dataNascita, $note, $digestPassword);
 ?>

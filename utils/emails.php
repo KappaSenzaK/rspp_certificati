@@ -26,8 +26,8 @@ function sendEmail($to, $subject, $body) {
 
     try {
         $mail->send();
-        echo "L'email e' stato mandato correttamente";
+        return "L'email e' stato mandato correttamente";
     } catch (Exception $e) {
-        echo "Errore durante l'esecuzione dell'email. Motivo: " . $e->errorMessage();
+        return "Errore durante l'esecuzione dell'email. Motivo: " . $e->errorMessage();
     }
 }

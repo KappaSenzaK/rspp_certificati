@@ -29,7 +29,7 @@ include 'html/header.html'
     if(!isset($to) || !isset($subject) || !isset($body)) {
         die("<h1>Email destinatario, subject, oppure body non sono configurati</h1>");
     }
-    sendEmail($to, $subject, $body);
+    echo sendEmail($to, $subject, $body);
     ?>
 </div>
 
