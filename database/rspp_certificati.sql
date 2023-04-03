@@ -20,21 +20,32 @@ CREATE TABLE personale (
 	cod_fiscale  VARCHAR(32)             NOT NULL,
 	data_nascita DATE                    NOT NULL,
 	note         VARCHAR(128)            NOT NULL,
-        stato 	     ENUM('Da compilare', 'Da revisionare', 'Revisionato', 'Richiesta modifica') DEFAULT 'Da compilare',
+        stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
 	pw           VARCHAR(32)             NOT NULL DEFAULT '1234'
 );
 
-CREATE TABLE attestato_generico (
-	mail 	VARCHAR(64) PRIMARY KEY NOT NULL,
+CREATE TABLE attestato (
+	mail VARCHAR(64) NOT NULL,
+	tipo ENUM('formazione_generale',
+		  'formazione_specifica_medio'
+		  'formazione_alto',
+		  'formazione_sicurezza_preposto',
+		  'aggiornamento_sicurezza_preposto',
+		  'aggiornamento_sicurezza',
+		  'formazione_rls',
+		  'aggiornamento_rls',
+		  'formazione_rspp',
+		  'aggiornamento_rspp',
+		  'formazione_incendio_medio',
+		  'formazione_incendio_alto',
+		  'formazione_primo_soccorso'
+		  'aggiornamento_primo_soccorso',
+		  'formazione_blsd',
+		  'aggiornamento_blsd',
+		  'altro') NOT NULL,
+	descrizione VARCHAR(128),
+	PRIMARY KEY(mail,tipo),
 	CONSTRAINT attestato_generico_mail
-		FOREIGN KEY (mail)
-		REFERENCES personale(mail)
-);
-
-CREATE TABLE attestato_specifico (
-	mail 	      VARCHAR(64) PRIMARY KEY NOT NULL,
-	data_scadenza DATE,
-	CONSTRAINT attestato_specifico_mail
 		FOREIGN KEY (mail)
 		REFERENCES personale(mail)
 );
