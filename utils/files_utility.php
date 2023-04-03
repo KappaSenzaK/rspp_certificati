@@ -1,13 +1,12 @@
 <?php
 
 function saveFileToWebServer($mail, $file, $type) {
-
     if($file['error'] != 0) {
         return 'error';
     }
     $mail_directory_path = str_replace(".", "_", $mail); //impossibile creare directory con '.' nel nome
 
-    $filepath_directory = __DIR__ . "/certificati/$mail_directory_path/$type";
+    $filepath_directory = "./certificati/$mail_directory_path/$type";
     $filename = basename($file['name']);
     $target_file = $filepath_directory.'/'.$filename;
 
@@ -23,4 +22,5 @@ function saveFileToWebServer($mail, $file, $type) {
     if(!move_uploaded_file($file["tmp_name"], $target_file)){
         echo "<h1>Errore generico nel caricamento del file";
     }
+    return "ok";
 }
