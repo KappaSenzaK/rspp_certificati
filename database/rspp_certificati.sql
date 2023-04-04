@@ -1,6 +1,5 @@
--- personale(tipo,mail,nome,cognome,cod_fiscale,data_nascita,note,stato,password)
--- attestato_gen(mail)
--- attestato_spec(mail,data_scadenza)
+-- personale(tipo,mail,nome,cognome,cod_fiscale,note,stato,pw)
+-- attestato(mail, tipo, data_scadenza, descrizione)
 
 -- DATABASE
 DROP DATABASE IF EXISTS rspp_certificati;
@@ -18,7 +17,7 @@ CREATE TABLE personale (
 	cognome      VARCHAR(32)             NOT NULL,
 	-- il codice fiscale è diverso per ogni paese, perciò ho messo VARCHAR
 	cod_fiscale  VARCHAR(32)             NOT NULL,
-	note         VARCHAR(128)            NOT NULL,
+	note         VARCHAR(128)            NOT NULL DEFAULT '',
         stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
 	pw           VARCHAR(32)             NOT NULL DEFAULT '1234'
 );
