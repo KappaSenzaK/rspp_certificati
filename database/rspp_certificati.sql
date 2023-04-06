@@ -1,4 +1,4 @@
--- personale(tipo,mail,nome,cognome,cod_fiscale,note,stato,pw)
+-- personale(tipo,mail,nome,cognome,cod_fiscale,note,stato,pw,in_servizio)
 -- attestato(mail, tipo, data_scadenza, descrizione)
 
 -- DATABASE
@@ -19,7 +19,8 @@ CREATE TABLE personale (
 	cod_fiscale  VARCHAR(32)             NOT NULL,
 	note         VARCHAR(128)            NOT NULL DEFAULT '',
         stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
-	pw           VARCHAR(32)             NOT NULL DEFAULT '1234'
+	pw           VARCHAR(32)             NOT NULL DEFAULT '1234', 
+	in_servizio  ENUM('s', 'n')								 NOT NULL DEFAULT 's' 
 );
 
 CREATE TABLE attestato (
@@ -42,7 +43,7 @@ CREATE TABLE attestato (
 		  'aggiornamento_blsd',
 		  'altro') NOT NULL,
 	descrizione   VARCHAR(128),
-	data_scadenza DATE,
+	data_scadenza DATE	DEFAULT NULL,
 	PRIMARY KEY(mail,tipo),
 	CONSTRAINT attestato_generico_mail
 		FOREIGN KEY (mail)
@@ -124,3 +125,6 @@ VALUES  ('ettore.franchi', 'docente', 'Ettore', 'Franchi', 'FRNTTR04R27D612A'),
 	('stefano.hu', 'docente', 'Stefano', 'Hu', 'SFNHU12UU74'),
 	('marco.carricato', 'ata', 'Marco', 'Carricato', 'MRCCRR696969'),
 	('dio.brando', 'docente', 'Dio', 'Brando', 'DIOBRN6629012F');
+
+INSERT INTO attestato (mail, tipo
+VALUES  ('ettore.franchi', 'formazione_specifica_medio');
