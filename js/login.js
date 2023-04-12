@@ -19,3 +19,7 @@ async function login(email, password){
     let data = await response.json();
     console.log(data)
 }
+
+function openSignIn()  {
+    window.open('signin.php');
+}
