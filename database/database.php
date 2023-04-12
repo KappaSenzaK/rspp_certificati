@@ -56,20 +56,11 @@ function existAccountByEmail($mail): bool
     }
 }
 
-//Senza "stato" (default = "Da compilare")
-function createNewDefaultAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $pw) {
+function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw) {
     $conn = connect_database();
     $statement = $conn->prepare(
-        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) 
-               VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', '$data_nascita', '$note', 'Da compilare', '$pw')");
-    $statement->execute();
-}
-
-function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw) {
-    $conn = connect_database();
-    $statement = $conn->prepare(
-        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, note, stato, pw) 
-                VALUES ($mail, $tipo, $nome, $cognome, $cod_fiscale, $data_nascita, $note, $stato, $pw)");
+        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, stato, pw) 
+                VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', 'Da validare', '$pw')");
     $statement->execute();
 }
 

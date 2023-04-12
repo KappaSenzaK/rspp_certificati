@@ -18,9 +18,9 @@ CREATE TABLE personale (
 	-- il codice fiscale è diverso per ogni paese, perciò ho messo VARCHAR
 	cod_fiscale  VARCHAR(32)             NOT NULL,
 	note         VARCHAR(128)            NOT NULL DEFAULT '',
-        stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
+    stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
 	pw           VARCHAR(32)             NOT NULL DEFAULT '1234', 
-	in_servizio  ENUM('s', 'n')								 NOT NULL DEFAULT 's' 
+	in_servizio  ENUM('s', 'n')			 NOT NULL DEFAULT 's' 
 );
 
 CREATE TABLE attestato (
