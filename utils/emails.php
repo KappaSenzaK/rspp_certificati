@@ -26,8 +26,8 @@ function sendEmail($to, $subject, $body) {
 
     try {
         $mail->send();
-        return "L'email e' stato mandato correttamente";
+        return "Al tuo indirizzo e-mail istituzionale è stata inviata una mail di conferma";
     } catch (Exception $e) {
-        return "Errore durante l'esecuzione dell'email. Motivo: " . $e->errorMessage();
+        return "Errore durante la creazione dell'account. Motivo: " . $e->errorMessage();
     }
 }
