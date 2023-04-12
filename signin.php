@@ -4,27 +4,43 @@ session_start();
 include 'database/database.php';
 include 'utils/emails.php';
 
+include 'html/header.html';
+
+?>
+    <head>
+        <title>Creazione dell'account</title>
+    </head>
+<?php
+
+if(!isset($_SESSION['signin'])) {
+    $_SESSION['signin'] = true;
+}
+
+if($_SESSION['signin']){
+    $_SESSION['signin'] = true;
+
+    include 'html/signin.html';
+
+    $_SESSION['signin'] = false;
+    die();
+}
+
+if(!isset($_POST['email'])
+    || !isset($_POST['tipo'])
+    || !isset($_POST['nomeUtente'])
+    || !isset($_POST['cognomeUtente'])
+    || !isset($_POST['codiceFiscale'])
+    )
+{
+    $_SESSION['signin'] = true;
+    die("<br><h1>Campi non validi!</h1>");
+}
+
 $email = $_POST['email'];
 $tipo = $_POST['tipo'];
 $nomeUtente = $_POST['nomeUtente'];
 $cognomeUtente = $_POST['cognomeUtente'];
 $codiceFiscale = $_POST['codiceFiscale'];
-$dataNascita = $_POST['dataNascita'];
-$note = $_POST['note'];
-
-if(!isset($email)
-    || !isset($tipo)
-    || !isset($nomeUtente)
-    || !isset($cognomeUtente)
-    || !isset($codiceFiscale)
-    || !isset($dataNascita))
-{
-    die("<h1>Campi non validi</h1>");
-}
-
-if(!isset($note)) {
-    $note = "Nessuna nota";
-}
 
 function firstLetterToUpperCase($string) {
     if (ctype_upper($string[0])) {
@@ -35,30 +51,35 @@ function firstLetterToUpperCase($string) {
 
 $nomeUtente = firstLetterToUpperCase($nomeUtente);
 $cognomeUtente = firstLetterToUpperCase($cognomeUtente);
-$note = firstLetterToUpperCase($note);
 
 $codiceFiscale = strtoupper($codiceFiscale);
 
 if(existAccountByEmail($email)) {
-    die("<h1>L'account esiste di gia!");
+    $_SESSION['signin'] = true;
+    die("<br<h1>Attenzione: l'account è già esistente!</h1>");
 }
 
 $digestPassword = substr(hash(
         'md5',
-        $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$note),
+        $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale),
     0, 5
 );
 
 $sendmail_message = sendEmail(
         $email."@tulliobuzzi.edu.it",
         "Credenziali RSPP Certificati",
-        "<h1>Salve, le invio la password generata: " . $digestPassword . "</h1>"
+        "<h1>Password per l'accesso all'account: " . $digestPassword . "</h1>"
 );
+?>
+
 
 echo "<h2>" . $sendmail_message . "</h2>";
 
-createNewDefaultAccount($email, $tipo, $nomeUtente, $cognomeUtente, $codiceFiscale, $dataNascita, $note, $digestPassword);
+if($sendmail_message = "Al tuo indirizzo e-mail istituzionale è stata inviata una mail di conferma") {
+    echo
+}
+
 ?>
 
 <h1>Account creata!</h1>;
-<button onclick='window.location.replace("http://localhost:80/rspp_certificati/html/signin.html")'>Ritorna indietro</button>;
+<button onclick='window.location.replace("http://localhost:80/rspp_certificati/index.php")'>Torna alla pagina di accesso</button>;
