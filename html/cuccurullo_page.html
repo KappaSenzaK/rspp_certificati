@@ -9,23 +9,40 @@
     <link rel="stylesheet" href="css/font.css">
 </head>
 <body>
-        <nav class="navbar navbar-light" style="background-color: #007d60; font-weight: bold;">
-            <a class="navbar-brand" href="#">MENU</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+    <nav class="navbar navbar-light" style="background-color: #007d60; font-weight: bold;">
+        <a class="navbar-brand" href="#">Menù</a>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                <a class="nav-link" href="html/elenco.html">Elenco</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="html/crea_crt.html">Crea certificato</a>
-                </li>
-            </ul>
-            </div>
-        </nav>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+          <ul class="navbar-nav">
+            <lI>
+                <nav class="nav">
+                    <a class="navbar-brand" href="#">Azioni:</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Crea certificato</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Valida</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">...</a>&nbsp&nbsp&nbsp&nbsp
+                </nav>
+            </lI>
+            <lI>
+                <nav class="nav">
+                    <a class="navbar-brand" href="#">Liste:</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Docenti</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">ATA</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Da compilare</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Da validare</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Validato</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">Richiesta modifica</a>&nbsp&nbsp&nbsp&nbsp
+                    <a class="nav-link" href="#">In scadenza</a>&nbsp&nbsp&nbsp&nbsp
+                </nav>
+            </lI>
+          </ul>
+
+        </div>
+      </nav>
 
         <form action="http://localhost:80/rspp_certificati/sendmail.php" method="post" class="font">
             <label for="to">Inserisci l'indirizzo email del destinatario</label>
