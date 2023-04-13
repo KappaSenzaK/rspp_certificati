@@ -70,13 +70,11 @@ $sendmail_message = sendEmail(
         "Credenziali RSPP Certificati",
         "<h1>Password per l'accesso all'account: " . $digestPassword . "</h1>"
 );
-?>
-
 
 echo "<h2>" . $sendmail_message . "</h2>";
 
-if($sendmail_message = "Al tuo indirizzo e-mail istituzionale è stata inviata una mail di conferma") {
-    echo
+if($sendmail_message != EmailStatus::OK) {
+    die();
 }
 
 ?>
