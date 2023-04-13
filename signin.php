@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -7,6 +8,7 @@ include 'utils/emails.php';
 include 'html/header.html';
 
 ?>
+<script src="js/login.js"></script>
     <head>
         <title>Creazione dell'account</title>
     </head>
@@ -56,7 +58,7 @@ $codiceFiscale = strtoupper($codiceFiscale);
 
 if(existAccountByEmail($email)) {
     $_SESSION['signin'] = true;
-    die("<br<h1>Attenzione: l'account è già esistente!</h1>");
+    die("<br<h1>Attenzione: l'account è già esistente!</h1><br><h1>Effettua il login! <button onclick='openLogin()'>LOGIN</button></h1>");
 }
 
 $digestPassword = substr(hash(
