@@ -2,3 +2,5 @@ Specifiche funzionali: https://docs.google.com/document/d/1IX1g_SnC4-R0mvwUL_sdG
 
 e-mail di prova: cuccurulloprogetto@gmail.com
 password: buzzi123
+
+stefano per favore non toccare più i link tra le pagine
