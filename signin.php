@@ -37,8 +37,28 @@ if(isset($_POST['back'])) {
 if(isset($_SESSION['code'])) {
     if(isset($_POST['code']))
         if($_SESSION['code'] == $_POST['code']) {
-            //crea account
-            echo "assurdo!";
+            // createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw)
+            createNewAccount(
+                $_SESSION['signin_mail'], 
+                $_SESSION['signin_tipo'], 
+                $_SESSION['signin_nomeUtente'], 
+                $_SESSION['signin_cognomeUtente'], 
+                $_SESSION['signin_codiceFiscale'],
+                $_SESSION['code']  
+            );
+
+            echo '<div class="font" align="center">
+                    <h2>Il tuo account è stato creato con successo!</h2><br><br>
+                    Adesso puoi tornare alla pagina di accesso ed entrare nella piattaforma.<br><br>
+                    Ricorda che i dati che hai inserito passeranno sotto la revisione dell\'RSPP scolastico,
+                    perciò potrebbero variare nel caso in cui ci siano delle incongruenze!<br><br><br>
+                    <form action="index.php" method="post">
+                        <input type="submit" value="Torna alla pagina di accesso">
+                    </form>
+                 </div>';
+
+            session_destroy();
+            die();
         } else {
             echo '<div class="font" align="center">
                     <h2>Attenzione! La password inserita non è corretta!</h2><br>
@@ -82,7 +102,13 @@ $nomeUtente = $_POST['nomeUtente'];
 $cognomeUtente = $_POST['cognomeUtente'];
 $codiceFiscale = $_POST['codiceFiscale'];
 
-$_SESSION['signin_data'] = [$email, $tipo, $nomeUtente, $cognomeUtente, $codiceFiscale];
+
+$_SESSION['signin_mail'] = $email;
+$_SESSION['signin_tipo'] = $tipo;
+$_SESSION['signin_nomeUtente'] = $nomeUtente;
+$_SESSION['signin_cognomeUtente'] = $cognomeUtente;
+$_SESSION['signin_codiceFiscale'] = $codiceFiscale;
+
 
 function firstLetterToUpperCase($string) {
     if (ctype_upper($string[0])) {

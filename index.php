@@ -22,7 +22,7 @@
 </div>
 <div>
     <?php
-    if(!isset($_SESSION['mail'])) {
+    if(!isset($_SESSION['mail']) || isset($_POST['logout'])) {
         include "./html/loginPage.html";
     }
     else
@@ -31,15 +31,15 @@
         <div align="center">
             Hai già effettuato l'accesso !<br><br>
             <button id="helpButton" class="button" onclick="window.location.replace('./userPage.php');"> Vai ai tuoi dati </button>
+            <br><br>
+            <form method="post" action="index.php">
+                <input type="hidden" id="logout" name="logout" value="a">
+                <input type="submit" class="button" value="Torna all'accesso">
+            </form>
         </div>
         <?php
     }
     ?>
 </div>
-
-
-
-
-
 </body>
 </html>
