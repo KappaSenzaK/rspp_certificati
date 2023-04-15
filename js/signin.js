@@ -8,7 +8,7 @@ function help() {
                                                     "<table><tr><td>▸ Scrivere nome e cognome con l'iniziale maiuscola</td></tr>" +
                                                     "<tr><td>▸ Usare le lettere maiuscole nel codice fiscale</td></tr>" +
                                                     "<tr><td>▸ Nell'indirizzo e-mail, omettere la parte finale '@tulliobuzzi.edu.it'</td></tr>" +
-                                                    "<tr><td>▸ Separare possibili secondi nomi e cognomi con uno spazio'</td></tr>" +
+                                                    "<tr><td>▸ Separare possibili secondi nomi e cognomi con uno spazio</td></tr>" +
                                                     "<table>";
     }
     else
