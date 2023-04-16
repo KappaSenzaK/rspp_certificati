@@ -77,24 +77,6 @@ function retrieveNameAndSurname($mail): array
     return array("name" => $row[0], "surname" => $row[1]);
 }
 
-function insertNewAttestatoGenerico($mail){
-    
-}
-
-function insertNewAttestatoSpecifico($mail, $data_scadenza) {
-    $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO attestato_specifico(mail, data_scadenza) 
-                                        VALUES ('$mail', '$data_scadenza')");
-    $statement->execute();
-}
-
-function cancellaCertificatiGenericiVecchi($mail) {
-    $conn = connect_database();
-    $statement = $conn->prepare("DELETE FROM attestato_generico
-                                        WHERE mail = '" . $mail . "'");
-    $statement->execute();
-}
-
 function insertNewAttestato($mail,
                             $tipo = 'altro',
                             $data_scadenza = null,
@@ -109,11 +91,10 @@ function insertNewAttestato($mail,
     $statement->execute();
 }
 
-// la variabile $stato e' del tipo "StatoCertificati" la quale e' un'enum
-function aggiornareCertificati($mail, $stato){
+function aggiornaStato($mail, $stato){
     $conn = connect_database();
     $statement = $conn->prepare("UPDATE personale
-                                         SET stato = '$stato'
-                                         WHERE mail = '" . $mail . "'");
+                                SET stato = '$stato'
+                                WHERE mail = '" . $mail . "'");
     $statement->execute();
 }
