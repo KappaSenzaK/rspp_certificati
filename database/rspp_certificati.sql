@@ -29,21 +29,21 @@ CREATE TABLE attestato (
 		  'formazione_specifica_medio',
 		  'formazione_alto',
 		  'formazione_sicurezza_preposto',
-		  'aggiornamento_sicurezza_preposto',
-		  'aggiornamento_sicurezza',
+		  'aggiornamento_sicurezza_preposto', -- 5 anni
+		  'aggiornamento_sicurezza', -- 5 anni
 		  'formazione_rls',
-		  'aggiornamento_rls',
-		  'formazione_rspp',
+		  'aggiornamento_rls', -- 1 anno
+		  'formazione_rspp', -- 5 anni
 		  'aggiornamento_rspp',
 		  'formazione_incendio_medio',
 		  'formazione_incendio_alto',
 		  'formazione_primo_soccorso',
-		  'aggiornamento_primo_soccorso',
+		  'aggiornamento_primo_soccorso', -- 3 anni
 		  'formazione_blsd',
-		  'aggiornamento_blsd',
-		  'altro') NOT NULL,
-	descrizione   VARCHAR(128),
-	data_scadenza DATE	DEFAULT NULL,
+		  'aggiornamento_blsd', -- 2 anni
+		  'altro') NOT NULL	   DEFAULT 'altro',
+	descrizione   VARCHAR(128) DEFAULT '',
+	data_scadenza DATE 		   DEFAULT NULL,
 	PRIMARY KEY(mail,tipo),
 	CONSTRAINT attestato_generico_mail
 		FOREIGN KEY (mail)
@@ -101,9 +101,9 @@ CREATE VIEW personale_in_scadenza AS
 				)
 				AND a_s.data_scadenza >= CURRENT_DATE
 		) > 0
-	)
+	);
 	
-CREATE VIEW personale_in_scadenza AS
+CREATE VIEW personale_scaduto AS
 	SELECT p.*
 	FROM personale p
 	WHERE p.mail IN (
@@ -114,9 +114,9 @@ CREATE VIEW personale_in_scadenza AS
 			FROM personale p2
 				INNER JOIN attestato a_s ON a_s.data_scadenza IS NOT NULL AND a_s.mail = p2.mail
 			WHERE p2.mail = p1.mail
-				AND a_s.data_scadenza < CURRENT_DATE;
+				AND a_s.data_scadenza < CURRENT_DATE
 		) > 0
-	)
+	);
 	
 -- INSERIMENTO DI DATI a caso
 INSERT INTO personale (mail, tipo, nome, cognome, cod_fiscale)
@@ -126,5 +126,17 @@ VALUES  ('ettore.franchi', 'docente', 'Ettore', 'Franchi', 'FRNTTR04R27D612A'),
 	('marco.carricato', 'ata', 'Marco', 'Carricato', 'MRCCRR696969'),
 	('dio.brando', 'docente', 'Dio', 'Brando', 'DIOBRN6629012F');
 
-INSERT INTO attestato (mail, tipo
-VALUES  ('ettore.franchi', 'formazione_specifica_medio');
+INSERT INTO attestato (mail, tipo)
+VALUES  ('ettore.franchi', 'formazione_specifica_medio'),
+	('ettore.franchi', 'formazione_blsd'),
+	('ettore.franchi', 'formazione_generale'),
+	('zhario.zhang', 'formazione_generale'),
+	('dio.brando', 'formazione_generale'),
+	('dio.brando', 'formazione_incendio_medio');
+
+INSERT INTO attestato (mail, tipo, data_scadenza)
+VALUES  ('stefano.hu', 'aggiornamento_sicurezza_preposto', '2024-02-01'),
+	('dio.brando', 'aggiornamento_rls', '1903-11-09');
+
+INSERT INTO attestato (mail, tipo, descrizione)
+VALUES  ('stefano.hu', 'formazione_generale', '現在我有冰淇淋但是');

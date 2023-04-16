@@ -68,7 +68,7 @@ function retrieveNameAndSurname($mail): array
 {
     $conn = connect_database();
     $statement = $conn->prepare("SELECT DISTINCT nome, cognome
-                                         FROM personale_generale
+                                         FROM personale
                                          WHERE mail = '" . $mail . "'");
     $statement->execute();
     $results = $statement->get_result();
@@ -78,10 +78,7 @@ function retrieveNameAndSurname($mail): array
 }
 
 function insertNewAttestatoGenerico($mail){
-    $conn = connect_database();
-    $statement = $conn->prepare("INSERT INTO attestato_generico(mail)    
-                                        VALUES ('$mail')");
-    $statement->execute();
+    
 }
 
 function insertNewAttestatoSpecifico($mail, $data_scadenza) {
@@ -95,6 +92,20 @@ function cancellaCertificatiGenericiVecchi($mail) {
     $conn = connect_database();
     $statement = $conn->prepare("DELETE FROM attestato_generico
                                         WHERE mail = '" . $mail . "'");
+    $statement->execute();
+}
+
+function insertNewAttestato($mail,
+                            $tipo = 'altro',
+                            $data_scadenza = null,
+                            $descrizione = '') {
+    $conn = connect_database();
+    if($data_scadenza == null)
+        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, descrizione)    
+                                    VALUES ('" . $mail . "','" . $tipo . "','" . $descrizione . "')");
+    else
+        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, data_scadenza, descrizione)    
+                                    VALUES ('" . $mail . "','" . $tipo . "','" . $data_scadenza . "','" . $descrizione . "')");
     $statement->execute();
 }
 
