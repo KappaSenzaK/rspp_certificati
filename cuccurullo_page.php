@@ -43,7 +43,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Cognome</th>
-                    <th scope="col">Data di nascita</th>
                     <th scope="col">Note</th>
                     <th scope="col">Stato</th>
                     <th scope="col">Data scadenza attestato specifico</th>
@@ -56,7 +55,6 @@
     $mail = "mail";
     $nome = "nome";
     $cognome = "cognome";
-    $datanascita = "datanascita";
     $note = "note";
     $stato = "stato";
     $ass_data_scadenza = "ass_data_scadenza";
@@ -72,7 +70,6 @@
                 <td id="' . $id . $mail . '">' . $user['mail'].$fine_mail . '</td>
                 <td id="' . $id . $nome . '">' . $user['nome'] . '</td>
                 <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
-                <td id="' . $id . $datanascita . '">' . $user['datanascita'] . '</td>
                 <td id="' . $id . $note . '">' . $user['note'] . '</td>
                 <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
                 <td id="' . $id . $ass_data_scadenza . '" class="' . ($data_scadenza_specifico_attivo ? 'bg-danger' : '') . '">' . $user['ass_data_scadenza'] . '</td>

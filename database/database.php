@@ -103,9 +103,9 @@ function getUsersForCuccurullo() {
     $conn = connect_database();
 
     $sql = "
-        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.data_nascita as datanascita, p.note as note, p.stato as stato, ass.data_scadenza as ass_data_scadenza
+        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, att.data_scadenza as ass_data_scadenza
         FROM personale p
-        INNER JOIN attestato_specifico ass ON ass.mail = p.mail;
+        INNER JOIN attestato att ON att.mail = p.mail;
     ";
 
     $stmt = $conn->prepare($sql);
@@ -119,7 +119,6 @@ function getUsersForCuccurullo() {
             "mail" => $row['mail'],
             "nome" => $row['nome'],
             "cognome" => $row['cognome'],
-            "datanascita" => $row['datanascita'],
             "note" => $row['note'],
             "stato" => $row['stato'],
             "ass_data_scadenza" => $row['ass_data_scadenza']
