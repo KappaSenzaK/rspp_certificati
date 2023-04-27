@@ -25,12 +25,12 @@ CREATE TABLE personale (
 
 CREATE TABLE attestato (
 	mail VARCHAR(64) NOT NULL,
-	tipo ENUM('formazione_generale',
-		  'formazione_specifica_medio',
-		  'formazione_alto',
-		  'formazione_sicurezza_preposto',
-		  'aggiornamento_sicurezza_preposto', -- 5 anni
-		  'aggiornamento_sicurezza', -- 5 anni
+	tipo ENUM('Attestato di formazione generale [4 ore]',
+		  'Attestato di formazione specifica - rischio medio medio [8 ore]',
+		  'Attestato di formazione - rischio alto [12 ore]',
+		  'Attestato di formazione sicurezza per il preposto [6 ore]',
+		  'Attestato di aggiornamento sicurezza [6 ore]', -- 5 anni
+		  'Attestato di formazione per l\'RLS [6 ore]', -- 5 anni
 		  'formazione_rls',
 		  'aggiornamento_rls', -- 1 anno
 		  'formazione_rspp', -- 5 anni
