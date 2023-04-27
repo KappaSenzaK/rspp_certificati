@@ -26,7 +26,7 @@
         $email = $_POST['email'];
         try {
             if(obtain_password($email) == $_POST['password']) {
-                echo "Accesso effettuato !<br>";
+                echo "Accesso effettuato !<br><br>";
                 $_SESSION['mail'] = $email; ?>
                     <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Vai ai tuoi dati </button>
                 <?php
@@ -39,13 +39,13 @@
                     <?php
                 }
                 else {
-                    echo "Errore nell'accesso !<br>";
+                    echo "Errore nell'accesso !<br><br>";
                      ?>
                         <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al login </button>
                     <?php
                 }
         } catch(Exception $e) {
-            echo "Errore nell'accesso !<br>";
+            echo "Errore nell'accesso !<br><br>";
             ?>
                <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al login </button>
            <?php

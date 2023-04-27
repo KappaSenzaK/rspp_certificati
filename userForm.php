@@ -43,29 +43,16 @@
     </div><br>
 
     <?php
-    if($generico) {
-        include 'html/user_form_generico.html';
-    }
-    else {
-        include 'html/user_form_specifico.html';
-    }
+        if(!isset($_POST['cert']))
+            echo '
+                <h2>Che tipo di certificato vuoi aggiungere?</h2>
+                <form method="post" action="userForm.php">
+                    <input type="hidden" name="add_cert" id="add_cert" value="1">
+                    <select name="cert" id="cert">
+                        <option value=""></value>
+                </form>';
     ?>
-    <div style="text-align: center; margin-top: 50px">
-        <input class="button" value="Hai un certificato <?php if(!$generico) echo 'generico'; else echo 'specifico'; ?>?" type="button" id="cambiaTipoCertificatoBtn"/>
-        <br>
-        <button id="helpButton" class="button" onclick="help()" style="margin-top: 50px"> Hai bisogno di aiuto? </button>
-        <br><br>
-        <div id="help"></div>
-    </div>
 
-    <script>
-        let cambiaTipoCertificatoBtn = document.getElementById('cambiaTipoCertificatoBtn');
-        cambiaTipoCertificatoBtn.onclick = function(e) {
-          let generico = !cambiaTipoCertificatoBtn.value.includes('generico')
-          window.location = `userForm.php?cambiato=${!generico}`
-        }
-
-    </script>
     <script src="./js/user_form.js"></script>
 </body>
 </html>
