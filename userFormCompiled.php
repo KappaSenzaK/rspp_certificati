@@ -28,33 +28,27 @@ include "./utils/files_utility.php";
             $nameAndSurname = retrieveNameAndSurname($mail);
             echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
 
-            cancellaCertificatiGenericiVecchi($mail);
-
             if($_SERVER["REQUEST_METHOD"] != "POST"){
                 die("<h1>E' richiesta il metodo POST. </h1>");
             }
 
             // salvataggio file
-            if(isset($_FILES['att_g']) && $_FILES['att_g']['error'] == 0) {
-                if ($_FILES['att_g'] != null) {
-                    if(saveFileToWebServer($mail, $_FILES['att_g'], "generico") != 'error')
-                        insertNewAttestatoGenerico($mail);
-                }
-            }
+                if(isset($_FILES['att']) && $_FILES['att']['error'] == 0) {
+                    if ($_FILES['att'] != null) {
+                        if($_SESSION['cert_t'] == 'scad') 
+                            $date = date('Y-m-d', strtotime($_POST['att_s_date']));
+                        else
+                            $date = null;
 
-            if(isset($_FILES['att_s']) && $_FILES['att_s']['error'] == 0) {
-                if ($_FILES['att_s'] != null && isset($_POST['att_s_date'])) {
-                    $date = date('Y-m-d', strtotime($_POST['att_s_date']));
-                    if(saveFileToWebServer($mail, $_FILES["att_s"], "specifico") != 'error')
-                        insertNewAttestatoSpecifico($mail, $date);
+                        if(saveFileToWebServer($mail, $_FILES['att'], $_SESSION['cert']) != 'error')
+                            insertNewAttestato($mail, $_POST['descrizione'], $_SESSION['cert'], $date);
+                    }
                 }
-            }
 
-            aggiornareCertificati($mail, StatoCertificati::DA_REVISIONARE);
+            
         ?></h1><br>
-        <h2>I dati sono stati inseriti !</h2><br>
-        <button id="helpButton" class="button" onclick="window.open('./userPage.php'); window.close()"> Vai ai tuoi dati </button>
-
+        <h2>I dati sono stati inseriti !</h2><br><br>
+        <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close();"> Vai ai tuoi dati </button>
     </div>
 </body>
 </html>

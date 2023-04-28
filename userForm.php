@@ -66,12 +66,15 @@
             $_GET['add_cert'] == 'Attestato di formazione per rischio di incendio - rischio alto' ||
             $_GET['add_cert'] == 'Attestato di formazione per il primo soccorso' ||
             $_GET['add_cert'] == 'Attestato di formazione BLSD'){
+                $_SESSION['cert_t'] = 'no_scad';
                 include 'html/user_form.html';
             }
             else if($_GET['add_cert'] == 'Altro') {
+                $_SESSION['cert_t'] = 'scad';
                 include 'html/user_form_altro.html';
             }
             else{
+                $_SESSION['cert_t'] = 'scad';
                 include 'html/user_form_scade.html';
             }
         }
