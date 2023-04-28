@@ -25,26 +25,25 @@ CREATE TABLE personale (
 
 CREATE TABLE attestato (
 	mail VARCHAR(64) NOT NULL,
-	tipo ENUM('Attestato di formazione generale [4 ore]',
-		  'Attestato di formazione specifica - rischio medio medio [8 ore]',
-		  'Attestato di formazione - rischio alto [12 ore]',
-		  'Attestato di formazione sicurezza per il preposto [6 ore]',
-		  'Attestato di aggiornamento sicurezza [6 ore]', -- 5 anni
-		  'Attestato di formazione per l\'RLS [6 ore]', -- 5 anni
-		  'formazione_rls',
-		  'aggiornamento_rls', -- 1 anno
-		  'formazione_rspp', -- 5 anni
-		  'aggiornamento_rspp',
-		  'formazione_incendio_medio',
-		  'formazione_incendio_alto',
-		  'formazione_primo_soccorso',
-		  'aggiornamento_primo_soccorso', -- 3 anni
-		  'formazione_blsd',
-		  'aggiornamento_blsd', -- 2 anni
-		  'altro') NOT NULL	   DEFAULT 'altro',
+	tipo ENUM('Attestato di formazione generale', -- 4h
+		  'Attestato di formazione specifica - rischio medio', -- 8h
+		  'Attestato di formazione - rischio alto', -- 12h
+		  'Attestato di formazione sicurezza per il preposto', --8h
+		  'Attestato di aggiornamento sicurezza per il preposto', -- 6h 5anni
+		  'Attestato di aggiornamento sicurezza', -- 6h 5anni
+		  'Attestato di formazione per RLS', -- 32h
+		  'Attestato di aggiornamento per RLS', -- 8h 1anno
+		  'Attestato di formazione aggiornamento RSPP', -- 40h 5anni
+		  'Attestato di formazione per rischio di incendio - rischio medio', -- 12h
+		  'Attestato di formazione per rischio di incendio - rischio alto', -- 16h
+		  'Attestato di formazione per il primo soccorso', -- 12h
+		  'Attestato di aggiornamento per il primo soccorso', -- 4h 3anni
+		  'Attestato di formazione BLSD', -- 5h
+		  'Attestato di aggiornamento BLSD', -- 3h 2anni
+		  'Altro') NOT NULL	   DEFAULT 'Altro',
 	descrizione   VARCHAR(128) DEFAULT '',
 	data_scadenza DATE 		   DEFAULT NULL,
-	PRIMARY KEY(mail,tipo),
+	PRIMARY KEY(mail,tipo,descrizione),
 	CONSTRAINT attestato_generico_mail
 		FOREIGN KEY (mail)
 		REFERENCES personale(mail)
