@@ -78,9 +78,10 @@ function retrieveNameAndSurname($mail): array
 }
 
 function insertNewAttestato($mail,
-                            $tipo = 'altro',
+                            $descrizione = '',
+                            $tipo = 'Altro',
                             $data_scadenza = null,
-                            $descrizione = '') {
+                            ) {
     $conn = connect_database();
     if($data_scadenza == null)
         $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, descrizione)    
@@ -125,4 +126,18 @@ function getUsersForCuccurullo() {
             );
     }
     return $users;
+}
+
+function cancellaCertificatiVecchi($mail = '') {
+    $conn = connect_database();
+    if($mail == '')
+        $sql = "
+        DELETE FROM attestato
+        WHERE 1
+        ";
+    else
+        $sql = "
+        DELETE FROM attestato
+        WHERE mail = ".$mail."
+        ";
 }
