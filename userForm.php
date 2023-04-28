@@ -28,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/index.css">
-    <title>Inserimento requisiti sulla sicurezza sul lavoro</title>
+    <title>Inserimento certificazioni sulla sicurezza sul lavoro</title>
 </head>
 <body class="font">
 
@@ -43,16 +43,38 @@
     </div><br>
 
     <?php
-        if(!isset($_POST['cert']))
-            echo '
-                <h2>Che tipo di certificato vuoi aggiungere?</h2>
-                <form method="post" action="userForm.php">
-                    <input type="hidden" name="add_cert" id="add_cert" value="1">
-                    <select name="cert" id="cert">
-                        <option value=""></value>
-                </form>';
-    ?>
+        if(isset($_POST['add_cert']))
+            if($_POST['add_cert'] == "...")
+                include 'html/user_form_select.html';
 
-    <script src="./js/user_form.js"></script>
+        if(isset($_GET['add_cert'])) {
+            echo '<br><h1 align="center">';
+            if($_GET['add_cert'] != 'Altro') 
+                echo $_GET['add_cert'];
+            else
+                echo 'Attestato di altra tipologia';
+            echo '</h1><br>';
+
+            $_SESSION['cert'] = $_GET['add_cert'];
+
+            if($_GET['add_cert'] == 'Attestato di formazione generale' ||
+            $_GET['add_cert'] == 'Attestato di formazione specifica - rischio medio' ||
+            $_GET['add_cert'] == 'Attestato di formazione - rischio alto' ||
+            $_GET['add_cert'] == 'Attestato di formazione sicurezza per il preposto' ||
+            $_GET['add_cert'] == 'Attestato di formazione per RLS' ||
+            $_GET['add_cert'] == 'Attestato di formazione per rischio di incendio - rischio medio' ||
+            $_GET['add_cert'] == 'Attestato di formazione per rischio di incendio - rischio alto' ||
+            $_GET['add_cert'] == 'Attestato di formazione per il primo soccorso' ||
+            $_GET['add_cert'] == 'Attestato di formazione BLSD'){
+                include 'html/user_form.html';
+            }
+            else if($_GET['add_cert'] == 'Altro') {
+                include 'html/user_form_altro.html';
+            }
+            else{
+                include 'html/user_form_scade.html';
+            }
+        }
+    ?>
 </body>
 </html>

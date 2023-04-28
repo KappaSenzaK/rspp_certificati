@@ -71,12 +71,12 @@
                     else {
                         ?>
                             <form method="post" action="userPage.php">
-                                <input type="hidden" name="fine_cert" id="fine_comp" value="1">
+                                <input type="hidden" name="fine_cert" id="fine_comp" value="...">
                                 <input class="button" type="submit" value="Hai inserito tutti i tuoi certificati?">
                             </form>
                             &emsp;
                             <form method="post" action="userPage.php">
-                                <input type="hidden" name="add_cert" id="add_cert" value="1">
+                                <input type="hidden" name="add_cert" id="add_cert" value="...">
                                 <input class="button" type="submit" value="Aggiungi un nuovo certificato">
                             </form><br><br>
                         <?php
