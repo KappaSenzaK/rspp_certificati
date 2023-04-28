@@ -5,7 +5,6 @@ function saveFileToWebServer($mail, $file, $type) {
         return 'error';
     }
     $mail_directory_path = str_replace(".", "_", $mail); //impossibile creare directory con '.' nel nome
-    $type = str_replace(" ", "_", $type);
 
     $filepath_directory = "./certificati/$mail_directory_path/$type";
     $filename = basename($file['name']);
