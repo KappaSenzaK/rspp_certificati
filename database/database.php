@@ -128,16 +128,25 @@ function getUsersForCuccurullo() {
     return $users;
 }
 
-function cancellaCertificatiVecchi($mail = '') {
+function cancellaCertificatiVecchi($mail = '', $att = '') {
     $conn = connect_database();
     if($mail == '')
-        $sql = "
-        DELETE FROM attestato
-        WHERE 1
-        ";
+        if($att == '')
+            $sql = "
+            DELETE FROM attestato
+            WHERE 1
+            ";
+        else
+            $sql = "
+            DELETE FROM attestato
+            WHERE tipo = ".$att."
+            ";
     else
         $sql = "
         DELETE FROM attestato
         WHERE mail = ".$mail."
         ";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
 }
