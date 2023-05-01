@@ -72,12 +72,12 @@
                         ?>
                             <form method="post" action="userPage.php">
                                 <input type="hidden" name="fine_cert" id="fine_comp" value="...">
-                                <input class="button" type="submit" value="Hai inserito tutti i tuoi certificati?">
+                                <input title="Attenzione! Una volta confermato l'inserimento di tutti i dati, potrai inserirne di nuovi solo dopo aver effettuato una richiesta all'amministratore!" class="button" type="submit" value="Hai inserito tutti i tuoi certificati?">
                             </form>
                             &emsp;
                             <form method="post" action="userPage.php">
                                 <input type="hidden" name="add_cert" id="add_cert" value="...">
-                                <input class="button" type="submit" value="Aggiungi un nuovo certificato">
+                                <input title="Carica un nuovo certificato sulla piattaforma" class="button" type="submit" value="Aggiungi un nuovo certificato">
                             </form><br><br>
                         <?php
                     }
@@ -136,7 +136,7 @@
             <?php
                 if($status[0] == "Validato") {
                     ?>
-                        <button class="button" onclick="window.open('userPageRequestedModify.php'); window.close()"> Richiedi una modifica </button>
+                        <button class="button" title="Richiedi all'amministratore di rete la possibilità di modificare i tuoi dati" onclick="window.open('userPageRequestedModify.php'); window.close()"> Richiedi una modifica </button>
                     <?php
                 }
             ?>

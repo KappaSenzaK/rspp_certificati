@@ -37,11 +37,12 @@
             $nameAndSurname = retrieveNameAndSurname($mail);
             echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
 
-            aggiornareCertificati($mail, StatoCertificati::RICHIESTA_MODIFICA);
+            aggiornaStato($mail, 'Richiesta modifica');
             ?>
         </h1><br><br>
         <h2>La modifica è stata richiesta !</h2>
         <p>Attendi che l'amministratore accetti la richiesta di modifica ...</p>
+        
         <br><br><br>
         <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Torna ai tuoi dati </button>
         <br><br>

@@ -32,6 +32,10 @@ include "./utils/files_utility.php";
                 die("<h1>E' richiesta il metodo POST. </h1>");
             }
 
+
+            // elimina vecchi file
+            cancellaCertificatiVecchi($mail, $_SESSION['cert'])
+
             // salvataggio file
                 if(isset($_FILES['att']) && $_FILES['att']['error'] == 0) {
                     if ($_FILES['att'] != null) {
