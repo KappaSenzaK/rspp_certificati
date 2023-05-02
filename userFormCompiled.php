@@ -34,7 +34,7 @@ include "./utils/files_utility.php";
 
 
             // elimina vecchi file
-            cancellaCertificatiVecchi($mail, $_SESSION['cert'])
+            cancellaCertificatiVecchi($mail, $_SESSION['cert']);
 
             // salvataggio file
                 if(isset($_FILES['att']) && $_FILES['att']['error'] == 0) {
@@ -44,8 +44,10 @@ include "./utils/files_utility.php";
                         else
                             $date = null;
 
+                        $file_allegato = $_FILES['att']['name'];
+
                         if(saveFileToWebServer($mail, $_FILES['att'], $_SESSION['cert']) != 'error')
-                            insertNewAttestato($mail, $_POST['descrizione'], $_SESSION['cert'], $date);
+                            insertNewAttestato($mail, $_POST['descrizione'], $_SESSION['cert'], $date, $file_allegato);
                     }
                 }
 

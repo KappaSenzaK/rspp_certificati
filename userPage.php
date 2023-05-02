@@ -38,6 +38,13 @@
         <?php
         $conn = connect_database();
 
+        if(isset($_GET['tipo'])) {
+            if(isset($_GET['file'])) {
+
+                die();
+            }
+        }
+
             $statement = $conn->prepare("SELECT stato
                                         FROM personale
                                         WHERE mail = '" . $mail . "'");
@@ -86,7 +93,7 @@
                     <h2>Certificati di cui sei in possesso</h2>
                     
                 <?php
-                $statement = $conn->prepare("SELECT tipo AS t, descrizione AS d, data_scadenza AS d_s
+                $statement = $conn->prepare("SELECT tipo AS t, descrizione AS d, data_scadenza AS d_s, file_allegato AS f
                                             FROM attestato
                                             WHERE mail = '" . $mail . "'");
                 $statement->execute();
@@ -102,33 +109,15 @@
                     <?php
                     do {
                         ?>
-                            <tr><td><?=$row[0]?></td><td><?=$row[1]?></td><td><?php if($row[2]==null) echo '---'; else echo $row[2]; ?></td><td> <form><input type="hidden" id="tipo" name="tipo" value="<?=$row[0]?>"><input type="submit" value=" Visualizza PDF "></form> </td><tr>
+                            <tr><td><?=$row[0]?></td><td><?=$row[1]?></td><td><?php if($row[2]==null) echo '---'; else echo $row[2]; ?></td><td>
+                                <?php echo '<a href="./certificati/'.str_replace('.', '_', $mail).'/'.$row[0].'/'.$row[3].'">Visualizza PDF</a>' ?>
+                            </td><tr>
                         <?php
                     } while($row = mysqli_fetch_row($results));
                     ?>
                         </table>
                     <?php
                 }
-                // if($row[1] != null){
-                //     $statement = $conn->prepare("SELECT mail
-                //                                 FROM  personale_generale_attestato_specifico_in_scadenza
-                //                                 WHERE mail = '" . $mail . "'");
-                //     $statement->execute();
-                //     $in_scad_results = $statement->get_result();
-
-                //     if(mysqli_num_rows($in_scad_results) != "0")
-                //         echo "<div style='color:#700016;'>Attenzione: il certificato specifico è in scadenza !</div>";
-                //     else {
-                //         $statement = $conn->prepare("SELECT mail
-                //                                      FROM  personale_generale_attestato_specifico_scaduto
-                //                                      WHERE mail = '" . $mail . "'");
-                //         $statement->execute();
-                //         $scad_results = $statement->get_result();
-
-                //         if(mysqli_num_rows($scad_results) != "0")
-                //         echo "<div style='color:#700016;'>Attenzione: il certificato specifico è scaduto !</div>";
-                //     }
-                // }
             ?>
             <br><br><br>
             <button id="helpButton" class="button" onclick="help()"> Hai bisogno di aiuto? </button>&emsp;
