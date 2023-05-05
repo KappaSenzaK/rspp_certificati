@@ -43,6 +43,7 @@ CREATE TABLE attestato (
 		  'Altro') NOT NULL	   DEFAULT 'Altro',
 	descrizione   VARCHAR(128) DEFAULT '',
 	data_scadenza DATE 		   DEFAULT NULL,
+	file_allegato VARCHAR(256)	   DEFAULT NULL,
 	PRIMARY KEY(mail,tipo,descrizione),
 	CONSTRAINT attestato_generico_mail
 		FOREIGN KEY (mail)
