@@ -71,7 +71,7 @@
                 <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
                 <td id="' . $id . $note . '">' . $user['note'] . '</td>
                 <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
-                <td id="' . $id . $mail . '">' . $user['in_servizio'] . '</td>
+                <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
                     <form method="post" action="???" align="center">
                         <input type="hidden" name="user" id="user" value="'.$mail.'"/>
