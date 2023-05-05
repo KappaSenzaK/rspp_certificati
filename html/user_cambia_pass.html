@@ -1,0 +1,17 @@
+<h2>Modifica la password del tuo account</h2><br>
+<form action="userPagePassword.php" method="post">
+    <table style='background-color:#e8e8e8;'>
+        <tr>
+            <td>Inserisci la vecchia password:</td><td><input type="password" id="old_p" name="old_p"/></td><br>
+        </tr>
+        <tr>
+            <td>Inserisci la nuova password:</td><td><input type="password" id="new_p" name="new_p"/></td>
+        </tr>
+    </table><br>
+    <input class="button" type="submit" value="Cambia password" /><br><br>
+</form>
+
+<form action="userPagePassword.php" method="post">
+    <input type="hidden" name="send_p" id="send_p" value="a"/>
+    <input class="button" type="submit" value="Hai dimenticato la tua vecchia password?" />
+</form>
