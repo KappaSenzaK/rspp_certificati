@@ -60,7 +60,7 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw) {
     $conn = connect_database();
     $statement = $conn->prepare(
         "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, stato, pw) 
-                VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', 'Da validare', '$pw')");
+                VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', 'Da compilare', '$pw')");
     $statement->execute();
 }
 
@@ -81,14 +81,15 @@ function insertNewAttestato($mail,
                             $descrizione = '',
                             $tipo = 'Altro',
                             $data_scadenza = null,
+                            $file_allegato = ''
                             ) {
     $conn = connect_database();
     if($data_scadenza == null)
-        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, descrizione)    
-                                    VALUES ('" . $mail . "','" . $tipo . "','" . $descrizione . "')");
+        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, descrizione, file_allegato)    
+                                    VALUES ('" . $mail . "','" . $tipo . "','" . $descrizione . "', '" . $file_allegato ."')");
     else
-        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, data_scadenza, descrizione)    
-                                    VALUES ('" . $mail . "','" . $tipo . "','" . $data_scadenza . "','" . $descrizione . "')");
+        $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, data_scadenza, descrizione, file_allegato)    
+                                    VALUES ('" . $mail . "','" . $tipo . "','" . $data_scadenza . "','" . $descrizione . "', '" . $file_allegato ."')");
     $statement->execute();
 }
 
@@ -104,9 +105,8 @@ function getUsersForCuccurullo() {
     $conn = connect_database();
 
     $sql = "
-        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, att.data_scadenza as ass_data_scadenza
+        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio
         FROM personale p
-        INNER JOIN attestato att ON att.mail = p.mail;
     ";
 
     $stmt = $conn->prepare($sql);
@@ -122,7 +122,7 @@ function getUsersForCuccurullo() {
             "cognome" => $row['cognome'],
             "note" => $row['note'],
             "stato" => $row['stato'],
-            "ass_data_scadenza" => $row['ass_data_scadenza']
+            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
             );
     }
     return $users;
@@ -130,7 +130,7 @@ function getUsersForCuccurullo() {
 
 function cancellaCertificatiVecchi($mail = '', $att = '') {
     $conn = connect_database();
-    if($mail == '')
+    if($mail == ''){
         if($att == '')
             $sql = "
             DELETE FROM attestato
@@ -139,13 +139,22 @@ function cancellaCertificatiVecchi($mail = '', $att = '') {
         else
             $sql = "
             DELETE FROM attestato
-            WHERE tipo = ".$att."
+            WHERE tipo = '".$att."'
             ";
-    else
-        $sql = "
-        DELETE FROM attestato
-        WHERE mail = ".$mail."
-        ";
+    }
+    else{
+        if($att == '')
+            $sql = "
+            DELETE FROM attestato
+            WHERE mail = '".$mail."'
+            ";
+        else
+            $sql = "
+            DELETE FROM attestato
+            WHERE mail = '".$mail."' AND tipo = '".$att."'
+            ";
+    }
+       
     
     $stmt = $conn->prepare($sql);
     $stmt->execute();
