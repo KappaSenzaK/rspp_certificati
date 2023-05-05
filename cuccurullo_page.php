@@ -45,7 +45,7 @@
                     <th scope="col">Cognome</th>
                     <th scope="col">Note</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">Data scadenza attestato specifico</th>
+                    <th scope="col">In serizio</th>
                 </tr>
             </thead>
             <tbody>';
@@ -57,14 +57,13 @@
     $cognome = "cognome";
     $note = "note";
     $stato = "stato";
-    $ass_data_scadenza = "ass_data_scadenza";
+    $in_servizio = "in_servizio";
 
     $fine_mail = "@tulliobuzzi.edu.it";
 
     foreach ($users as $user) {
         $id++;
         $da_compilare = $user['stato'] == StatoCertificati::DA_COMPILARE;
-        $data_scadenza_specifico_attivo = $user['ass_data_scadenza'] > new DateTime();
 
         echo '<tr id="' . $id . '" >
                 <td id="' . $id . $mail . '">' . $user['mail'].$fine_mail . '</td>
@@ -72,7 +71,13 @@
                 <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
                 <td id="' . $id . $note . '">' . $user['note'] . '</td>
                 <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
-                <td id="' . $id . $ass_data_scadenza . '" class="' . ($data_scadenza_specifico_attivo ? 'bg-danger' : '') . '">' . $user['ass_data_scadenza'] . '</td>
+                <td id="' . $id . $mail . '">' . $user['in_servizio'] . '</td>
+                <td>
+                    <form method="post" action="???" align="center">
+                        <input type="hidden" name="user" id="user" value="'.$mail.'"/>
+                        <input type="submit" value=" Visualizza "/>
+                    </form>
+                </td>
             </tr>';
     }
     echo '</tbody>
