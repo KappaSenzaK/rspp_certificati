@@ -28,7 +28,7 @@ CREATE TABLE attestato (
 	tipo ENUM('Attestato di formazione generale', -- 4h
 		  'Attestato di formazione specifica - rischio medio', -- 8h
 		  'Attestato di formazione - rischio alto', -- 12h
-		  'Attestato di formazione sicurezza per il preposto', --8h
+		  'Attestato di formazione sicurezza per il preposto', -- 8h
 		  'Attestato di aggiornamento sicurezza per il preposto', -- 6h 5anni
 		  'Attestato di aggiornamento sicurezza', -- 6h 5anni
 		  'Attestato di formazione per RLS', -- 32h
