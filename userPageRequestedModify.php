@@ -1,6 +1,7 @@
 <?php
     include 'database\database.php';
     session_start();
+    include 'checkPage.php';
     $mail = $_SESSION['mail'];
 ?>
 

@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    include 'checkPage.php';
+    
     $mail = $_SESSION['mail'];
 
 include "./database/database.php";

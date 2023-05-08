@@ -9,6 +9,9 @@
 
     if(!isset($_SESSION))
         session_start();
+
+    include 'checkPage.php';
+
     $mail = $_SESSION['mail'];
 
     if(isset($_GET['cambiato'])){
