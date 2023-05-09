@@ -84,7 +84,7 @@
                 <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
                 <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
-                    <form method="post" action="???" align="center">
+                    <form method="post" action="rspp-user-page.php" align="center">
                         <input type="hidden" name="user" id="user" value="'.$mail.'"/>
                         <input type="submit" value=" Visualizza "/>
                     </form>

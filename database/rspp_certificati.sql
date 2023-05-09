@@ -127,16 +127,16 @@ VALUES  ('ettore.franchi', 'docente', 'Ettore', 'Franchi', 'FRNTTR04R27D612A'),
 	('dio.brando', 'docente', 'Dio', 'Brando', 'DIOBRN6629012F');
 
 INSERT INTO attestato (mail, tipo)
-VALUES  ('ettore.franchi', 'formazione_specifica_medio'),
-	('ettore.franchi', 'formazione_blsd'),
-	('ettore.franchi', 'formazione_generale'),
-	('zhario.zhang', 'formazione_generale'),
-	('dio.brando', 'formazione_generale'),
-	('dio.brando', 'formazione_incendio_medio');
+VALUES  ('ettore.franchi', 'Attestato di formazione - rischio alto'),
+	('ettore.franchi', 'Attestato di aggiornamento sicurezza'),
+	('ettore.franchi', 'Attestato di aggiornamento per il primo soccorso'),
+	('zhario.zhang', 'Attestato di formazione BLSD'),
+	('dio.brando', 'Attestato di formazione sicurezza per il preposto'),
+	('dio.brando', 'Attestato di aggiornamento BLSD');
 
 INSERT INTO attestato (mail, tipo, data_scadenza)
-VALUES  ('stefano.hu', 'aggiornamento_sicurezza_preposto', '2024-02-01'),
-	('dio.brando', 'aggiornamento_rls', '1903-11-09');
+VALUES  ('stefano.hu', 'Attestato di aggiornamento sicurezza', '2024-02-01'),
+	('dio.brando', 'Attestato di formazione per rischio di incendio - rischio medio', '1903-11-09');
 
 INSERT INTO attestato (mail, tipo, descrizione)
-VALUES  ('stefano.hu', 'formazione_generale', '現在我有冰淇淋但是');
+VALUES  ('stefano.hu', 'Attestato di formazione per rischio di incendio - rischio medio', '現在我有冰淇淋但是');
