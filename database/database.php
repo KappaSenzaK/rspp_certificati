@@ -64,6 +64,15 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw) {
     $statement->execute();
 }
 
+function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $in_servizio) {
+    $conn = connect_database();
+    $statement = $conn->prepare("UPDATE personale 
+    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', in_servizio = '$in_servizio' 
+    WHERE mail = '$email'");
+
+    $statement->execute();
+}
+
 function retrieveNameAndSurname($mail): array
 {
     $conn = connect_database();

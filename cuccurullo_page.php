@@ -85,7 +85,13 @@
                 <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
                     <form method="post" action="rspp-user-page.php" align="center">
-                        <input type="hidden" name="user" id="user" value="'.$mail.'"/>
+                        <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
+                        <input type="hidden" name="nome" value="'.$user['nome'].'"/>
+                        <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
+                        <input type="hidden" name="note" value="'.$user['note'].'"/>
+                        <input type="hidden" name="stato" value="'.$user['stato'].'"/>
+                        <input type="hidden" name="in_servizio" value="'.$user['in_servizio'].'"/>
+                        <input type="hidden" name="codice_fiscale" value="'.$user['cod_fiscale'].'"/>
                         <input type="submit" value=" Visualizza "/>
                     </form>
                 </td>

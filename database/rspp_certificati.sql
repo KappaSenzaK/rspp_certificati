@@ -20,7 +20,7 @@ CREATE TABLE personale (
 	note         VARCHAR(128)            NOT NULL DEFAULT '',
     stato 	     ENUM('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
 	pw           VARCHAR(32)             NOT NULL DEFAULT '1234', 
-	in_servizio  ENUM('s', 'n')			 NOT NULL DEFAULT 's' 
+	in_servizio  ENUM('si', 'no')			 NOT NULL DEFAULT 'si' 
 );
 
 CREATE TABLE attestato (

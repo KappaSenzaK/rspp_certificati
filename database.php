@@ -105,7 +105,7 @@ function getUsersForCuccurullo() {
     $conn = connect_database();
 
     $sql = "
-        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, att.data_scadenza as ass_data_scadenza
+        SELECT p.*
         FROM personale p
         INNER JOIN attestato att ON att.mail = p.mail;
     ";
