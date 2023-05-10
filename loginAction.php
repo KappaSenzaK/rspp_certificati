@@ -24,18 +24,20 @@
     <br><h2>
     <?php
         $email = $_POST['email'];
+
         try {
-            if(obtain_password($email) == $_POST['password']) {
-                echo "Accesso effettuato !<br><br>";
-                $_SESSION['mail'] = $email; ?>
-                    <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Vai ai tuoi dati </button>
+            if($email == 'rspp' && $_POST['password'] == '12345') {
+                echo "Accesso effettuato come RSPP!<br>";
+                $_SESSION['mail'] = $email;
+                ?>
+                    <button id="helpButton" class="button" onclick="window.open('cuccurullo_page.php'); window.close()"> Vai ai tuoi dati </button>
                 <?php
             }
             else
-                if($email == 'rspp' && $_POST['password'] == '12345') {
-                    echo "Accesso effettuato come RSPP!<br>";
+                if(obtain_password($email) == $_POST['password']) {
+                    echo "Accesso effettuato !<br><br>";
                     $_SESSION['mail'] = $email; ?>
-                        <button id="helpButton" class="button" onclick="window.open('cuccurullo_page.php'); window.close()"> Vai ai tuoi dati </button>
+                        <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Vai ai tuoi dati </button>
                     <?php
                 }
                 else {

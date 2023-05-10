@@ -54,7 +54,7 @@
                     <th scope="col">Email</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Cognome</th>
-                    <th scope="col">Note</th>
+                    <th scope="col">Codice fiscale</th>
                     <th scope="col">Stato</th>
                     <th scope="col">In serizio</th>
                 </tr>
@@ -69,6 +69,7 @@
     $note = "note";
     $stato = "stato";
     $in_servizio = "in_servizio";
+    $codice_fiscale = "c_f";
 
     $fine_mail = "@tulliobuzzi.edu.it";
 
@@ -80,7 +81,7 @@
                 <td id="' . $id . $mail . '">' . $user['mail'].$fine_mail . '</td>
                 <td id="' . $id . $nome . '">' . $user['nome'] . '</td>
                 <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
-                <td id="' . $id . $note . '">' . $user['note'] . '</td>
+                <td id="' . $id . $note . '">' . $user['c_f'] . '</td>
                 <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
                 <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
@@ -88,10 +89,10 @@
                         <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
                         <input type="hidden" name="nome" value="'.$user['nome'].'"/>
                         <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
+                        <input type="hidden" name="c_f" value="'.$user['c_f'].'"/>
                         <input type="hidden" name="note" value="'.$user['note'].'"/>
                         <input type="hidden" name="stato" value="'.$user['stato'].'"/>
                         <input type="hidden" name="in_servizio" value="'.$user['in_servizio'].'"/>
-                        <input type="hidden" name="codice_fiscale" value="'.$user['cod_fiscale'].'"/>
                         <input type="submit" value=" Visualizza "/>
                     </form>
                 </td>
