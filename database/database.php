@@ -114,7 +114,7 @@ function getUsersForCuccurullo() {
     $conn = connect_database();
 
     $sql = "
-        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio
+        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
         FROM personale p
     ";
 
@@ -132,9 +132,70 @@ function getUsersForCuccurullo() {
             "note" => $row['note'],
             "stato" => $row['stato'],
             "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
             );
     }
     return $users;
+}
+
+function getDocentiForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale p
+        WHERE tipo = 'docente'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getAtaForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale p
+        WHERE tipo = 'ata'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
 }
 
 function cancellaCertificatiVecchi($mail = '', $att = '') {
