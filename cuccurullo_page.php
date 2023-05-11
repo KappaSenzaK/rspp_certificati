@@ -2,7 +2,7 @@
 <?php
     session_start();
     include 'checkPage.php';
-    if($_SESSION['mail'] != 'rspp') {
+    if($_SESSION['mail'] == 'rspp') {
         ?>
             <h1>Errore nell'accesso!</h1><br><br><br>
             <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di accesso </button>
@@ -56,7 +56,7 @@
                     <th scope="col">Cognome</th>
                     <th scope="col">Codice fiscale</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">In serizio</th>
+                    <th scope="col">In servizio</th>
                 </tr>
             </thead>
             <tbody>';

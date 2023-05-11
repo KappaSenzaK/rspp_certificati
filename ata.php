@@ -55,7 +55,7 @@
                     <th scope="col">Cognome</th>
                     <th scope="col">Codice fiscale</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">In serizio</th>
+                    <th scope="col">In servizio</th>
                 </tr>
             </thead>
             <tbody>';

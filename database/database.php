@@ -131,7 +131,7 @@ function getUsersForCuccurullo() {
             "cognome" => $row['cognome'],
             "note" => $row['note'],
             "stato" => $row['stato'],
-            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
             "c_f" => $row['c_f']
             );
     }
@@ -143,8 +143,7 @@ function getDocentiForCuccurullo() {
 
     $sql = "
         SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
-        FROM personale p
-        WHERE tipo = 'docente'
+        FROM personale_docente p
     ";
 
     $stmt = $conn->prepare($sql);
@@ -161,7 +160,7 @@ function getDocentiForCuccurullo() {
             "cognome" => $row['cognome'],
             "note" => $row['note'],
             "stato" => $row['stato'],
-            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
             "c_f" => $row['c_f']
             );
     }
@@ -173,8 +172,7 @@ function getAtaForCuccurullo() {
 
     $sql = "
         SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
-        FROM personale p
-        WHERE tipo = 'ata'
+        FROM personale_ata p
     ";
 
     $stmt = $conn->prepare($sql);
@@ -191,7 +189,241 @@ function getAtaForCuccurullo() {
             "cognome" => $row['cognome'],
             "note" => $row['note'],
             "stato" => $row['stato'],
-            "in_servizio" => ($row['in_servizio'] == 's') ? 'Si' : 'No',
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getDCForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_da_compilare p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getDVForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_da_validare p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getVForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_validato p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getRCForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_richiesta_modifica p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getISForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_in_scadenza p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getNISForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale p
+        WHERE in_servizio = 'no'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getInSForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale p
+        WHERE in_servizio = 'si'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+            "c_f" => $row['c_f']
+            );
+    }
+    return $docenti;
+}
+
+function getSForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+        SELECT p.mail as mail, p.tipo as tipo, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        FROM personale_scaduto p
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $docenti = array();
+
+    while($row = $results->fetch_assoc()) {
+        $docenti[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "note" => $row['note'],
+            "stato" => $row['stato'],
+            "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
             "c_f" => $row['c_f']
             );
     }

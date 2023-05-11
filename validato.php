@@ -45,7 +45,7 @@
     ?>
         <?php
     include 'database/database.php';
-    $users = getDocentiForCuccurullo();
+    $users = getVForCuccurullo();
 
     echo '<table class="table table-striped table-hover w-75 ">
             <thead>
@@ -55,7 +55,7 @@
                     <th scope="col">Cognome</th>
                     <th scope="col">Codice fiscale</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">In servizio</th>
+                    <th scope="col">In serizio</th>
                 </tr>
             </thead>
             <tbody>';

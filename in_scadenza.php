@@ -45,7 +45,7 @@
     ?>
         <?php
     include 'database/database.php';
-    $users = getDocentiForCuccurullo();
+    $users = getISForCuccurullo();
 
     echo '<table class="table table-striped table-hover w-75 ">
             <thead>
