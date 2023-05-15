@@ -114,7 +114,7 @@ function getUsersForCuccurullo() {
     $conn = connect_database();
 
     $sql = "
-        SELECT p.mail as mail, p.nome as nome, p.cognome as cognome, p.note as note, p.stato as stato, p.in_servizio as in_servizio, p.cod_fiscale as c_f
+        SELECT p.* 
         FROM personale p
     ";
 
@@ -136,6 +136,15 @@ function getUsersForCuccurullo() {
             );
     }
     return $users;
+}
+
+function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $in_servizio) {
+    $conn = connect_database();
+    $statement = $conn->prepare("UPDATE personale 
+    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', in_servizio = '$in_servizio' 
+    WHERE mail = '$email'");
+
+    $statement->execute();
 }
 
 function getDocentiForCuccurullo() {
