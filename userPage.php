@@ -39,9 +39,18 @@
         <?php
         $conn = connect_database();
 
+        $statement = $conn->prepare("SELECT in_servizio
+                                    FROM personale
+                                    WHERE mail = '" . $mail . "'");
+        $statement->execute();
+        $results = $statement->get_result();
+        $in_servizio = mysqli_fetch_row($results);
+        if($in_servizio[0] == 'no') {
+           echo "Attenzione! Il tuo account è stato contrassegnato come 'non in serivizio', per questo motivo non potrai richiedere modifiche ai tuoi dati.<br>Se pensi che ci sia un errore, contatta l'amministratore di rete.";
+        }
+
         if(isset($_GET['tipo'])) {
             if(isset($_GET['file'])) {
-
                 die();
             }
         }
@@ -125,9 +134,17 @@
             
             <?php
                 if($status[0] == "Validato") {
-                    ?>
-                        <button class="button" title="Richiedi all'amministratore di rete la possibilità di modificare i tuoi dati" onclick="window.open('userPageRequestedModify.php'); window.close()"> Richiedi una modifica </button>
-                    <?php
+                    $statement = $conn->prepare("SELECT in_servizio
+                                    FROM personale
+                                    WHERE mail = '" . $mail . "'");
+                    $statement->execute();
+                    $results = $statement->get_result();
+                    $in_servizio = mysqli_fetch_row($results);
+                    if($in_servizio[0] == 'si') {
+                        ?>
+                            <button class="button" title="Richiedi all'amministratore di rete la possibilità di modificare i tuoi dati" onclick="window.open('userPageRequestedModify.php'); window.close()"> Richiedi una modifica </button>
+                        <?php
+                    }
                 }
             ?>
             <br><br>

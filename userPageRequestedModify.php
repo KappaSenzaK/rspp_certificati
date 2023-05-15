@@ -37,13 +37,26 @@
         <h1>Pagina di <?php 
             $nameAndSurname = retrieveNameAndSurname($mail);
             echo $nameAndSurname['name'] . ' ' . $nameAndSurname['surname'];
-
-            aggiornaStato($mail, 'Richiesta modifica');
             ?>
         </h1><br><br>
-        <h2>La modifica è stata richiesta !</h2>
-        <p>Attendi che l'amministratore accetti la richiesta di modifica ...</p>
-        
+
+        <?php
+            $statement = $conn->prepare("SELECT in_servizio
+                                            FROM personale
+                                            WHERE mail = '" . $mail . "'");
+            $statement->execute();
+            $results = $statement->get_result();
+            $in_servizio = mysqli_fetch_row($results);
+            if($in_servizio[0] == 'no') {
+                echo "Attenzione! Il tuo account è stato contrassegnato come 'non in serivizio', per questo motivo non potrai richiedere modifiche ai tuoi dati.<br>Se pensi che ci sia un errore, contatta l'amministratore di rete.";
+            } else {
+                ?>
+                    <h2>La modifica è stata richiesta !</h2>
+                    <p>Attendi che l'amministratore accetti la richiesta di modifica ...</p>
+                <?php
+                aggiornaStato($mail, 'Richiesta modifica');
+            }
+        ?>
         <br><br><br>
         <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Torna ai tuoi dati </button>
         <br><br>
