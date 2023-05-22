@@ -77,26 +77,26 @@ include "./html/cuccurullo_page.html";
 
     echo "<h2>Attestati</h2>";
 
-    if ($row == null) echo "<h2 style='color:#700016;'>Non hai nessun certificato !</h2>";
+    if ($row == null) echo "<h2 style='color:#700016;'>L'utente non ha nessun certificato!</h2>";
     else {
         ?>
-        <table style='background-color:#e8e8e8;'>
-            <tr>
-                <th>Tipologia</th>
-                <th>Descrizione</th>
-                <th>Data di scadenza</th>
+        <table style='background-color:#e8e8e8; '>
+            <tr style="border: 2px solid white;">
+                <th style="border: 2px solid white;">&nbsp; Tipologia &nbsp;</th>
+                <th style="border: 2px solid white;">&nbsp; Descrizione &nbsp;</th>
+                <th style="border: 2px solid white;">&nbsp; Data di scadenza &nbsp;</th>
             </tr>
             <?php
             do {
             ?>
-            <tr>
-                <td><?= $row[0] ?></td>
-                <td><?= $row[1] ?></td>
-                <td><?php if ($row[2] == null || $row[2] == "0000-00-00") echo '---'; else echo $row[2]; ?></td>
-                <td>
+            <tr style="border: 2px solid white;">
+                <td style="border: 2px solid white;"><?= $row[0] ?></td>
+                <td style="border: 2px solid white;"><?= $row[1] ?></td>
+                <td style="border: 2px solid white;"><?php if ($row[2] == null || $row[2] == "0000-00-00") echo '---'; else echo $row[2]; ?></td>
+                <td style="border: 2px solid white;">
                     <?php echo '<a href="./certificati/' . str_replace('.', '_', $email) . '/' . $row[0] . '/' . $row[3] . '">Visualizza PDF<span>&nbsp&nbsp</span></a>' ?>
-                </td>
-                <td>
+                </td style="border: 2px solid white;">
+                <td style="border: 2px solid white;">
 
                     <form action="form_attestato_modifica.php" method="post">
                         <input type="hidden" name="email" value="<?php echo $email ?>"/>
@@ -107,7 +107,7 @@ include "./html/cuccurullo_page.html";
                     </form>
 
                 </td>
-            <tr>
+            </tr>
                 <?php
                 } while ($row = mysqli_fetch_row($results));
                 ?>

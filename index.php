@@ -28,7 +28,7 @@ session_start();
         ?>
         <div align="center">
             Hai già effettuato l'accesso !<br><br>
-            <button id="helpButton" class="button" onclick="window.location.replace('./userPage.php');"> Vai ai tuoi
+            <button id="helpButton" class="button" onclick="window.location.replace('./<?php echo ($_SESSION['mail'] == 'rspp' ? 'cuccurullo_page' : 'userPage'); ?>.php');"> Vai ai tuoi
                 dati
             </button>
             <br><br>
