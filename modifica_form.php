@@ -7,14 +7,14 @@ $cognome = $_POST['cognome'];
 $email = $_POST['email'];
 $codice_fiscale = $_POST['codice_fiscale'];
 $stato = $_POST['stato'];
-$in_servizio = $_POST['in_servizio'];
 
-list($primaEmail, $seconda) = explode('@', $email);
+
+$real_email = explode('@', $email);
 
 // verificare i valori degli input
 
-modifyAccount($nome, $cognome, $primaEmail, $codice_fiscale, $stato, $in_servizio);
+modifyAccount($nome, $cognome, $real_email[0], $codice_fiscale, $stato);
 
 echo "L'account di $nome e' stato modificato con successo! <br>";
-echo "<a href=cuccurullo_page.php>Ritorna alla pagina dell'RSPP </a>";
+echo "<a href='cuccurullo_page.php'>Ritorna alla pagina dell'RSPP </a>";
 

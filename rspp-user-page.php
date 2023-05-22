@@ -22,7 +22,6 @@ $in_servizio = $_POST['in_servizio'];
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="font">
     <?php
@@ -31,8 +30,11 @@ $in_servizio = $_POST['in_servizio'];
     ?>
     <br><h1 align="center">Informazioni sull'utente <?php echo $nome . " " . $cognome ?></h1><br>
 
-    <form align="center">
+    <form align="center" action="modifica_form.php" method="post">
         <table class="button">
+            <!--        Hidden inputs       -->
+            <input type="hidden" name="email" value="<?php echo $email ?>" />
+            <input type="hidden" name="stato" value="<?php echo $stato ?>" />
             <tr>
                 <td>Nome </td><td>&nbsp;</td><td> <input type="text" id="nome" name="nome" value="<?php echo $nome; ?>"/> </td>
             </tr>
@@ -40,12 +42,16 @@ $in_servizio = $_POST['in_servizio'];
                 <td>Cognome </td><td>&nbsp;</td><td> <input type="text" id="cognome" name="cognome" value="<?php echo $cognome; ?>"/> </td>
             </tr>
             <tr>
-                <td>Codice fiscale </td><td>&nbsp;</td><td> <input type="text" id="c_f" name="c_f" value="<?php echo $c_f; ?>"/> </td>
+                <td>Codice fiscale </td><td>&nbsp;</td><td> <input type="text" id="codice_fiscale" name="codice_fiscale" value="<?php echo $c_f; ?>"/> </td>
             </tr>
             <tr>
                 <td>In servizio </td><td>&nbsp;</td><td><?php echo $in_servizio; ?></td>
             </tr>
+            <tr>
+                <td><input type="submit" value="Conferma le modifiche" class="btn btn-success" /></td>
+            </tr>
         </table>
+
     </form>
 
     <a href=cuccurullo_page.php>Ritorna alla pagina principale</a>

@@ -64,10 +64,10 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw) {
     $statement->execute();
 }
 
-function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $in_servizio) {
+function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato) {
     $conn = connect_database();
     $statement = $conn->prepare("UPDATE personale 
-    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', in_servizio = '$in_servizio' 
+    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato' 
     WHERE mail = '$email'");
 
     $statement->execute();
@@ -132,19 +132,10 @@ function getUsersForCuccurullo() {
             "note" => $row['note'],
             "stato" => $row['stato'],
             "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
-            "c_f" => $row['c_f']
+            "c_f" => $row['cod_fiscale']
             );
     }
     return $users;
-}
-
-function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $in_servizio) {
-    $conn = connect_database();
-    $statement = $conn->prepare("UPDATE personale 
-    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', in_servizio = '$in_servizio' 
-    WHERE mail = '$email'");
-
-    $statement->execute();
 }
 
 function getDocentiForCuccurullo() {
