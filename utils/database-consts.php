@@ -2,11 +2,11 @@
 
 include 'database/database.php';
 
-function get_enum_values( $table, $field )
+function get_enum_values($table, $field)
 {
     $conn = connect_database();
 
-    $query = "SHOW COLUMNS FROM ".$table." WHERE Field = '".$field."'";
+    $query = "SHOW COLUMNS FROM " . $table . " WHERE Field = '" . $field . "'";
     $result = mysqli_query($conn, $query);
 
     $row = mysqli_fetch_array($result);
@@ -20,18 +20,22 @@ function get_enum_values( $table, $field )
     return $enum;
 }
 
-function personale_tipo() {
+function personale_tipo()
+{
     return get_enum_values('personale', 'tipo');
 }
 
-function personale_stato() {
+function personale_stato()
+{
     return get_enum_values('personale', 'stato');
 }
 
-function personale_in_servizio() {
+function personale_in_servizio()
+{
     return get_enum_values('personale', 'in_servizio');
 }
 
-function attestato_tipo () {
+function attestato_tipo()
+{
     return get_enum_values('attestato', 'tipo');
 }
