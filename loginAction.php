@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -13,7 +13,7 @@
 </head>
 <body class="font">
 <div>
-<?php
+    <?php
     include "./html/header.html";
     include "./database/database.php";
     ?>
@@ -21,38 +21,44 @@
     <link rel="stylesheet" href="./css/font.css">
 </div>
 <div align="center">
-    <br><h2>
-    <?php
+    <br>
+    <h2>
+        <?php
         $email = $_POST['email'];
 
         try {
-            if($email == 'rspp' && $_POST['password'] == '12345') {
+            if ($email == 'rspp' && $_POST['password'] == '12345') {
                 echo "Accesso effettuato come RSPP!<br>";
                 $_SESSION['mail'] = $email;
                 ?>
-                    <button id="helpButton" class="button" onclick="window.open('cuccurullo_page.php'); window.close()"> Vai ai tuoi dati </button>
+                <button id="helpButton" class="button" onclick="window.open('cuccurullo_page.php'); window.close()"> Vai
+                    ai tuoi dati
+                </button>
                 <?php
-            }
-            else
-                if(obtain_password($email) == $_POST['password']) {
+            } else
+                if (obtain_password($email) == $_POST['password']) {
                     echo "Accesso effettuato !<br><br>";
                     $_SESSION['mail'] = $email; ?>
-                        <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Vai ai tuoi dati </button>
+                    <button id="helpButton" class="button" onclick="window.open('userPage.php'); window.close()"> Vai ai
+                        tuoi dati
+                    </button>
                     <?php
-                }
-                else {
+                } else {
                     echo "Errore nell'accesso !<br><br>";
-                     ?>
-                        <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al login </button>
+                    ?>
+                    <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al
+                        login
+                    </button>
                     <?php
                 }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo "Errore nell'accesso !<br><br>";
             ?>
-               <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al login </button>
-           <?php
+            <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna al login
+            </button>
+            <?php
         }
-    ?>
+        ?>
     </h2>
 </div>
 </body>

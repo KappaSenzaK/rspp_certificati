@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <?php
-    session_start();
-    include 'checkPage.php';
-    if($_SESSION['mail'] != 'rspp') {
-        ?>
-            <h1>Errore nell'accesso!</h1><br><br><br>
-            <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di accesso </button>
-        <?php 
-        die();
-    }
+session_start();
+include 'checkPage.php';
+if ($_SESSION['mail'] != 'rspp') {
+?>
+<h1>Errore nell'accesso!</h1><br><br><br>
+<button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di
+    accesso
+</button>
+<?php
+die();
+}
 ?>
 <html lang="it">
 <head>
@@ -25,7 +27,7 @@
             width: 50% !important;
         }
 
-        #email-section{
+        #email-section {
             padding-top: 70px;
             margin: auto;
             width: 50%;
@@ -78,7 +80,7 @@
         $da_compilare = $user['stato'] == StatoCertificati::DA_COMPILARE;
 
         echo '<tr id="' . $id . '" >
-                <td id="' . $id . $mail . '">' . $user['mail'].$fine_mail . '</td>
+                <td id="' . $id . $mail . '">' . $user['mail'] . $fine_mail . '</td>
                 <td id="' . $id . $nome . '">' . $user['nome'] . '</td>
                 <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
                 <td id="' . $id . $note . '">' . $user['c_f'] . '</td>
@@ -86,13 +88,13 @@
                 <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
                     <form method="post" action="rspp-user-page.php" align="center">
-                        <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
-                        <input type="hidden" name="nome" value="'.$user['nome'].'"/>
-                        <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
-                        <input type="hidden" name="c_f" value="'.$user['c_f'].'"/>
-                        <input type="hidden" name="note" value="'.$user['note'].'"/>
-                        <input type="hidden" name="stato" value="'.$user['stato'].'"/>
-                        <input type="hidden" name="in_servizio" value="'.$user['in_servizio'].'"/>
+                        <input type="hidden" name="user" id="user" value="' . $user['mail'] . '"/>
+                        <input type="hidden" name="nome" value="' . $user['nome'] . '"/>
+                        <input type="hidden" name="cognome" value="' . $user['cognome'] . '"/>
+                        <input type="hidden" name="c_f" value="' . $user['c_f'] . '"/>
+                        <input type="hidden" name="note" value="' . $user['note'] . '"/>
+                        <input type="hidden" name="stato" value="' . $user['stato'] . '"/>
+                        <input type="hidden" name="in_servizio" value="' . $user['in_servizio'] . '"/>
                         <input type="submit" value=" Visualizza "/>
                     </form>
                 </td>

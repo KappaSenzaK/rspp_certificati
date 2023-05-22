@@ -115,13 +115,14 @@
                 else {
                     ?>
                         <table style='background-color:#e8e8e8;'>
-                        <tr><th>Tipologia</th><th>Descrizione</th><th>Data di scadenza</th></td>
+                        <tr><th>Tipologia</th><th>Descrizione</th><th>Data di scadenza</th></tr>
                     <?php
                     do {
                         ?>
                             <tr><td><?=$row[0]?></td><td><?=$row[1]?></td><td><?php if($row[2]==null) echo '---'; else echo $row[2]; ?></td><td>
-                                <?php echo '<a href="./certificati/'.str_replace('.', '_', $mail).'/'.$row[0].'/'.$row[3].'">Visualizza PDF</a>' ?>
-                            </td><tr>
+                                <?php echo '<a href="./certificati/' . str_replace('.', '_', $mail) . '/' . $row[0] . '/' . $row[3] . '">Visualizza PDF</a>' ?>
+                                </td>
+                            <tr>
                         <?php
                     } while($row = mysqli_fetch_row($results));
                     ?>

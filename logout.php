@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    session_destroy();
+session_start();
+session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -14,25 +14,29 @@
     <title>Inserimento requisiti sulla sicurezza sul lavoro</title>
 </head>
 <body class="font">
-    <style>
-        th, td {
-            border: 2px solid white;
-        }
-    </style>
+<style>
+    th, td {
+        border: 2px solid white;
+    }
+</style>
 
-    <div>
+<div>
     <?php
-        include "./html/header.html";
-        ?>
-    </div>
+    include "./html/header.html";
+    ?>
+</div>
 
-    <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/font.css">
-    <style> th, td { padding: 10pt; } </style>
+<link rel="stylesheet" href="./css/button.css">
+<link rel="stylesheet" href="./css/font.css">
+<style> th, td {
+        padding: 10pt;
+    } </style>
 
-    <div align="center">
-        <h2>Sei uscito dal tuo account</h2><br><br>
-        <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di accesso </button>
-    </div>
+<div align="center">
+    <h2>Sei uscito dal tuo account</h2><br><br>
+    <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di
+        accesso
+    </button>
+</div>
 </body>
 </html>

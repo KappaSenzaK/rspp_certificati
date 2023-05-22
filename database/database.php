@@ -73,6 +73,18 @@ function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato) {
     $statement->execute();
 }
 
+function modifyAttestato($email, $tipologia, $desc, $data_scadenza) {
+    $conn = connect_database();
+    $conn->query("UPDATE attestato 
+SET tipo = '$tipologia', descrizione = '$desc', data_scadenza = '$data_scadenza'
+WHERE mail = '$email' ");
+
+    if(mysqli_affected_rows($conn)) {
+        return true;
+    }
+    return false;
+}
+
 function retrieveNameAndSurname($mail): array
 {
     $conn = connect_database();

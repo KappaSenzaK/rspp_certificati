@@ -10,12 +10,12 @@ use Dompdf\Options;
 
 
 $dompdf = new Dompdf(
-    // SERVE PER AGGIUNGERE LA CARTELLA IN QUI VA INSTALLATO
-    // [
-    //     "chroot" => __DIR__ . "/
-    // ]
+// SERVE PER AGGIUNGERE LA CARTELLA IN QUI VA INSTALLATO
+// [
+//     "chroot" => __DIR__ . "/
+// ]
 
-    // $options NEL CASO SI E' CHIESTO LE OPZIONI
+// $options NEL CASO SI E' CHIESTO LE OPZIONI
 );
 
 $dompdf->setPaper("A4", "landscape");
@@ -34,16 +34,16 @@ $html = str_replace("{{ luogo }}", $luogo, $html);
 $html = str_replace("{{ ore }}", $ore, $html);
 
 
- $dompdf->loadhtml($html); //QUESTO PER CREARE PDF CON HTML SCRITTO COME STRINGA
+$dompdf->loadhtml($html); //QUESTO PER CREARE PDF CON HTML SCRITTO COME STRINGA
 
 
 // $dompdf->loadhtmlFile(""); QUESTO PER CREARE PDF CON HTML SCRITTO COME FILE HTML ESTERNO
 
 $dompdf->render();
 
-$dompdf->addInfo("Title", "Attestato di ".$nome);
+$dompdf->addInfo("Title", "Attestato di " . $nome);
 
-$dompdf->stream("Attestato_". $nome .".pdf", ["Attachment" => 0]);
+$dompdf->stream("Attestato_" . $nome . ".pdf", ["Attachment" => 0]);
 // SERVE NEL CASO UNO VUOLE VISUALIZZARE PRIMA DI SCARICARLO MANUALMENTE
 
 // $dompdf->stream("Attestato_". $nome .".pdf");

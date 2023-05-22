@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -14,7 +14,7 @@
 <body class="font">
 
 <div>
-<?php
+    <?php
     include "./html/header.html"
     ?>
     <link rel="stylesheet" href="./css/button.css">
@@ -22,15 +22,15 @@
 </div>
 <div>
     <?php
-    if(!isset($_SESSION['mail']) || isset($_POST['logout'])) {
+    if (!isset($_SESSION['mail']) || isset($_POST['logout'])) {
         include "./html/loginPage.html";
-    }
-    else
-    {
+    } else {
         ?>
         <div align="center">
             Hai già effettuato l'accesso !<br><br>
-            <button id="helpButton" class="button" onclick="window.location.replace('./userPage.php');"> Vai ai tuoi dati </button>
+            <button id="helpButton" class="button" onclick="window.location.replace('./userPage.php');"> Vai ai tuoi
+                dati
+            </button>
             <br><br>
             <form method="post" action="index.php">
                 <input type="hidden" id="logout" name="logout" value="a">

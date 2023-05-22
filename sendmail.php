@@ -1,4 +1,3 @@
-
 <?php
 include 'utils/emails.php';
 ?>
@@ -26,7 +25,7 @@ include 'html/header.html'
     $subject = $_POST['subject'];
     $body = $_POST['body'];
 
-    if(!isset($to) || !isset($subject) || !isset($body)) {
+    if (!isset($to) || !isset($subject) || !isset($body)) {
         die("<h1>Email destinatario, subject, oppure body non sono configurati</h1>");
     }
     echo sendEmail($to, $subject, $body);
