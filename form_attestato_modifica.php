@@ -13,15 +13,17 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form attestato</title>
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/button.css">
 </head>
-<body>
+<body class="font">
 
 <div>
     <?php
@@ -36,6 +38,7 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
 
 <div align="center">
     <form action="attestato_modifica.php" method="post">
+        <br><h2>Modifica attestato</h2><br>
         <label class="form-label" for="tipologia">Tipologia: </label>
         <select name="tipologia" id="tipologia" class="form-control w-25">
             <?php
@@ -60,10 +63,12 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
         <input type="hidden" name="email" value="<?php echo $email ?>" />
 
         <input type="hidden" name="old_tipologia" value="<?php echo $tipologia ?>" />
-        <input type="hidden" name="old_desc" value="<?php echo $desc ?>" />
+        <input type="hidden" name="old_desc" value="<?php echo $desc ?>" /><br><br>
 
-        <input type="submit" value="Conferma modifiche"/>
+        <input class="button" type="submit" value="Conferma modifiche"/>
     </form>
+    <br><br>
+    <a href="cuccurullo_page.php">Ritorna alla pagina principale</a>
 </div>
 
 

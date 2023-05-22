@@ -56,12 +56,9 @@ include "./html/cuccurullo_page.html";
             <td>&nbsp;</td>
             <td><?php echo $in_servizio; ?></td>
         </tr>
-        <tr>
-            <td><input type="submit" value="Conferma le modifiche" class="btn btn-success"/></td>
-        </tr>
-    </table>
-    <br>
-    <a href=cuccurullo_page.php>Ritorna alla pagina principale</a>
+    </table><br><br>
+    <input type="submit" value="Conferma le modifiche" class="btn btn-success"/>
+    
 </form>
 
 <div align="center" style="margin-top: 50px; padding: 20px">
@@ -115,6 +112,8 @@ include "./html/cuccurullo_page.html";
         <?php
     }
     ?>
+    <br><br>
+    <a href=cuccurullo_page.php>Ritorna alla pagina principale</a>
 </div>
 
 <script src="js/actions.js"></script>
