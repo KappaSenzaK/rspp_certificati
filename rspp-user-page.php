@@ -75,6 +75,8 @@ include "./html/cuccurullo_page.html";
 
     $row = mysqli_fetch_row($results);
 
+    echo "<h2>Attestati</h2>";
+
     if ($row == null) echo "<h2 style='color:#700016;'>Non hai nessun certificato !</h2>";
     else {
         ?>
@@ -90,9 +92,9 @@ include "./html/cuccurullo_page.html";
             <tr>
                 <td><?= $row[0] ?></td>
                 <td><?= $row[1] ?></td>
-                <td><?php if ($row[2] == null) echo '---'; else echo $row[2]; ?></td>
+                <td><?php if ($row[2] == null || $row[2] == "0000-00-00") echo '---'; else echo $row[2]; ?></td>
                 <td>
-                    <?php echo '<a href="./certificati/' . str_replace('.', '_', $email) . '/' . $row[0] . '/' . $row[3] . '">Visualizza PDF</a>' ?>
+                    <?php echo '<a href="./certificati/' . str_replace('.', '_', $email) . '/' . $row[0] . '/' . $row[3] . '">Visualizza PDF<span>&nbsp&nbsp</span></a>' ?>
                 </td>
                 <td>
 

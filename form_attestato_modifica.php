@@ -59,6 +59,9 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
 
         <input type="hidden" name="email" value="<?php echo $email ?>" />
 
+        <input type="hidden" name="old_tipologia" value="<?php echo $tipologia ?>" />
+        <input type="hidden" name="old_desc" value="<?php echo $desc ?>" />
+
         <input type="submit" value="Conferma modifiche"/>
     </form>
 </div>

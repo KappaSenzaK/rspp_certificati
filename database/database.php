@@ -73,11 +73,11 @@ function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato) {
     $statement->execute();
 }
 
-function modifyAttestato($email, $tipologia, $desc, $data_scadenza) {
+function modifyAttestato($email, $tipologia, $desc, $data_scadenza, $old_desc, $old_tipologia) {
     $conn = connect_database();
     $conn->query("UPDATE attestato 
 SET tipo = '$tipologia', descrizione = '$desc', data_scadenza = '$data_scadenza'
-WHERE mail = '$email' ");
+WHERE mail = '$email' AND tipo = '$old_tipologia' AND descrizione = '$old_desc' ");
 
     if(mysqli_affected_rows($conn)) {
         return true;
