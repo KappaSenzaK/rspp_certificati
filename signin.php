@@ -45,6 +45,8 @@ if (isset($_SESSION['code'])) {
                 $_SESSION['signin_nomeUtente'],
                 $_SESSION['signin_cognomeUtente'],
                 $_SESSION['signin_codiceFiscale'],
+                $_SESSION['signin_dataNascita'],
+                $_SESSION['signin_luogoNascita'],
                 $_SESSION['code']
             );
 
@@ -89,6 +91,8 @@ if (!isset($_POST['email'])
     || !isset($_POST['nomeUtente'])
     || !isset($_POST['cognomeUtente'])
     || !isset($_POST['codiceFiscale'])
+    || !isset($_POST['dataNascita'])
+    || !isset($_POST['luogoNascita'])
 ) {
     include 'html/signin.html';
 
@@ -101,13 +105,16 @@ $tipo = $_POST['tipo'];
 $nomeUtente = $_POST['nomeUtente'];
 $cognomeUtente = $_POST['cognomeUtente'];
 $codiceFiscale = $_POST['codiceFiscale'];
-
+$dataNascita = $_POST['dataNascita'];
+$luogoNascita = $_POST['luogoNascita'];
 
 $_SESSION['signin_mail'] = $email;
 $_SESSION['signin_tipo'] = $tipo;
 $_SESSION['signin_nomeUtente'] = $nomeUtente;
 $_SESSION['signin_cognomeUtente'] = $cognomeUtente;
 $_SESSION['signin_codiceFiscale'] = $codiceFiscale;
+$_SESSION['signin_dataNascita'] = $dataNascita;
+$_SESSION['signin_luogoNascita'] = $luogoNascita;
 
 
 function firstLetterToUpperCase($string)
@@ -120,9 +127,8 @@ function firstLetterToUpperCase($string)
 
 $nomeUtente = firstLetterToUpperCase($nomeUtente);
 $cognomeUtente = firstLetterToUpperCase($cognomeUtente);
-
 $codiceFiscale = strtoupper($codiceFiscale);
-
+$luogoNascita = firstLetterToUpperCase($luogoNascita);
 if (existAccountByEmail($email)) {
     $_SESSION['signin'] = true;
     die("<br><h1>Attenzione: l'account è già esistente!</h1><br><h1><button class='button' onclick='openLogin()'>Effettua il login! </button></h1>");
@@ -130,7 +136,7 @@ if (existAccountByEmail($email)) {
 
 $digestPassword = substr(hash(
     'md5',
-    $email . $tipo . $nomeUtente . $cognomeUtente . $codiceFiscale),
+    $email . $tipo . $nomeUtente . $cognomeUtente . $codiceFiscale . $dataNascita . $luogoNascita),
     0, 5
 );
 
@@ -161,7 +167,9 @@ $_SESSION['code'] = $digestPassword;
             echo "Indirizzo e-mail: " . $email . "<br>" .
                 "Tipologia di utente: " . $tipo . "<br>" .
                 "Nome e cognome: " . $nomeUtente . " " . $cognomeUtente . "<br>" .
-                "Codice fiscale: " . $codiceFiscale . "<br>";
+                "Codice fiscale: " . $codiceFiscale . "<br>" .
+                "Data di nascita: ". $dataNascita . "<br>" .
+                "Luogo di nascita: ". $luogoNascita . "<br>" ;
             ?>
         </h3><br>
         <button class='button' onclick='location.reload()'> I tuoi dati non sono corretti? Torna all'inserimento

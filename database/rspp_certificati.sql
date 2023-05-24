@@ -18,6 +18,8 @@ CREATE TABLE personale
     cognome     VARCHAR(32)             NOT NULL,
     -- il codice fiscale è diverso per ogni paese, perciò ho messo VARCHAR
     cod_fiscale VARCHAR(32)             NOT NULL,
+    data_nascita DATE NOT NULL,
+    luogo VARCHAR(32) DEFAULT 'Italia',
     note        VARCHAR(128)            NOT NULL                                       DEFAULT '',
     stato       ENUM ('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
     pw          VARCHAR(32)             NOT NULL                                       DEFAULT '1234',

@@ -9,6 +9,8 @@
     $cognome = mysqli_real_escape_string($conn, htmlspecialchars($_POST['cognome']));
     $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['email']));
     $codice_fiscale = mysqli_real_escape_string($conn, htmlspecialchars($_POST['codice_fiscale']));
+    // $stato = mysqli_real_escape_string($conn, htmlspecialchars($_POST['dataNascita']));
+    // $stato = mysqli_real_escape_string($conn, htmlspecialchars($_POST['luogoNascita']));
     $stato = mysqli_real_escape_string($conn, htmlspecialchars($_POST['stato']));
 ?>
 <!DOCTYPE html>

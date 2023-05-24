@@ -56,11 +56,11 @@ function existAccountByEmail($mail): bool
     }
 }
 
-function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $pw) {
+function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale,  $data, $luogo, $pw) {
     $conn = connect_database();
     $statement = $conn->prepare(
-        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, stato, pw) 
-                VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', 'Da compilare', '$pw')");
+        "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, luogo, stato, pw) 
+                VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', '$data', '$luogo', 'Da compilare', '$pw')");
     $statement->execute();
 }
 
