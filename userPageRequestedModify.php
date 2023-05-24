@@ -44,6 +44,7 @@ $mail = $_SESSION['mail'];
     </h1><br><br>
 
     <?php
+    $conn = connect_database();
     $statement = $conn->prepare("SELECT in_servizio
                                             FROM personale
                                             WHERE mail = '" . $mail . "'");

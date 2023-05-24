@@ -9,6 +9,7 @@ $c_f = $_POST['c_f'];
 $note = $_POST['note'];
 $stato = $_POST['stato'];
 $in_servizio = $_POST['in_servizio'];
+
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +103,6 @@ include "./html/cuccurullo_page.html";
                         <input type="hidden" name="data_scadenza" value="<?php echo $row[2] ?>"/>
                         <input type="submit" value="Modifica attestato">
                     </form>
-
                 </td>
             </tr>
                 <?php
@@ -111,6 +111,32 @@ include "./html/cuccurullo_page.html";
         </table>
         <?php
     }
+    ?>
+    <?php
+        if($stato != "Validato" && $stato == "Da validare"){
+            echo '<br><form method="post" action="utenteValidato.php" align="center">
+                <input type="hidden" name="user" id="user" value="' . $email . '">
+                <input type="hidden" name="nome" value="' . $nome . '">
+                <input type="hidden" name="cognome" value="' . $cognome . '">
+                <input type="hidden" name="c_f" value="' . $c_f . '">
+                <input type="hidden" name="note" value="' . $note . '">
+                <input type="hidden" name="stato" value="' . $stato . '">
+                <input type="hidden" name="in_servizio" value="' . $in_servizio . '">
+                <input type="submit" value=" Valida " class="btn btn-success">
+            </form>';
+        }
+        if($stato == "Richiesta modifica" && $in_servizio == "Si"){
+            echo '<br><form method="post" action="modificaCons.php" align="center">
+                <input type="hidden" name="user" id="user" value="' . $email . '">
+                <input type="hidden" name="nome" value="' . $nome . '">
+                <input type="hidden" name="cognome" value="' . $cognome . '">
+                <input type="hidden" name="c_f" value="' . $c_f . '">
+                <input type="hidden" name="note" value="' . $note . '">
+                <input type="hidden" name="stato" value="' . $stato . '">
+                <input type="hidden" name="in_servizio" value="' . $in_servizio . '">
+                <input type="submit" value=" Permetti modifiche " class="btn btn-success">
+            </form>';
+        }
     ?>
     <br><br>
     <a href=cuccurullo_page.php>Ritorna alla pagina principale</a>

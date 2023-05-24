@@ -78,14 +78,14 @@ include 'checkPage_rspp.php';
                 <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
                 <td>
                     <form method="post" action="rspp-user-page.php" align="center">
-                        <input type="hidden" name="user" id="user" value="' . $user['mail'] . '"/>
-                        <input type="hidden" name="nome" value="' . $user['nome'] . '"/>
-                        <input type="hidden" name="cognome" value="' . $user['cognome'] . '"/>
-                        <input type="hidden" name="c_f" value="' . $user['c_f'] . '"/>
-                        <input type="hidden" name="note" value="' . $user['note'] . '"/>
-                        <input type="hidden" name="stato" value="' . $user['stato'] . '"/>
-                        <input type="hidden" name="in_servizio" value="' . $user['in_servizio'] . '"/>
-                        <input type="submit" value=" Visualizza "/>
+                        <input type="hidden" name="user" id="user" value="' . $user['mail'] . '">
+                        <input type="hidden" name="nome" value="' . $user['nome'] . '">
+                        <input type="hidden" name="cognome" value="' . $user['cognome'] . '">
+                        <input type="hidden" name="c_f" value="' . $user['c_f'] . '">
+                        <input type="hidden" name="note" value="' . $user['note'] . '">
+                        <input type="hidden" name="stato" value="' . $user['stato'] . '">
+                        <input type="hidden" name="in_servizio" value="' . $user['in_servizio'] . '">
+                        <input type="submit" value=" Visualizza ">
                     </form>
                 </td>
             </tr>';
