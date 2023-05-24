@@ -144,7 +144,36 @@ function getUsersForCuccurullo() {
             "note" => $row['note'],
             "stato" => $row['stato'],
             "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
-            "c_f" => $row['cod_fiscale']
+            "c_f" => $row['cod_fiscale'],
+            "data" => $row['data_nascita'],
+            "luogo" => $row['luogo']
+            );
+    }
+    return $users;
+}
+
+function getAttestatiForCuccurullo() {
+    $conn = connect_database();
+
+    $sql = "
+    SELECT a.mail, a.tipo, p.nome, p.cognome, p.data_nascita, p.luogo, p.stato FROM attestato a INNER JOIN personale p ON p.mail = a.mail;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $users = array();
+
+    while($row = $results->fetch_assoc()) {
+        $users[] = array(
+            "mail" => $row['mail'],
+            "tipo" => $row['tipo'],
+            "nome" => $row['nome'],
+            "cognome" => $row['cognome'],
+            "data" => $row['data_nascita'],
+            "luogo" => $row['luogo'],
+            "stato" => $row['stato']
             );
     }
     return $users;
