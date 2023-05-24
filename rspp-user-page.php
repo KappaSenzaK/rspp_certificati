@@ -104,6 +104,16 @@ include "./html/cuccurullo_page.html";
                         <input type="submit" value="Modifica attestato">
                     </form>
                 </td>
+                <td style="border: 2px solid white;">
+
+                    <form action="form_attestato_elimina.php" method="post">
+                        <input type="hidden" name="email" value="<?php echo $email ?>"/>
+                        <input type="hidden" name="tipologia" value="<?php echo $row[0] ?>"/>
+                        <input type="hidden" name="desc" value="<?php echo $row[1] ?>"/>
+                        <input type="hidden" name="data_scadenza" value="<?php echo $row[2] ?>"/>
+                        <input type="submit" value="Elimina attestato">
+                    </form>
+                </td>
             </tr>
                 <?php
                 } while ($row = mysqli_fetch_row($results));
