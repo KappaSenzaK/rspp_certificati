@@ -28,44 +28,32 @@ $luogo = $_POST['luogo'];
 $ore = "";
 
 switch ($tipo) {
+    case 'Attestato di aggiornamento per il primo soccorso':
     case "Attestato di formazione generale":
         $ore = 4;
         break;
+    case 'Attestato di formazione sicurezza per il preposto':
+    case 'Attestato di aggiornamento per RLS':
     case  'Attestato di formazione specifica - rischio medio':
         $ore = 8;
         break;
+    case 'Attestato di formazione per rischio di incendio - rischio medio':
+    case 'Attestato di formazione per il primo soccorso':
     case  'Attestato di formazione - rischio alto':
         $ore = 12;
         break;
-    case 'Attestato di formazione sicurezza per il preposto':
-        $ore = 8;
-        break;
-    case 'Attestato di aggiornamento sicurezza per il preposto':
-        $ore = 6;
-        break;
     case 'Attestato di aggiornamento sicurezza':
+    case 'Attestato di aggiornamento sicurezza per il preposto':
         $ore = 6;
         break;
     case 'Attestato di formazione per RLS':
         $ore = 32;
         break;
-    case 'Attestato di aggiornamento per RLS':
-        $ore = 8;
-        break;
     case 'Attestato di formazione aggiornamento RSPP':
         $ore = 40;
         break;
-    case 'Attestato di formazione per rischio di incendio - rischio medio':
-        $ore = 12;
-        break;
     case 'Attestato di formazione per rischio di incendio - rischio alto':
         $ore = 16;
-        break;
-    case 'Attestato di formazione per il primo soccorso':
-        $ore = 12;
-        break;
-    case 'Attestato di aggiornamento per il primo soccorso':
-        $ore = 4;
         break;
     case 'Attestato di formazione BLSD':
         $ore = 5;
