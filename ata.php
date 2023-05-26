@@ -29,7 +29,7 @@ include 'checkPage_rspp.php';
 
 <div>
     <?php
-    include "./html/header.html"
+    include "./html/header.html";
     ?>
 </div>
 <div>

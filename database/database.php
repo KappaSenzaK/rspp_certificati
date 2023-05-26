@@ -57,6 +57,8 @@ function existAccountByEmail($mail): bool
 }
 
 function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale,  $data, $luogo, $pw) {
+    $pw = hash("sha256", $pw);
+
     $conn = connect_database();
     $statement = $conn->prepare(
         "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, luogo, stato, pw) 

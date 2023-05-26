@@ -22,7 +22,9 @@ CREATE TABLE personale
     luogo VARCHAR(32) DEFAULT 'Italia',
     note        VARCHAR(128)            NOT NULL                                       DEFAULT '',
     stato       ENUM ('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
-    pw          VARCHAR(32)             NOT NULL                                       DEFAULT '1234',
+
+#   La password di default e' il digest di "1234"
+    pw          VARCHAR(64)             NOT NULL                                       DEFAULT '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',
     in_servizio ENUM ('si', 'no')       NOT NULL                                       DEFAULT 'si'
 );
 
@@ -117,12 +119,12 @@ WHERE p.mail IN (SELECT p1.mail
                           AND a_s.data_scadenza < CURRENT_DATE) > 0);
 
 -- INSERIMENTO DI DATI a caso
-INSERT INTO personale (mail, tipo, nome, cognome, cod_fiscale)
-VALUES ('ettore.franchi', 'docente', 'Ettore', 'Franchi', 'FRNTTR04R27D612A'),
-       ('zhario.zhang', 'ata', 'Zhario', 'Zhang', 'ZHRZNG420CHINA11'),
-       ('stefano.hu', 'docente', 'Stefano', 'Hu', 'SFNHU12UU74'),
-       ('marco.carricato', 'ata', 'Marco', 'Carricato', 'MRCCRR696969'),
-       ('dio.brando', 'docente', 'Dio', 'Brando', 'DIOBRN6629012F');
+INSERT INTO personale (mail, tipo, nome, cognome, cod_fiscale, data_nascita)
+VALUES ('ettore.franchi', 'docente', 'Ettore', 'Franchi', 'FRNTTR04R27D612A', '2003-11-2'),
+       ('zhario.zhang', 'ata', 'Zhario', 'Zhang', 'ZHRZNG420CHINA11', '2004-4-5'),
+       ('stefano.hu', 'docente', 'Stefano', 'Hu', 'SFNHU12UU74', '2001-2-1'),
+       ('marco.carricato', 'ata', 'Marco', 'Carricato', 'MRCCRR696969', '2006-12-28'),
+       ('dio.brando', 'docente', 'Dio', 'Brando', 'DIOBRN6629012F', '2014-5-2');
 
 INSERT INTO attestato (mail, tipo)
 VALUES ('ettore.franchi', 'Attestato di formazione - rischio alto'),

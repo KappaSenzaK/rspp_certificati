@@ -1,5 +1,10 @@
 <?php
+$password_rspp = "5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5";
+
 session_start();
+
+$_POST['password'] = hash("sha256", $_POST['password']);
+
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -27,7 +32,7 @@ session_start();
         $email = $_POST['email'];
 
         try {
-            if ($email == 'rspp' && $_POST['password'] == '12345') {
+            if ($email == 'rspp' && $_POST['password'] == $password_rspp) {
                 echo "Accesso effettuato come RSPP!<br>";
                 $_SESSION['mail'] = $email;
                 ?>
