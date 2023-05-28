@@ -6,7 +6,7 @@ if ($_SESSION['mail'] != 'rspp') {
 ?>
 <h1>Errore nell'accesso!</h1><br><br><br>
 <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di
-    accesso
+  accesso
 </button>
 <?php
 die();
@@ -14,25 +14,25 @@ die();
 ?>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Main page del cuccurullo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/index.css">
+  <title>Main page del cuccurullo</title>
 
-    <style>
-        .table {
-            margin: auto;
-            width: 50% !important;
-        }
+  <style>
+      .table {
+          margin: auto;
+          width: 50% !important;
+      }
 
-        #email-section {
-            padding-top: 70px;
-            margin: auto;
-            width: 50%;
-        }
-    </style>
+      #email-section {
+          padding-top: 70px;
+          margin: auto;
+          width: 50%;
+      }
+  </style>
 </head>
 <body>
 
@@ -65,12 +65,12 @@ die();
 
     $id = 0;
 
-    $mail = "mail";
-    $nome = "nome";
-    $cognome = "cognome";
-    $note = "note";
-    $stato = "stato";
-    $in_servizio = "in_servizio";
+    $mail           = "mail";
+    $nome           = "nome";
+    $cognome        = "cognome";
+    $note           = "note";
+    $stato          = "stato";
+    $in_servizio    = "in_servizio";
     $codice_fiscale = "c_f";
 
     $fine_mail = "@tulliobuzzi.edu.it";
@@ -79,22 +79,22 @@ die();
         $id++;
         $da_compilare = $user['stato'] == StatoCertificati::DA_COMPILARE;
 
-        echo '<tr id="' . $id . '" >
-                <td id="' . $id . $mail . '">' . $user['mail'] . $fine_mail . '</td>
-                <td id="' . $id . $nome . '">' . $user['nome'] . '</td>
-                <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
-                <td id="' . $id . $note . '">' . $user['c_f'] . '</td>
-                <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
-                <td id="' . $id . $in_servizio . '">' . $user['in_servizio'] . '</td>
+        echo '<tr id="'.$id.'" >
+                <td id="'.$id.$mail.'">'.$user['mail'].$fine_mail.'</td>
+                <td id="'.$id.$nome.'">'.$user['nome'].'</td>
+                <td id="'.$id.$cognome.'">'.$user['cognome'].'</td>
+                <td id="'.$id.$note.'">'.$user['c_f'].'</td>
+                <td id="'.$id.$stato.'" class="'.($da_compilare ? 'bg-warning' : '').'">'.$user['stato'].'</td>
+                <td id="'.$id.$in_servizio.'">'.$user['in_servizio'].'</td>
                 <td>
                     <form method="post" action="rspp-user-page.php" align="center">
-                        <input type="hidden" name="user" id="user" value="' . $user['mail'] . '"/>
-                        <input type="hidden" name="nome" value="' . $user['nome'] . '"/>
-                        <input type="hidden" name="cognome" value="' . $user['cognome'] . '"/>
-                        <input type="hidden" name="c_f" value="' . $user['c_f'] . '"/>
-                        <input type="hidden" name="note" value="' . $user['note'] . '"/>
-                        <input type="hidden" name="stato" value="' . $user['stato'] . '"/>
-                        <input type="hidden" name="in_servizio" value="' . $user['in_servizio'] . '"/>
+                        <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
+                        <input type="hidden" name="nome" value="'.$user['nome'].'"/>
+                        <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
+                        <input type="hidden" name="c_f" value="'.$user['c_f'].'"/>
+                        <input type="hidden" name="note" value="'.$user['note'].'"/>
+                        <input type="hidden" name="stato" value="'.$user['stato'].'"/>
+                        <input type="hidden" name="in_servizio" value="'.$user['in_servizio'].'"/>
                         <input type="submit" value=" Visualizza "/>
                     </form>
                 </td>
@@ -110,26 +110,26 @@ die();
 
 <div id="email-section" class="w-25">
 
-    <div></div>
+  <div></div>
 
-    <form action="http://localhost:80/rspp_certificati/sendmail.php" method="post" class="font form">
-        <label class="form-label" for="to">Inserisci l'indirizzo email del destinatario</label>
-        <input class="button form-control" type="email" name="to" id="to" placeholder="Email destinatario">
+  <form action="http://localhost:80/rspp_certificati/sendmail.php" method="post" class="font form">
+    <label class="form-label" for="to">Inserisci l'indirizzo email del destinatario</label>
+    <input class="button form-control" type="email" name="to" id="to" placeholder="Email destinatario">
 
-        <br>
+    <br>
 
-        <label class="form-label" for="subject">Inserisci l'oggetto dell'email</label>
-        <input class="button form-control" type="text" name="subject" id="subject" placeholder="Oggetto email">
+    <label class="form-label" for="subject">Inserisci l'oggetto dell'email</label>
+    <input class="button form-control" type="text" name="subject" id="subject" placeholder="Oggetto email">
 
-        <br>
+    <br>
 
-        <label id="form-label" for="body">Inserisci il messaggio da inviare</label>
-        <input class="button form-control" type="text" name="body" id="body" placeholder="Contenuto email">
+    <label id="form-label" for="body">Inserisci il messaggio da inviare</label>
+    <input class="button form-control" type="text" name="body" id="body" placeholder="Contenuto email">
 
-        <br>
+    <br>
 
-        <input class="button btn btn-success" type="submit" value="Invia email">
-    </form>
+    <input class="button btn btn-success" type="submit" value="Invia email">
+  </form>
 </div>
 
 

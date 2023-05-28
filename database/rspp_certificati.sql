@@ -12,20 +12,20 @@ CREATE TABLE personale
     -- nel campo mail sarà inserita solo la prima parte dell'indirizzo
     -- (es. "vittorio.zhang.stud@tulliobuzzi.edu.it" -> solo "vittorio.zhang.stud")
     -- si da quindi per scontato che il dominio sia "@tulliobuzzi.edu.it"
-    mail        VARCHAR(64) PRIMARY KEY NOT NULL, -- CHECK(mail NOT LIKE '%.stud')
-    tipo        ENUM ('ata','docente')  NOT NULL,
-    nome        VARCHAR(32)             NOT NULL,
-    cognome     VARCHAR(32)             NOT NULL,
+    mail         VARCHAR(64) PRIMARY KEY NOT NULL, -- CHECK(mail NOT LIKE '%.stud')
+    tipo         ENUM ('ata','docente')  NOT NULL,
+    nome         VARCHAR(32)             NOT NULL,
+    cognome      VARCHAR(32)             NOT NULL,
     -- il codice fiscale è diverso per ogni paese, perciò ho messo VARCHAR
-    cod_fiscale VARCHAR(32)             NOT NULL,
-    data_nascita DATE NOT NULL,
-    luogo VARCHAR(32) DEFAULT 'Italia',
-    note        VARCHAR(128)            NOT NULL                                       DEFAULT '',
-    stato       ENUM ('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
+    cod_fiscale  VARCHAR(32)             NOT NULL,
+    data_nascita DATE                    NOT NULL,
+    luogo        VARCHAR(32)                                                            DEFAULT 'Italia',
+    note         VARCHAR(128)            NOT NULL                                       DEFAULT '',
+    stato        ENUM ('Da compilare', 'Da validare', 'Validato', 'Richiesta modifica') DEFAULT 'Da compilare',
 
 #   La password di default e' il digest di "1234"
-    pw          VARCHAR(64)             NOT NULL                                       DEFAULT '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',
-    in_servizio ENUM ('si', 'no')       NOT NULL                                       DEFAULT 'si'
+    pw           VARCHAR(64)             NOT NULL                                       DEFAULT '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',
+    in_servizio  ENUM ('si', 'no')       NOT NULL                                       DEFAULT 'si'
 );
 
 CREATE TABLE attestato
@@ -51,9 +51,7 @@ CREATE TABLE attestato
     data_scadenza DATE                 DEFAULT NULL,
     file_allegato VARCHAR(256)         DEFAULT NULL,
     PRIMARY KEY (mail, tipo, descrizione),
-    CONSTRAINT attestato_generico_mail
-        FOREIGN KEY (mail)
-            REFERENCES personale (mail)
+    CONSTRAINT attestato_generico_mail FOREIGN KEY (mail) REFERENCES personale (mail)
 );
 
 -- VIEW
@@ -91,32 +89,30 @@ WHERE p.stato = 'Richiesta modifica';
 CREATE VIEW personale_in_scadenza AS
 SELECT p.*
 FROM personale p
-WHERE p.mail IN (SELECT p1.mail
-                 FROM personale p1
-                 WHERE (SELECT COUNT(1)
-                        FROM personale p2
-                                 INNER JOIN attestato a_s ON a_s.data_scadenza IS NOT NULL AND a_s.mail = p2.mail
-                        WHERE p2.mail = p1.mail
-                          AND (
-                                ((MONTH(a_s.data_scadenza) >= (MONTH(CURRENT_DATE) - 2) AND
-                                  MONTH(a_s.data_scadenza) > 2) AND YEAR(a_s.data_scadenza) = YEAR(CURRENT_DATE)) OR
-                                (((MONTH(CURRENT_DATE) = 12) AND MONTH(a_s.data_scadenza) = 2) AND
-                                 YEAR(CURRENT_DATE) + 1 = YEAR(a_s.data_scadenza)) OR
-                                (((MONTH(CURRENT_DATE) = 11) AND MONTH(a_s.data_scadenza) = 1) AND
-                                 YEAR(CURRENT_DATE) + 1 = YEAR(a_s.data_scadenza))
-                            )
-                          AND a_s.data_scadenza >= CURRENT_DATE) > 0);
+WHERE p.mail IN ( SELECT p1.mail
+                  FROM personale p1
+                  WHERE ( SELECT COUNT(1)
+                          FROM personale p2
+                                   INNER JOIN attestato a_s ON a_s.data_scadenza IS NOT NULL AND a_s.mail = p2.mail
+                          WHERE p2.mail = p1.mail
+                            AND (((MONTH(a_s.data_scadenza) >= (MONTH(CURRENT_DATE) - 2) AND
+                                   MONTH(a_s.data_scadenza) > 2) AND YEAR(a_s.data_scadenza) = YEAR(CURRENT_DATE)) OR
+                                 (((MONTH(CURRENT_DATE) = 12) AND MONTH(a_s.data_scadenza) = 2) AND
+                                  YEAR(CURRENT_DATE) + 1 = YEAR(a_s.data_scadenza)) OR
+                                 (((MONTH(CURRENT_DATE) = 11) AND MONTH(a_s.data_scadenza) = 1) AND
+                                  YEAR(CURRENT_DATE) + 1 = YEAR(a_s.data_scadenza)))
+                            AND a_s.data_scadenza >= CURRENT_DATE ) > 0 );
 
 CREATE VIEW personale_scaduto AS
 SELECT p.*
 FROM personale p
-WHERE p.mail IN (SELECT p1.mail
-                 FROM personale p1
-                 WHERE (SELECT COUNT(1)
-                        FROM personale p2
-                                 INNER JOIN attestato a_s ON a_s.data_scadenza IS NOT NULL AND a_s.mail = p2.mail
-                        WHERE p2.mail = p1.mail
-                          AND a_s.data_scadenza < CURRENT_DATE) > 0);
+WHERE p.mail IN ( SELECT p1.mail
+                  FROM personale p1
+                  WHERE ( SELECT COUNT(1)
+                          FROM personale p2
+                                   INNER JOIN attestato a_s ON a_s.data_scadenza IS NOT NULL AND a_s.mail = p2.mail
+                          WHERE p2.mail = p1.mail
+                            AND a_s.data_scadenza < CURRENT_DATE ) > 0 );
 
 -- INSERIMENTO DI DATI a caso
 INSERT INTO personale (mail, tipo, nome, cognome, cod_fiscale, data_nascita)

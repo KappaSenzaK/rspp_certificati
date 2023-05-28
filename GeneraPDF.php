@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/dompdf/vendor/autoload.php";
+require __DIR__."/dompdf/vendor/autoload.php";
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -20,12 +20,12 @@ $dompdf = new Dompdf(
 
 $dompdf->setPaper("A4", "landscape");
 
-$tipo = $_POST['tipo'];
-$nome = $_POST['nome'];
+$tipo    = $_POST['tipo'];
+$nome    = $_POST['nome'];
 $cognome = $_POST['cognome'];
-$data = $_POST['data'];
-$luogo = $_POST['luogo'];
-$ore = "";
+$data    = $_POST['data'];
+$luogo   = $_POST['luogo'];
+$ore     = "";
 
 switch ($tipo) {
     case 'Attestato di aggiornamento per il primo soccorso':
@@ -64,7 +64,6 @@ switch ($tipo) {
     default:
         $ore = "??";
 }
- 
 
 
 $html = file_get_contents("./html/template.html"); //SERVE PER OTTENERE IL HTML DA UN FILE INVECE DI SCRIVERE TUTTO HTML IN STRINGA
@@ -83,9 +82,9 @@ $dompdf->loadhtml($html); //QUESTO PER CREARE PDF CON HTML SCRITTO COME STRINGA
 
 $dompdf->render();
 
-$dompdf->addInfo("Title", "Attestato di " . $nome);
+$dompdf->addInfo("Title", "Attestato di ".$nome);
 
-$dompdf->stream("Attestato_" . $nome . ".pdf", ["Attachment" => 0]);
+$dompdf->stream("Attestato_".$nome.".pdf", ["Attachment" => 0]);
 // SERVE NEL CASO UNO VUOLE VISUALIZZARE PRIMA DI SCARICARLO MANUALMENTE
 
 // $dompdf->stream("Attestato_". $nome .".pdf");

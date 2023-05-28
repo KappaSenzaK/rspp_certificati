@@ -2,12 +2,12 @@
 
 include 'utils/database-consts.php';
 
-$email = $_POST['email'];
-$tipologia = $_POST['tipologia'];
-$desc = $_POST['desc'];
+$email         = $_POST['email'];
+$tipologia     = $_POST['tipologia'];
+$desc          = $_POST['desc'];
 $data_scadenza = $_POST['data_scadenza'];
 
-if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scadenza)) {
+if ( ! isset($email) || ! isset($tipologia) || ! isset($desc) || ! isset($data_scadenza)) {
     die("<h1>Dati non validi </h1>");
 }
 ?>
@@ -15,13 +15,13 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
 <!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form attestato</title>
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/button.css">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Form attestato</title>
+  <link rel="stylesheet" href="css/font.css">
+  <link rel="stylesheet" href="css/button.css">
 </head>
 <body class="font">
 
@@ -37,38 +37,44 @@ if (!isset($email) || !isset($tipologia) || !isset($desc) || !isset($data_scaden
 </div>
 
 <div align="center">
-    <form action="attestato_modifica.php" method="post">
-        <br><h2>Modifica attestato</h2><br>
-        <label class="form-label" for="tipologia">Tipologia: </label>
-        <select name="tipologia" id="tipologia" class="form-control w-25">
-            <?php
+  <form action="attestato_modifica.php" method="post">
+    <br>
+    <h2>Modifica attestato</h2><br>
+    <label class="form-label" for="tipologia">Tipologia: </label>
+    <select name="tipologia" id="tipologia" class="form-control w-25">
+        <?php
 
-            $attestato_tipo = attestato_tipo();
-            foreach ($attestato_tipo as $attestato) {
-                $echo = $attestato == $tipologia ? "<option value='$attestato' selected>$attestato</option>" : "<option value='$attestato'>$attestato</option>";
-                echo $echo;
-            }
+        $attestato_tipo = attestato_tipo();
+        foreach ($attestato_tipo as $attestato) {
+            $echo = $attestato == $tipologia ? "<option value='$attestato' selected>$attestato</option>" : "<option value='$attestato'>$attestato</option>";
+            echo $echo;
+        }
 
-            ?>
-        </select>
+        ?>
+    </select>
 
-        <label class="form-label" for="desc">Descrizione: </label>
-        <input class="button form-control w-25" style="margin-bottom: 5px" type="text" id="desc" name="desc"
-               value="<?php echo $desc ?>"/>
+    <label class="form-label" for="desc">Descrizione: </label>
+    <input class="button form-control w-25" style="margin-bottom: 5px" type="text" id="desc" name="desc"
+           value="<?php
+           echo $desc ?>"/>
 
-        <label class="form-label" for="data_scadenza">Data scadenza: </label>
-        <input class="" type="date" style="margin-bottom: 5px" id="data_scadenza" name="data_scadenza"
-               value="<?php echo $data_scadenza ?>"/>
+    <label class="form-label" for="data_scadenza">Data scadenza: </label>
+    <input class="" type="date" style="margin-bottom: 5px" id="data_scadenza" name="data_scadenza"
+           value="<?php
+           echo $data_scadenza ?>"/>
 
-        <input type="hidden" name="email" value="<?php echo $email ?>" />
+    <input type="hidden" name="email" value="<?php
+    echo $email ?>"/>
 
-        <input type="hidden" name="old_tipologia" value="<?php echo $tipologia ?>" />
-        <input type="hidden" name="old_desc" value="<?php echo $desc ?>" /><br><br>
+    <input type="hidden" name="old_tipologia" value="<?php
+    echo $tipologia ?>"/>
+    <input type="hidden" name="old_desc" value="<?php
+    echo $desc ?>"/><br><br>
 
-        <input class="button" type="submit" value="Conferma modifiche"/>
-    </form>
-    <br><br>
-    <a href="cuccurullo_page.php">Ritorna alla pagina principale</a>
+    <input class="button" type="submit" value="Conferma modifiche"/>
+  </form>
+  <br><br>
+  <a href="cuccurullo_page.php">Ritorna alla pagina principale</a>
 </div>
 
 

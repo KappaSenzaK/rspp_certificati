@@ -2,53 +2,56 @@
 <br>
 <div align="center">
 
-    
-    <form action="signin.php" method="post" class="font">
-        <table>
-            <tr>
-                <td> <label for="email">Indirizzo e-mail istituzionale </label> </td>
-                <td> <input type="text" name="email" id="email" required size="40">@tulliobuzzi.edu.it </td>
-            </tr>
 
-            <tr>
-                <td> <label for="tipo">Tipologia di personale </label> </td>
-                <td> <select name="tipo" id="tipo">
-                        <option value="ata">Personale ATA</option>
-                        <option value="docente">Personale docente</option>
-                    </select> </td>
-            </tr>
-            
-            <tr>
-                <td><label for="nomeUtente">Nome</label></td>
-                <td><input type="text" name="nomeUtente" id="nomeUtente" placeholder="Inserire qui anche possibili secondi nomi" size="40"> </td>
-            </tr>
+  <form action="signin.php" method="post" class="font">
+    <table>
+      <tr>
+        <td><label for="email">Indirizzo e-mail istituzionale </label></td>
+        <td><input type="text" name="email" id="email" required size="40">@tulliobuzzi.edu.it</td>
+      </tr>
 
-            <tr>
-                <td><label for="cognomeUtente">Cognome</label></td>
-                <td><input type="text" name="cognomeUtente" id="cognomeUtente" placeholder="Inserire qui anche possibili secondi cognomi" size="40"></td>
-            </tr>
+      <tr>
+        <td><label for="tipo">Tipologia di personale </label></td>
+        <td><select name="tipo" id="tipo">
+          <option value="ata">Personale ATA</option>
+          <option value="docente">Personale docente</option>
+        </select></td>
+      </tr>
 
-            <tr>
-                <td><label for="codiceFiscale">Codice fiscale</label></td>
-                <td><input type="text" name="codiceFiscale" id="codiceFiscale" size="40"></td>
-            </tr>
+      <tr>
+        <td><label for="nomeUtente">Nome</label></td>
+        <td><input type="text" name="nomeUtente" id="nomeUtente"
+                   placeholder="Inserire qui anche possibili secondi nomi" size="40"></td>
+      </tr>
 
-            <tr>
-                <td><label for="dataNascita">Data di nascita</label></td>
-                <td><input type="date" name="dataNascita" id="dataNascita" size="40"></td>
-            </tr>
-            
-            <tr>
-                <td><label for="luogoNascita">Luogo di nascita</label></td>
-                <td><input type="text" name="luogoNascita" id="luogoNascita" size="40"></td>
-            </tr>
-        </table><br><br>
-        <input class="button" type="submit" value="Invia il modulo" name="loginAction" id="loginAction">
-    </form>
-    <br><br><br>
-    <button class="button" onclick="help()"> Hai bisogno di aiuto? </button>
-    <br>
-    <div id="help_div"></div>
+      <tr>
+        <td><label for="cognomeUtente">Cognome</label></td>
+        <td><input type="text" name="cognomeUtente" id="cognomeUtente"
+                   placeholder="Inserire qui anche possibili secondi cognomi" size="40"></td>
+      </tr>
+
+      <tr>
+        <td><label for="codiceFiscale">Codice fiscale</label></td>
+        <td><input type="text" name="codiceFiscale" id="codiceFiscale" size="40"></td>
+      </tr>
+
+      <tr>
+        <td><label for="dataNascita">Data di nascita</label></td>
+        <td><input type="date" name="dataNascita" id="dataNascita" size="40"></td>
+      </tr>
+
+      <tr>
+        <td><label for="luogoNascita">Luogo di nascita</label></td>
+        <td><input type="text" name="luogoNascita" id="luogoNascita" size="40"></td>
+      </tr>
+    </table>
+    <br><br>
+    <input class="button" type="submit" value="Invia il modulo" name="loginAction" id="loginAction">
+  </form>
+  <br><br><br>
+  <button class="button" onclick="help()"> Hai bisogno di aiuto?</button>
+  <br>
+  <div id="help_div"></div>
 </div>
 
 <!-- DALLA PAGINA FORM VIENE PRIMA MANDATA UNA MAIL CON UN CODICE (LA PASSWORD), POI L'UTENTE DEVE SCRIVERE IL CODICE RICEVUTO

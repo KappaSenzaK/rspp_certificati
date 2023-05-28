@@ -1,9 +1,8 @@
-
-function openSignIn()  {
-    window.location = "signin.php"
+function openSignIn() {
+  window.location = "signin.php"
 }
 
 function openLogin() {
-    window.location.replace(`loginAction.php`);
+  window.location.replace(`loginAction.php`);
 }
 

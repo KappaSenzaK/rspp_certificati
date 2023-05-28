@@ -1,5 +1,4 @@
-
-function sendmail(){
+function sendmail() {
 
 }
 

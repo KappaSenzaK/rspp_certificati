@@ -1,8 +1,9 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
-.header-css{
+
+.header-css {
     background-color: #007d60;
     height: 80px;
     width: 100%;
@@ -15,7 +16,7 @@
     background: #0439b3;
     color: white;
     font-size: 30pt;
-  }
+}
 
 .icon {
     vertical-align: middle;

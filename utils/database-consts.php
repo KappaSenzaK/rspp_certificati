@@ -6,10 +6,10 @@ function get_enum_values($table, $field)
 {
     $conn = connect_database();
 
-    $query = "SHOW COLUMNS FROM " . $table . " WHERE Field = '" . $field . "'";
+    $query  = "SHOW COLUMNS FROM ".$table." WHERE Field = '".$field."'";
     $result = mysqli_query($conn, $query);
 
-    $row = mysqli_fetch_array($result);
+    $row  = mysqli_fetch_array($result);
     $type = $row['Type'];
 
     preg_match("/^enum\(\'(.*)\'\)$/", $type, $matches);

@@ -1,32 +1,32 @@
 <div align="center">
-    <form id="ins_form" action="userFormCompiled.php" method="post" enctype="multipart/form-data">
-        <table style="padding: 2px; background-color:#e8e8e8;">
-            <tr>
-              <th>
-                  <br><input required class="button" type="file" id="att" name="att"/>
-              </th>
-          </tr>
-          <tr>
-            <th>
+  <form id="ins_form" action="userFormCompiled.php" method="post" enctype="multipart/form-data">
+    <table style="padding: 2px; background-color:#e8e8e8;">
+      <tr>
+        <th>
+          <br><input required class="button" type="file" id="att" name="att"/>
+        </th>
+      </tr>
+      <tr>
+        <th>
                 <textarea name="descrizione" id="descrizione" form="ins_form" placeholder="Descrizione"
-                rows="6" cols="70" style="resize: none;"></textarea>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <input class="button" type="submit" value="Invia il modulo"/><br>
-            </th>
-          </tr>
-        </table>
-    </form>
-    <br><br><br>
+                          rows="6" cols="70" style="resize: none;"></textarea>
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <input class="button" type="submit" value="Invia il modulo"/><br>
+        </th>
+      </tr>
+    </table>
+  </form>
+  <br><br><br>
 </div>
 
 <script>
   document.getElementById('submit').onclick = function (e) {
     let file = document.getElementById('file')
 
-    if(file.files.length === 0){
+    if (file.files.length === 0) {
       e.preventDefault();
       alert('Non hai selezionato nessun file!')
     }

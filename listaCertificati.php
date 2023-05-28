@@ -6,7 +6,7 @@ if ($_SESSION['mail'] != 'rspp') {
 ?>
 <h1>Errore nell'accesso!</h1><br><br><br>
 <button id="helpButton" class="button" onclick="window.open('index.php'); window.close()"> Torna alla pagina di
-    accesso
+  accesso
 </button>
 <?php
 die();
@@ -14,25 +14,25 @@ die();
 ?>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Main page del cuccurullo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/index.css">
+  <title>Main page del cuccurullo</title>
 
-    <style>
-        .table {
-            margin: auto;
-            width: 50% !important;
-        }
+  <style>
+      .table {
+          margin: auto;
+          width: 50% !important;
+      }
 
-        #email-section {
-            padding-top: 70px;
-            margin: auto;
-            width: 50%;
-        }
-    </style>
+      #email-section {
+          padding-top: 70px;
+          margin: auto;
+          width: 50%;
+      }
+  </style>
 </head>
 <body>
 
@@ -65,34 +65,34 @@ die();
 
     $id = 0;
 
-    $mail = "mail";
-    $nome = "nome";
+    $mail    = "mail";
+    $nome    = "nome";
     $cognome = "cognome";
-    $tipo = "tipo";
-    $stato = "stato";
+    $tipo    = "tipo";
+    $stato   = "stato";
 
-    
+
     $fine_mail = "@tulliobuzzi.edu.it";
 
     foreach ($users as $user) {
         $id++;
         $da_compilare = $user['stato'] == StatoCertificati::DA_COMPILARE;
 
-        echo '<tr id="' . $id . '" >
-                <td id="' . $id . $mail . '">' . $user['mail'] . $fine_mail . '</td>
-                <td id="' . $id . $tipo . '">' . $user['tipo'] . $fine_mail . '</td>
-                <td id="' . $id . $nome . '">' . $user['nome'] . '</td>
-                <td id="' . $id . $cognome . '">' . $user['cognome'] . '</td>
-                <td id="' . $id . $stato . '" class="' . ($da_compilare ? 'bg-warning' : '') . '">' . $user['stato'] . '</td>
+        echo '<tr id="'.$id.'" >
+                <td id="'.$id.$mail.'">'.$user['mail'].$fine_mail.'</td>
+                <td id="'.$id.$tipo.'">'.$user['tipo'].$fine_mail.'</td>
+                <td id="'.$id.$nome.'">'.$user['nome'].'</td>
+                <td id="'.$id.$cognome.'">'.$user['cognome'].'</td>
+                <td id="'.$id.$stato.'" class="'.($da_compilare ? 'bg-warning' : '').'">'.$user['stato'].'</td>
                 <td>
                     <form method="post" action="GeneraPDF.php" align="center">
-                        <input type="hidden" name="user" id="user" value="' . $user['mail'] . '"/>
-                        <input type="hidden" name="tipo" id="tipo" value="' . $user['tipo'] . '"/>
-                        <input type="hidden" name="nome" value="' . $user['nome'] . '"/>
-                        <input type="hidden" name="cognome" value="' . $user['cognome'] . '"/>
-                        <input type="hidden" name="data" value="' . $user['data'] . '"/>
-                        <input type="hidden" name="luogo" value="' . $user['luogo'] . '"/>
-                        <input type="hidden" name="stato" value="' . $user['stato'] . '"/>
+                        <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
+                        <input type="hidden" name="tipo" id="tipo" value="'.$user['tipo'].'"/>
+                        <input type="hidden" name="nome" value="'.$user['nome'].'"/>
+                        <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
+                        <input type="hidden" name="data" value="'.$user['data'].'"/>
+                        <input type="hidden" name="luogo" value="'.$user['luogo'].'"/>
+                        <input type="hidden" name="stato" value="'.$user['stato'].'"/>
                         <input type="submit" value="Certificato"/>
                     </form>
                 </td>
@@ -105,8 +105,6 @@ die();
 
 
 </div>
-
-
 
 
 <script src="js/actions.js"></script>

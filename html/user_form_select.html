@@ -2,106 +2,194 @@
   <h2>Che tipo di certificato vuoi aggiungere?</h2><br>
 
   <table style='background-color:#e8e8e8;'>
-      <tr><th>Tipologia</th><th>Durata del corso</th><th>Validità</th><th></th></tr>
-      
-      <tr><td>Attestato di formazione generale</td><td>4 ore</td><td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione generale">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione specifica - rischio medio</td><td>8 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione specifica - rischio medio">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione - rischio alto</td><td>12 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione - rischio alto">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione sicurezza per il preposto</td><td>8 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione sicurezza per il preposto">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di aggiornamento sicurezza per il preposto</td><td>6 ore<td>5 anni</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento sicurezza per il preposto">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di aggiornamento sicurezza</td><td>6 ore<td>5 anni</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento sicurezza">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione per RLS</td><td>32 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per RLS">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di aggiornamento per RLS</td><td>8 ore<td>1 anno</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento per RLS">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione aggiornamento RSPP</td><td>40 ore<td>5 anni</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione aggiornamento RSPP">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione per rischio di incendio - rischio medio</td><td>12 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per rischio di incendio - rischio medio">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione per rischio di incendio - rischio alto</td><td>16 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per rischio di incendio - rischio alto">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione per il primo soccorso</td><td>12 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per il primo soccorso">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di aggiornamento per il primo soccorso</td><td>4 ore<td>3 anni</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento per il primo soccorso">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Attestato di formazione BLSD</td><td>5 ore<td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione BLSD">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
+    <tr>
+      <th>Tipologia</th>
+      <th>Durata del corso</th>
+      <th>Validità</th>
+      <th></th>
+    </tr>
 
-      <tr><td>Attestato di aggiornamento BLSD</td><td>3 ore<td>2 anni</td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento BLSD">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-      <tr><td>Altro ...</td><td> --- <td> --- </td><td>
-          <form metdod="get" action="userForm.php">
-              <input type="hidden" name="add_cert" id="add_cert" value="Altro">
-              <input type="submit" value="Aggiungi">
-          </form>
-      </td></tr>
-    </table>
+    <tr>
+      <td>Attestato di formazione generale</td>
+      <td>4 ore</td>
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione generale">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione specifica - rischio medio</td>
+      <td>8 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione specifica - rischio medio">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione - rischio alto</td>
+      <td>12 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione - rischio alto">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione sicurezza per il preposto</td>
+      <td>8 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione sicurezza per il preposto">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di aggiornamento sicurezza per il preposto</td>
+      <td>6 ore
+      <td>5 anni</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert"
+                 value="Attestato di aggiornamento sicurezza per il preposto">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di aggiornamento sicurezza</td>
+      <td>6 ore
+      <td>5 anni</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento sicurezza">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione per RLS</td>
+      <td>32 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per RLS">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di aggiornamento per RLS</td>
+      <td>8 ore
+      <td>1 anno</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento per RLS">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione aggiornamento RSPP</td>
+      <td>40 ore
+      <td>5 anni</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione aggiornamento RSPP">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione per rischio di incendio - rischio medio</td>
+      <td>12 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert"
+                 value="Attestato di formazione per rischio di incendio - rischio medio">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione per rischio di incendio - rischio alto</td>
+      <td>16 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert"
+                 value="Attestato di formazione per rischio di incendio - rischio alto">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione per il primo soccorso</td>
+      <td>12 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione per il primo soccorso">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di aggiornamento per il primo soccorso</td>
+      <td>4 ore
+      <td>3 anni</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento per il primo soccorso">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Attestato di formazione BLSD</td>
+      <td>5 ore
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di formazione BLSD">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Attestato di aggiornamento BLSD</td>
+      <td>3 ore
+      <td>2 anni</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Attestato di aggiornamento BLSD">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+    <tr>
+      <td>Altro ...</td>
+      <td> ---
+      <td> ---</td>
+      <td>
+        <form metdod="get" action="userForm.php">
+          <input type="hidden" name="add_cert" id="add_cert" value="Altro">
+          <input type="submit" value="Aggiungi">
+        </form>
+      </td>
+    </tr>
+  </table>
   <br>
   <br>
   <button class="button" id="help_b" onclick="help()">Hai bisogno di aiuto?</button>
