@@ -28,6 +28,11 @@ include 'html/header.html';
 
 if (!isset($_SESSION['signin'])) {
     $_SESSION['signin'] = true;
+
+    if (isset($_SESSION['code']))
+        unset($_SESSION['code']);
+    if (isset($_POST['code']))
+        unset($_POST['code']);
 }
 
 if (isset($_POST['back'])) {
@@ -108,6 +113,10 @@ $codiceFiscale = $_POST['codiceFiscale'];
 $dataNascita = $_POST['dataNascita'];
 $luogoNascita = $_POST['luogoNascita'];
 
+if(substr_count($email, ".") == 2 && substr_count($email, ".stud") == 1) {
+    die("<br><h1 align='center'>Attenzione: non è possibile creare un account per uno studente!</h1><br><h1><button align='center' class='button' onclick='openLogin()'>Torna al login </button></h1>");
+}
+
 $_SESSION['signin_mail'] = $email;
 $_SESSION['signin_tipo'] = $tipo;
 $_SESSION['signin_nomeUtente'] = $nomeUtente;
@@ -115,7 +124,6 @@ $_SESSION['signin_cognomeUtente'] = $cognomeUtente;
 $_SESSION['signin_codiceFiscale'] = $codiceFiscale;
 $_SESSION['signin_dataNascita'] = $dataNascita;
 $_SESSION['signin_luogoNascita'] = $luogoNascita;
-
 
 function firstLetterToUpperCase($string)
 {
@@ -136,7 +144,7 @@ if (existAccountByEmail($email)) {
 
 $digestPassword = substr(hash(
     'md5',
-    $email . $tipo . $nomeUtente . $cognomeUtente . $codiceFiscale . $dataNascita . $luogoNascita),
+    $email . $tipo . $nomeUtente . $cognomeUtente . $codiceFiscale . $dataNascita . $luogoNascita . (New DateTime())->format('Y-m-d H:i:s')),
     0, 5
 );
 
