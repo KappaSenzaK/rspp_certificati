@@ -14,7 +14,7 @@ class EmailStatus
     const OK_RSPP = "L'email è stato inviato con successo.";
 }
 
-function sendEmail($to, $subject, $body, $email_type)
+function sendEmail($to, $subject, $body, $email_type = EmailStatus::OK)
 {
     $mail = new PHPMailer(true);
 
