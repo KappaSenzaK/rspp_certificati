@@ -44,25 +44,25 @@ $user = findUserByEmail($email);
     <!--        Hidden inputs       -->
     <input type="hidden" name="email" value="<?php
     echo $email ?>"/>
-    <tr>
+    <tr align="start">
       <td>Nome</td>
       <td>&nbsp;</td>
       <td><input type="text" id="nome" name="nome" value="<?php
           echo $nome; ?>"/></td>
     </tr>
-    <tr>
+    <tr align="start">
       <td>Cognome</td>
       <td>&nbsp;</td>
       <td><input type="text" id="cognome" name="cognome" value="<?php
           echo $cognome; ?>"/></td>
     </tr>
-    <tr>
+    <tr align="start">
       <td>Codice fiscale</td>
       <td>&nbsp;</td>
       <td><input type="text" id="codice_fiscale" name="codice_fiscale" value="<?php
           echo $c_f; ?>"/></td>
     </tr>
-    <tr>
+    <tr align="start">
       <td>In servizio</td>
       <td>&nbsp;</td>
       <td><?php
@@ -75,7 +75,7 @@ $user = findUserByEmail($email);
           echo "</select>";
           ?></td>
     </tr>
-    <tr>
+    <tr align="start">
       <td>Descrizione</td>
       <td>&nbsp;</td>
       <td>
@@ -83,7 +83,7 @@ $user = findUserByEmail($email);
         echo $user['note'] ?>"/>
       </td>
     </tr>
-    <tr>
+    <tr align="start">
       <td>Stato</td>
       <td>&nbsp;</td>
       <td>
@@ -91,7 +91,10 @@ $user = findUserByEmail($email);
           $stati_personale = enum_personale_stato();
           echo "<select name='stato'>";
           foreach ($stati_personale as $stato_personale) {
-              $echo = $user['stato'] == $stato_personale ? "<option value='$stato_personale' selected >" : "<option value='$stato_personale' >";
+              $echo = $user['stato'] == $stato_personale
+                      ? "<option value='$stato_personale' selected >$stato_personale</option>"
+                      : "<option value='$stato_personale'>$stato_personale</option>";
+
               echo $echo;
           }
           echo "</select>";
