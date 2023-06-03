@@ -80,7 +80,7 @@ die();
 
         echo '<tr id="'.$id.'" >
                 <td id="'.$id.$mail.'">'.$user['mail'].$fine_mail.'</td>
-                <td id="'.$id.$tipo.'">'.$user['tipo'].$fine_mail.'</td>
+                <td id="'.$id.$tipo.'">'.$user['tipo'].'</td>
                 <td id="'.$id.$nome.'">'.$user['nome'].'</td>
                 <td id="'.$id.$cognome.'">'.$user['cognome'].'</td>
                 <td id="'.$id.$stato.'" class="'.($da_compilare ? 'bg-warning' : '').'">'.$user['stato'].'</td>
