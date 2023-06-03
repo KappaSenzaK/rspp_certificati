@@ -4,7 +4,7 @@ function openSignIn()  {
 }
 
 function openLogin() {
-    window.location.replace(`loginAction.php`);
+    window.location.replace(``);
 }
 
 function openForgotPassword() {

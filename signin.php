@@ -9,6 +9,8 @@
   <title>Creazione dell'account</title>
   <link rel="stylesheet" href="css/button.css">
   <link rel="stylesheet" href="css/font.css">
+
+  <script defer src="js/login.js"></script>
 </head>
 <?php
 session_start();
@@ -18,7 +20,6 @@ include 'utils/emails.php';
 
 include 'html/header.html';
 ?>
-<script src="js/login.js"></script>
 <head>
   <title>Creazione dell'account</title>
 </head>
@@ -84,7 +85,7 @@ if (isset($_SESSION['code'])) {
                  </div>';
         }
     }
-    die();
+//    die();
 }
 
 
@@ -158,7 +159,8 @@ if (existAccountByEmail($email)) {
 
 $digestPassword = substr(hash(
         'md5',
-        $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$luogoNascita.(new DateTime())->format('Y-m-d H:i:s')),
+        $email.$tipo.$nomeUtente.$cognomeUtente.$codiceFiscale.$dataNascita.$luogoNascita.(new DateTime())->format('Y-m-d H:i:s')
+        ),
         0, 5
 );
 
