@@ -22,6 +22,12 @@ include 'html/header.html'
 <div class="font">
     <?php
 
+    if(isset($_POST['rspp']))
+      $email_type = EmailStatus::OK_RSPP;
+    else
+      $email_type = EmailStatus::OK;
+
+
     $to      = $_POST['to'];
     $subject = $_POST['subject'];
     $body    = $_POST['body'];
@@ -29,11 +35,13 @@ include 'html/header.html'
     if ( ! isset($to) || ! isset($subject) || ! isset($body)) {
         die("<h1>Email destinatario, subject, oppure body non sono configurati</h1>");
     }
-    echo sendEmail($to, $subject, $body);
+    echo sendEmail($to, $subject, $body, $email_type);
     ?>
 </div>
 
-<button class="font button" onclick="window.location.replace('./index.php')">Home page</button>
+<div align="center" style="margin-top: 30px">
+  <button class="font button" onclick="window.location.replace('./index.php')">Home page</button>
+</div>
 
 </body>
 </html>

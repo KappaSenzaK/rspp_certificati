@@ -113,6 +113,8 @@ die();
   <div></div>
 
   <form action="http://localhost:80/rspp_certificati/sendmail.php" method="post" class="font form">
+    <input type="hidden" name="rspp" value="rspp">
+
     <label class="form-label" for="to">Inserisci l'indirizzo email del destinatario</label>
     <input class="button form-control" type="email" name="to" id="to" placeholder="Email destinatario">
 

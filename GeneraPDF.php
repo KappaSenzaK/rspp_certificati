@@ -3,7 +3,6 @@
 require __DIR__."/dompdf/vendor/autoload.php";
 
 use Dompdf\Dompdf;
-use Dompdf\Options;
 
 // $options = new Options();
 // $options->setChroot(__DIR__)

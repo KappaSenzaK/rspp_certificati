@@ -9,11 +9,12 @@ require 'phpmailer/src/SMTP.php';
 
 class EmailStatus
 {
-    const OK = "Al tuo indirizzo e-mail istituzionale è stata inviata una mail di conferma";
-    const NOT_OK_SCHEMA = "Errore durante la creazione dell'account";
+    const OK = "Al tuo indirizzo e-mail istituzionale è stata inviata una mail di conferma.";
+    const NOT_OK_SCHEMA = "Errore durante la creazione dell'account.";
+    const OK_RSPP = "L'email è stato inviato con successo.";
 }
 
-function sendEmail($to, $subject, $body)
+function sendEmail($to, $subject, $body, $email_type)
 {
     $mail = new PHPMailer(true);
 
@@ -34,8 +35,10 @@ function sendEmail($to, $subject, $body)
     try {
         $mail->send();
 
-        return EmailStatus::OK;
+        return "<div align='center'>$email_type</div>";
     } catch (Exception $e) {
-        return EmailStatus::NOT_OK_SCHEMA.". Motivo: ".$e->errorMessage();
+        $s = EmailStatus::NOT_OK_SCHEMA.". Motivo: ".$e->errorMessage();
+
+        return "<div align='center'> $s </div>";
     }
 }
