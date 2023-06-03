@@ -20,22 +20,22 @@ function get_enum_values($table, $field)
     return $enum;
 }
 
-function personale_tipo()
+function enum_personale_tipo()
 {
     return get_enum_values('personale', 'tipo');
 }
 
-function personale_stato()
+function enum_personale_stato()
 {
     return get_enum_values('personale', 'stato');
 }
 
-function personale_in_servizio()
+function enum_personale_in_servizio()
 {
     return get_enum_values('personale', 'in_servizio');
 }
 
-function attestato_tipo()
+function enum_attestato_tipo()
 {
     return get_enum_values('attestato', 'tipo');
 }

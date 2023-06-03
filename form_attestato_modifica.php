@@ -44,7 +44,7 @@ if ( ! isset($email) || ! isset($tipologia) || ! isset($desc) || ! isset($data_s
     <select name="tipologia" id="tipologia" class="form-control w-25">
         <?php
 
-        $attestato_tipo = attestato_tipo();
+        $attestato_tipo = enum_attestato_tipo();
         foreach ($attestato_tipo as $attestato) {
             $echo = $attestato == $tipologia ? "<option value='$attestato' selected>$attestato</option>" : "<option value='$attestato'>$attestato</option>";
             echo $echo;
