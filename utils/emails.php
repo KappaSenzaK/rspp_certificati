@@ -35,10 +35,10 @@ function sendEmail($to, $subject, $body, $email_type)
     try {
         $mail->send();
 
-        return "<div align='center'>$email_type</div>";
+        return "<div align='center'><h2>$email_type</h2></div>";
     } catch (Exception $e) {
         $s = EmailStatus::NOT_OK_SCHEMA.". Motivo: ".$e->errorMessage();
 
-        return "<div align='center'> $s </div>";
+        return "<div align='center'> <h2>$s</h2> </div>";
     }
 }

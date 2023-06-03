@@ -15,6 +15,7 @@ $codice_fiscale = mysqli_real_escape_string($conn, htmlspecialchars($_POST['codi
 $stato = mysqli_real_escape_string($conn, htmlspecialchars($_POST['stato']));
 $desc = mysqli_real_escape_string($conn, htmlspecialchars($_POST['desc']));
 $in_servizio = mysqli_real_escape_string($conn, htmlspecialchars($_POST['in_servizio']));
+$tipo = mysqli_real_escape_string($conn, htmlspecialchars($_POST['tipo']));
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -33,7 +34,7 @@ $in_servizio = mysqli_real_escape_string($conn, htmlspecialchars($_POST['in_serv
 
     // verificare i valori degli input
 
-    modifyAccount($nome, $cognome, $real_email[0], $codice_fiscale, $stato, $desc, $in_servizio);
+    modifyAccount($nome, $cognome, $real_email[0], $codice_fiscale, $stato, $desc, $in_servizio, $tipo);
 
     echo "<br><h2>L'account di $nome $cognome e' stato modificato con successo! </h2>";
     echo "<a href='cuccurullo_page.php'>Ritorna alla pagina principale </a>";

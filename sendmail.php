@@ -36,11 +36,8 @@ include 'html/header.html'
         die("<h1>Email destinatario, subject, oppure body non sono configurati</h1>");
     }
     echo sendEmail($to, $subject, $body, $email_type);
+    echo "<div align='center'><a href='./index.php'>Ritorna alla Home Page</a></div>"
     ?>
-</div>
-
-<div align="center" style="margin-top: 30px">
-  <button class="font button" onclick="window.location.replace('./index.php')">Home page</button>
 </div>
 
 </body>

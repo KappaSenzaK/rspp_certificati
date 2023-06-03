@@ -101,6 +101,24 @@ $user = findUserByEmail($email);
           ?>
       </td>
     </tr>
+    <tr align="start">
+      <td>Tipo</td>
+      <td>&nbsp;</td>
+      <td>
+          <?php
+            $personale_tipi = enum_personale_tipo();
+            echo "<select name='tipo'>";
+            foreach($personale_tipi as $personale_tipo) {
+                $echo = $user['tipo'] == $personale_tipo
+                        ? "<option value='$personale_tipo' selected >$personale_tipo</option>"
+                        : "<option value='$personale_tipo'>$personale_tipo</option>";
+
+                echo $echo;
+            }
+            echo "</select>";
+            ?>
+      </td>
+    </tr>
   </table>
   <br><br>
   <input type="submit" value="Conferma le modifiche" class="btn btn-success"/>

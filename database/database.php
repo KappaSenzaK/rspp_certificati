@@ -108,11 +108,11 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data, $l
     $statement->execute();
 }
 
-function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $desc, $in_servizio)
+function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $desc, $in_servizio, $tipo)
 {
     $conn      = connect_database();
     $statement = $conn->prepare("UPDATE personale 
-    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', note = '$desc', in_servizio = '$in_servizio'
+    SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', note = '$desc', in_servizio = '$in_servizio', tipo = '$tipo'
     WHERE mail = '$email'");
 
     $statement->execute();
