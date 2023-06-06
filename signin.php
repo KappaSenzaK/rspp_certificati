@@ -110,13 +110,13 @@ if ( ! isset($_POST['email'])
     die();
 }
 
-$email         = $_POST['email'];
-$tipo          = $_POST['tipo'];
-$nomeUtente    = $_POST['nomeUtente'];
-$cognomeUtente = $_POST['cognomeUtente'];
-$codiceFiscale = $_POST['codiceFiscale'];
-$dataNascita   = $_POST['dataNascita'];
-$luogoNascita  = $_POST['luogoNascita'];
+$email         = htmlspecialchars($_POST['email']);
+$tipo          = htmlspecialchars($_POST['tipo']);
+$nomeUtente    = htmlspecialchars($_POST['nomeUtente']);
+$cognomeUtente = htmlspecialchars($_POST['cognomeUtente']);
+$codiceFiscale = htmlspecialchars($_POST['codiceFiscale']);
+$dataNascita   = htmlspecialchars($_POST['dataNascita']);
+$luogoNascita  = htmlspecialchars($_POST['luogoNascita']);
 
 if (substr_count($email, ".") == 2 && substr_count($email, ".stud") == 1) {
     die("
