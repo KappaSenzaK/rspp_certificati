@@ -32,6 +32,7 @@ function connect_database(
 function obtain_password($mail)
 {
     $conn      = connect_database();
+    $mail      = mysqli_real_escape_string($conn, $mail);
     $statement = $conn->prepare('SELECT pw FROM personale WHERE mail = "'.$mail.'"');
     $statement->execute();
 
@@ -48,6 +49,7 @@ function obtain_password($mail)
 function findUserByEmail($mail)
 {
     $conn      = connect_database();
+    $mail      = mysqli_real_escape_string($conn, $mail);
     $statement = $conn->prepare("
             SELECT tipo,
                    nome, 
@@ -84,6 +86,7 @@ function findUserByEmail($mail)
 function existAccountByEmail($mail): bool
 {
     $conn      = connect_database();
+    $mail      = mysqli_real_escape_string($conn, $mail);
     $statement = $conn->prepare('SELECT COUNT(mail) as emails FROM personale WHERE mail = "'.$mail.'"');
     $statement->execute();
 
@@ -102,6 +105,7 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data, $l
     $pw = hash("sha256", $pw);
 
     $conn      = connect_database();
+    $pw       = mysqli_real_escape_string($conn, $pw);
     $statement = $conn->prepare(
             "INSERT INTO personale(mail, tipo, nome, cognome, cod_fiscale, data_nascita, luogo, stato, pw) 
                 VALUES ('$mail', '$tipo', '$nome', '$cognome', '$cod_fiscale', '$data', '$luogo', 'Da compilare', '$pw')");
@@ -110,7 +114,14 @@ function createNewAccount($mail, $tipo, $nome, $cognome, $cod_fiscale, $data, $l
 
 function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $desc, $in_servizio, $tipo)
 {
-    $conn      = connect_database();
+    $conn            = connect_database();
+    $nome            = mysqli_real_escape_string($conn, $nome);
+    $cognome         = mysqli_real_escape_string($conn, $cognome);
+    $email           = mysqli_real_escape_string($conn, $email);
+    $codice_fiscale  = mysqli_real_escape_string($conn, $codice_fiscale);
+    $stato           = mysqli_real_escape_string($conn, $stato);
+    $in_servizio     = mysqli_real_escape_string($conn, $in_servizio);
+    $tipo            = mysqli_real_escape_string($conn, $tipo);
     $statement = $conn->prepare("UPDATE personale 
     SET nome = '$nome', cognome = '$cognome', cod_fiscale = '$codice_fiscale', stato = '$stato', note = '$desc', in_servizio = '$in_servizio', tipo = '$tipo'
     WHERE mail = '$email'");
@@ -120,7 +131,10 @@ function modifyAccount($nome, $cognome, $email, $codice_fiscale, $stato, $desc, 
 
 function modifyAttestato($email, $tipologia, $desc, $data_scadenza, $old_desc, $old_tipologia)
 {
-    $conn = connect_database();
+    $conn     = connect_database();
+    $desc     = mysqli_real_escape_string($conn, $desc);
+    $old_desc = mysqli_real_escape_string($conn, $old_desc);
+    $email    = mysqli_real_escape_string($conn, $email);
     $conn->query("UPDATE attestato 
 SET tipo = '$tipologia', descrizione = '$desc', data_scadenza = '$data_scadenza'
 WHERE mail = '$email' AND tipo = '$old_tipologia' AND descrizione = '$old_desc' ");
@@ -135,6 +149,7 @@ WHERE mail = '$email' AND tipo = '$old_tipologia' AND descrizione = '$old_desc' 
 function retrieveNameAndSurname($mail): array
 {
     $conn      = connect_database();
+    $mail      = mysqli_real_escape_string($conn, $mail);
     $statement = $conn->prepare("SELECT DISTINCT nome, cognome
                                          FROM personale
                                          WHERE mail = '".$mail."'");
@@ -153,6 +168,9 @@ function insertNewAttestato(
         $file_allegato = ''
 ) {
     $conn = connect_database();
+    $mail          = mysqli_real_escape_string($conn, $mail);
+    $descrizione   = mysqli_real_escape_string($conn, $descrizione);
+    $file_allegato = mysqli_real_escape_string($conn, $file_allegato);
     if ($data_scadenza == null) {
         $statement = $conn->prepare("INSERT INTO attestato(mail, tipo, descrizione, file_allegato)    
                                     VALUES ('".$mail."','".$tipo."','".$descrizione."', '".$file_allegato."')");
@@ -166,6 +184,8 @@ function insertNewAttestato(
 function aggiornaStato($mail, $stato)
 {
     $conn      = connect_database();
+    $mail      = mysqli_real_escape_string($conn, $mail);
+    $stato     = mysqli_real_escape_string($conn, $stato);
     $statement = $conn->prepare("UPDATE personale
                                 SET stato = '$stato'
                                 WHERE mail = '".$mail."'");
@@ -548,6 +568,8 @@ function getSForCuccurullo()
 function cancellaCertificatiVecchi($mail = '', $att = '')
 {
     $conn = connect_database();
+    $mail = mysqli_real_escape_string($conn, $mail);
+    
     if ($mail == '') {
         if ($att == '') {
             $sql = "
