@@ -5,26 +5,49 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ATTESTATO</title>
+  <style>
+    .alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
+  </style>
 </head>
 <body>
-<div>
-  <h2>ATTESTATO DI PARTECIPAZIONE</h2>
-  <h1>ISTITUTO TECNICO STATALE “T. BUZZI” - PRATO</h1>
-  <h4>in qualità di soggetto accreditato ai sensi della Direttiva 170/2016</h4><br>
-  <p>ATTESTA CHE <br>{{ nome }} {{ cognome }} <br>nato/a il {{ data }} a {{ luogo }}</p><br>
-  <h4>ha partecipato in qualità di «lavoratore» del settore Scuola e Pubblica Amministrazione (ATECO n. 8) <br> al
-    corso di formazione con verifica dell’apprendimento:</h4>
-
-  <h2> {{ tipo }}</h2>
+<div style="border-style: double;border-color: green; border-width: 8px; height: 90%; width: 100%;">
   <br>
-  <h5>il 14/09/2022, organizzato da ISTITUTO TECNICO STATALE SET. TECNOLOGICO “T. BUZZI” in Viale della Repubblica 9,
-    59100 PRATO (PO), </h5><br>
+  <div style="color:blue; font-size: 20px; text-align: center;">ATTESTATO DI PARTECIPAZIONE</div>
+  <div style="color:blue; font-size: 26px; text-align: center;">ISTITUTO TECNICO STATALE “T. BUZZI” - PRATO</div>
+  <div  style="color:rgb(173, 173, 173); font-size: 12px; text-align: center;">in qualità di soggetto accreditato ai sensi della Direttiva 170/2016</div><br>
+  <div style="color:blue; font-size: 18px; text-align: center;">ATTESTA CHE</div>
+  <div style="color:rgb(0, 0, 161); font-size: 20px; text-align: center;">{{ nome }} {{ cognome }} <br>nato/a il {{ data }} a {{ luogo }}</div>
+  <div style="color:blue; font-size: 13px; text-align: center;margin-top: 5px">ha partecipato in qualità di «lavoratore» del settore Scuola e Pubblica Amministrazione (ATECO n. 8) <br> al
+    corso di formazione con verifica dell’apprendimento:</div><br>
+
+  <div style="color: green; font-size: 20px; text-align: center;margin-top: 5px; font-style: italic; font-weight: bold;"> {{ tipo }}</div>
+  <div style="color:rgb(173, 173, 173); font-size:11px; text-align: center;">il 14/09/2022, organizzato da ISTITUTO TECNICO STATALE SET. TECNOLOGICO “T. BUZZI” in Viale della Repubblica 9,
+    59100 PRATO (PO), </div>
+  <div style="color:blue; font-size: 13px; text-align: center">Il percorso formativo è coerente con il piano di formazione del personale della scuola ai Art. 37, D.Lgs. 81/08 e s.m.i. </div>
+<br>
+  <div style="color:blue; font-size: 13px; text-align: center;">L'attività formativa ha avuto una durata totale pari ad ore: {{ ore }}</div>
   <br>
-  <h5>Il percorso formativo è coerente con il piano di formazione del personale della scuola ai Art. 37, D.Lgs. 81/08
-    e s.m.i. </h5>
-
-  <h5>L'attività formativa ha avuto una durata totale pari ad ore: {{ ore }}</h5>
-
+  <div style="color:rgb(0, 0, 161); font-size: 12px; text-align: left; margin-left: 5px ">Argomenti trattati</div>
+  <div style="color: green; font-size: 12px; text-align: left; margin-left: 5px ">???????????????????????????????????????????????????????????????????<br>
+    ???????????????????????????????????????????????????????????????????<br>
+    ???????????????????????????????????????????????????????????????????
+  </div><br>
+  <div style="color:rgb(173, 173, 173); font-size: 11px; text-align: center;">Vista la documentazione agli atti di questo soggetto erogatore, si attesta che il/la discente ha partecipato al percorso formativo per almeno il 75% <br>
+    delle attività formative previste con esito positivo nella prova di verifica finale.
+    </div>
+    <br>
+    <div id="textbox" style="font-size: 12px;">
+      <p class="alignleft" style="margin-left: 5px;">Il Responsabile del progetto formativo <br>Massimo Cuccurullo</p>
+      <p class="alignright" style="margin-right: 5px;">Il Dirigente Scolastico <br>Alessandro Marinelli</p>
+    </div>
+    <div style="clear: both;"></div>
+    <br>
+    <div style="color:rgb(173, 173, 173); font-size: 11px; text-align: left; margin-left: 5px;">Prato,  {{ oggi }}</div>
 
 </div>
 </body>

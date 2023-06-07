@@ -48,17 +48,15 @@ die();
 
     <?php
     include 'database/database.php';
-    $users = getAttestatiForCuccurullo();
+    $users = getUsersForCuccurullo();
+    
 
-    echo '<table class="table table-striped table-hover w-75 ">
+    echo '
+            <table class="table table-striped table-hover w-75 ">
             <thead>
                 <tr>
                     <th scope="col">Email</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
-                    <th scope="col">Stato</th>
-
                 </tr>
             </thead>
             <tbody>';
@@ -74,20 +72,22 @@ die();
 
     $fine_mail = "@tulliobuzzi.edu.it";
 
-    foreach ($users as $user) {
+    foreach($users as $user)
+    {
+        $attestati = getAttestatiForCuccurullo($user['mail']);
         $id++;
-        $da_compilare = $user['stato'] == StatoCertificati::DA_COMPILARE;
+        echo '<form id="certificato'.$id.'" method="post" action="GeneraPDF.php" align="center">';
+        echo '<tr id="'.$id.'"><td id="'.$id.$mail.'">'.$user['mail'].$fine_mail.'</td>';
+        echo  '<td style="text-align: left" id="'.$id.$tipo.'">';
+        echo '<select style="width: 100%" name="tipo" id="tipo">';
+        foreach ($attestati as $att) {            
+                    echo '<option value="'.$att["tipo"].'">'.$att['tipo'].'</option>';      
+        }
+        echo '</select>';
+    echo '</td>';
 
-        echo '<tr id="'.$id.'" >
-                <td id="'.$id.$mail.'">'.$user['mail'].$fine_mail.'</td>
-                <td id="'.$id.$tipo.'">'.$user['tipo'].'</td>
-                <td id="'.$id.$nome.'">'.$user['nome'].'</td>
-                <td id="'.$id.$cognome.'">'.$user['cognome'].'</td>
-                <td id="'.$id.$stato.'" class="'.($da_compilare ? 'bg-warning' : '').'">'.$user['stato'].'</td>
-                <td>
-                    <form method="post" action="GeneraPDF.php" align="center">
+        echo '<td>                
                         <input type="hidden" name="user" id="user" value="'.$user['mail'].'"/>
-                        <input type="hidden" name="tipo" id="tipo" value="'.$user['tipo'].'"/>
                         <input type="hidden" name="nome" value="'.$user['nome'].'"/>
                         <input type="hidden" name="cognome" value="'.$user['cognome'].'"/>
                         <input type="hidden" name="data" value="'.$user['data'].'"/>
@@ -98,6 +98,8 @@ die();
                 </td>
             </tr>';
     }
+
+    
     echo '</tbody>
         </table>';
 

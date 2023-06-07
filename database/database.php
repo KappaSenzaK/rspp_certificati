@@ -224,12 +224,14 @@ function getUsersForCuccurullo()
     return $users;
 }
 
-function getAttestatiForCuccurullo()
+function searchUserForCuccurullo($id)
 {
     $conn = connect_database();
 
     $sql = "
-    SELECT a.mail, a.tipo, p.nome, p.cognome, p.data_nascita, p.luogo, p.stato FROM attestato a INNER JOIN personale p ON p.mail = a.mail;
+        SELECT p.* 
+        FROM personale p 
+        WHERE p.mail = '$id'
     ";
 
     $stmt = $conn->prepare($sql);
@@ -240,13 +242,61 @@ function getAttestatiForCuccurullo()
 
     while ($row = $results->fetch_assoc()) {
         $users[] = [
-                "mail"    => $row['mail'],
+                "mail"        => $row['mail'],
+                "nome"        => $row['nome'],
+                "cognome"     => $row['cognome'],
+                "note"        => $row['note'],
+                "stato"       => $row['stato'],
+                "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
+                "c_f"         => $row['cod_fiscale'],
+                "data"        => $row['data_nascita'],
+                "luogo"       => $row['luogo'],
+        ];
+    }
+
+    return $users;
+}
+
+function getAttestatiForCuccurullo($mail)
+{
+    $conn = connect_database();
+
+    $sql = "
+    SELECT a.tipo FROM attestato a WHERE a.mail = '$mail'
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $users = [];
+
+    while ($row = $results->fetch_assoc()) {
+        $users[] = [
                 "tipo"    => $row['tipo'],
-                "nome"    => $row['nome'],
-                "cognome" => $row['cognome'],
-                "data"    => $row['data_nascita'],
-                "luogo"   => $row['luogo'],
-                "stato"   => $row['stato'],
+        ];
+    }
+
+    return $users;
+}
+
+function getTipiAttestatiForCuccurullo()
+{
+    $conn = connect_database();
+
+    $sql = "
+    SELECT DISTINCT a.tipo FROM attestato a;
+    ";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->get_result();
+
+    $users = [];
+
+    while ($row = $results->fetch_assoc()) {
+        $users[] = [
+                "tipo"    => $row['tipo'],
         ];
     }
 

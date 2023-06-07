@@ -72,7 +72,7 @@ $html = str_replace("{{ data }}", $data, $html);
 $html = str_replace("{{ luogo }}", $luogo, $html);
 $html = str_replace("{{ tipo }}", $tipo, $html);
 $html = str_replace("{{ ore }}", $ore, $html);
-
+$html = str_replace("{{ oggi }}", date("d-m-Y"), $html);
 
 $dompdf->loadhtml($html); //QUESTO PER CREARE PDF CON HTML SCRITTO COME STRINGA
 
