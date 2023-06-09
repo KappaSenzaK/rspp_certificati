@@ -22,7 +22,7 @@ function sendEmail($to, $subject, $body, $email_type = EmailStatus::OK)
     $mail->Host     = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
     $mail->Username = 'rspp.tulliobuzzi@gmail.com';
-    $mail->Password = 'bdopttthxfdfsgks'; // e' la password app (in questo caso collegata all'email cuccurulloprogetto@gmail.com
+    $mail->Password = 'bdopttthxfdfsgks'; // e' la password app (in questo caso collegata all'email rspp.tulliobuzzi@gmail.com
 
     $mail->setFrom('rspp.tulliobuzzi@gmail.com');
 
