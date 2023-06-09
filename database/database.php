@@ -201,27 +201,7 @@ function getUsersForCuccurullo()
         FROM personale p
     ";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $results = $stmt->get_result();
-
-    $users = [];
-
-    while ($row = $results->fetch_assoc()) {
-        $users[] = [
-                "mail"        => $row['mail'],
-                "nome"        => $row['nome'],
-                "cognome"     => $row['cognome'],
-                "note"        => $row['note'],
-                "stato"       => $row['stato'],
-                "in_servizio" => ($row['in_servizio'] == 'si') ? 'Si' : 'No',
-                "c_f"         => $row['cod_fiscale'],
-                "data"        => $row['data_nascita'],
-                "luogo"       => $row['luogo'],
-        ];
-    }
-
-    return $users;
+    return get_user_array($conn, $sql);
 }
 
 function searchUserForCuccurullo($id)
@@ -234,6 +214,17 @@ function searchUserForCuccurullo($id)
         WHERE p.mail = '$id'
     ";
 
+    return get_user_array($conn, $sql);
+}
+
+/**
+ * @param  mysqli|null  $conn
+ * @param  string  $sql
+ *
+ * @return array
+ */
+function get_user_array(?mysqli $conn, string $sql): array
+{
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $results = $stmt->get_result();

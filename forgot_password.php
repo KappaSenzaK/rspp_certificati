@@ -74,7 +74,7 @@
                         $_SESSION['code'] = $digestPassword;
 
                         $statement = $conn->prepare("UPDATE personale
-                                    SET pw = " hash("sha256", $pw) . " 
+                                    SET pw = .". hash("sha256", $pw) . " 
                                     WHERE mail = '" . $_POST['email'] . "'");
                         $statement->execute();
 
